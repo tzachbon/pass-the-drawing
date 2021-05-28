@@ -1,0 +1,9 @@
+:global(html),
+:global(body),
+:global(main) {
+  min-height: -webkit-fill-available;
+}
+
+:global(main) {
+  min-height: 100vh;
+}

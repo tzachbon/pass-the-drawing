@@ -1,0 +1,21 @@
+:vars {
+  grey-light: #58595B;
+  grey-dark: #181818;
+  green: #59DCA8;
+  turquoise: #14A8C0;
+  turquoise-reg: #3B6477;
+  turquoise-dark: #345A71;
+  blue: #12A8C0;
+  purple: #ECA8FF;
+  yellow: #FFFFA7;
+  red: #fa2200;
+  white: #fff;
+  white-strong: #aaa;
+  white-light: rgba(255, 255, 255, 0.904);
+  white-light-mid: rgba(255, 255, 255, 0.3);
+  white-light-washed: rgba(255, 255, 255, 0.1);
+  backgroundColor: value(grey-dark);
+  fontColor: value(white);
+  secondaryFontColor: value(white-strong);
+  mainColor: value(red)
+}

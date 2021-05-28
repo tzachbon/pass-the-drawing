@@ -6,8 +6,8 @@
   "scripts": {
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
-    "build": "webpack --mode production --no-devtool",
-    "start": "webpack serve --open",
+    "build": "webpack --config webpack.prod.js",
+    "start": "webpack serve --config webpack.dev.js",
     "serve": "serve ./dist",
     "lint": "eslint . -f codeframe",
     "typecheck": "tsc --noEmit",
@@ -20,13 +20,15 @@
   "dependencies": {
     "@stylable/runtime": "^4.2.4",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@stylable/core": "^4.2.4",
     "@stylable/webpack-plugin": "^4.2.4",
     "@types/react": "^17.0.8",
     "@types/react-dom": "^17.0.5",
+    "@types/react-router-dom": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",
     "eslint": "^7.27.0",

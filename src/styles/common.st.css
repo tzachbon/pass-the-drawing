@@ -1,0 +1,31 @@
+.flex {
+  display: flex;
+}
+
+.flexCenter {
+  -st-mixin: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.fullHeight {
+  height: 100%;
+}
+
+.fullPage {
+  -st-mixin: fullHeight, fullWidth;
+}
+
+.flexRow {
+  -st-mixin: flex;
+  flex-direction: row;
+}
+
+.flexCol {
+  -st-mixin: flex;
+  flex-direction: column;
+}
