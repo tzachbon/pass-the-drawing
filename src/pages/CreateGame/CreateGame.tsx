@@ -1,53 +1,41 @@
 import type React from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import type { GameSubjects } from '../../constants'
 import { SelectSubject } from '../../components/SelectSubject'
-import { GameSubjects } from '../../constants'
+import { useAuth } from '../../hooks/useAuth'
+import { useSubject } from '../../hooks/useSubject'
+import { useSubmit } from '../../hooks/useSubmit'
 import { classes, st } from './CreateGame.st.css'
 
-interface Inputs {
-	name: string,
-	subject: string
-}
 
 export interface CreateGameProps {
 	className?: string
 }
 
 export const CreateGame: React.VFC<CreateGameProps> = ({ className }) => {
-
-	const { register, handleSubmit, watch, formState } = useForm<Inputs>()
-	const onSubmit: SubmitHandler<Inputs> = data => {
-		if (!Object.keys(formState.errors).length) {
-			// eslint-disable-next-line no-console
-			console.log({ data })
-		}
-	}
-
+	const { error: subjectError, isValid, setSubject, subject, dirty } = useSubject()
+	const { currentUser, signInWithRedirect } = useAuth()
+	const { onSubmit, loading, error } = useSubmit({ subject: subject as GameSubjects, currentUser, isValid })
+	
 	return (
-		<form className={st(classes.root, className)} onSubmit={handleSubmit(onSubmit)}>
-			<input
-				placeholder='Enter your full name'
-				required
-				{...register('name', { required: true })}
-			/>
+		<form className={st(classes.root, className)} onSubmit={onSubmit}>
 			<SelectSubject
-				required
-				placeholder='Select a subject to draw'
-				value={watch('subject')}
-				{...register('subject', {
-					required: true,
-					validate: validateSubject
-				})}
+				subject={subject}
+				setSubject={setSubject}
 			/>
 			{
-				formState.errors.subject && <h2>{formState.errors.subject.message}</h2>
+				subjectError && dirty && <h2>{subjectError}</h2>
 			}
-			<input type="submit" />
+			{
+				currentUser ?
+					<span>Logged in as {currentUser.displayName}</span> :
+					<button onClick={signInWithRedirect}>Sign in with google</button>
+			}
+			<button disabled={loading || !currentUser} type="submit" >Submit</button>
+			{
+				error && (
+					<span>We run into small problem, can you please try again?</span>
+				)
+			}
 		</form>
 	)
-}
-
-
-function validateSubject(value: string) {
-	return Object.values(GameSubjects).includes(value as GameSubjects) ? undefined : ('Game subject must be one of ' + Object.values(GameSubjects).toLocaleString())
 }

@@ -1,11 +1,13 @@
 export const Routes = {
 	HOME: '/',
-	CREATE_GAME: '/create-game'
+	CREATE_GAME: '/create-game',
+	LOBBY: '/lobby'
 }
 
 export enum GameSubjects {
 	Food = 'Food',
-	Cars = 'Cars'
+	Cars = 'Cars',
+	Dessert = 'Dessert'
 }
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional

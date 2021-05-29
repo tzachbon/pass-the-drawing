@@ -10,7 +10,9 @@
     "plugin:stylable/recommended",
     "prettier"
   ],
-  "plugins": ["react-hooks"],
+  "plugins": [
+    "react-hooks"
+  ],
   "settings": {
     "react": {
       "version": "detect"
@@ -21,11 +23,15 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
     "react/prop-types": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "explicit-module-boundary-types": "off"
   },
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx"],
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
       "parserOptions": {
         "project": "./tsconfig.json"
       },
@@ -38,10 +44,23 @@
         "explicit-module-boundary-types": "off",
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
-        "indent": ["error", "tab"],
-        "linebreak-style": ["error", "unix"],
-        "quotes": ["error", "single"],
-        "semi": ["error", "never"]
+        "indent": [
+          "error",
+          "tab"
+        ],
+        "linebreak-style": [
+          "error",
+          "unix"
+        ],
+        "quotes": [
+          "error",
+          "single"
+        ],
+        "semi": [
+          "error",
+          "never"
+        ],
+        "@typescript-eslint/unbound-method": "off"
       }
     }
   ]

@@ -5,20 +5,21 @@ import { Routes } from '../../constants'
 
 import { Home } from '..'
 import { CreateGame } from '../CreateGame'
+import { Lobby } from '../Lobby'
 
-export interface AppProps {
-    className?: string
-}
 
-export const App: React.VFC<AppProps> = ({ className }) => {
+export const App: React.VFC = () => {
 	return (
-		<section className={st(classes.root, className)}>
+		<section className={st(classes.root)}>
 			<Switch>
-				<Route path={Routes.HOME} exact>
-					<Home />
+				<Route path={`${Routes.LOBBY}/:id`} exact>
+					<Lobby />
 				</Route>
 				<Route path={Routes.CREATE_GAME} exact>
 					<CreateGame />
+				</Route>
+				<Route path={Routes.HOME} exact>
+					<Home />
 				</Route>
 			</Switch>
 		</section>

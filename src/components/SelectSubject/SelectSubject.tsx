@@ -1,77 +1,35 @@
-import React, { ChangeEvent, useState } from 'react'
+import type React from 'react'
 import AutoComplete from 'react-autocomplete'
-import type { UseFormRegisterReturn } from 'react-hook-form'
 import { GameSubjects } from '../../constants'
+import type { UseSubject } from '../../hooks/useSubject'
+import type { ISubjects } from '../../types'
 import { classes, st } from './SelectSubject.st.css'
 
-
-
-interface Props extends Omit<UseFormRegisterReturn, 'ref'> {
-	value: string;
-	className?: string
-	required?: boolean
-	placeholder: string
+interface Props {
+	subject: ReturnType<UseSubject>['subject']
+	setSubject: ReturnType<UseSubject>['setSubject']
 }
 
-interface ISubjects {
-	value: GameSubjects
-}
+const subjects: ISubjects[] = Object.values(GameSubjects).map(value => ({ value }))
 
-export const SelectSubject = React.forwardRef<UseFormRegisterReturn['ref'], Props>(({
-	name,
-	onBlur,
-	onChange: _onChange,
-	value,
-	className,
-	placeholder,
-	required
-}, ref) => {
-	const [selectedValue, setSelectedValue] = useState<string>(value)
-	const subjects: ISubjects[] = [
-		{
-			value: GameSubjects.Food
-		},
-		{
-			value: GameSubjects.Cars
-		}
-	]
-
-	const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-		setSelectedValue(event.target.value)
-		void _onChange(event)
-	}
-
-	return (
-		<div className={st(classes.root)}>
-			<AutoComplete
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				ref={ref}
-				value={selectedValue}
-				autoHighlight
-				renderInput={(props) => <input {...{
-					...props, ...{
-						placeholder,
-						className,
-						onBlur,
-						onChange,
-						name,
-						required,
-						value: selectedValue
-					}
-				}} />}
-				onSelect={setSelectedValue}
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-				onChange={(_, _value) => setSelectedValue(_value)}
-				items={subjects.filter(item => !selectedValue || item.value.toLowerCase().includes(selectedValue.toLowerCase()))}
-				getItemValue={(item: ISubjects) => item.value}
-				renderItem={(item: ISubjects, highlight: boolean) => (
-					<div key={item.value} className={st(classes.item, { highlight })}>
-						{item.value}
-					</div>
-				)}
-			/>
-		</div>
-	)
-}
+export const SelectSubject: React.FC<Props> = ({
+	setSubject,
+	subject
+}) => (
+	<div className={st(classes.root)}>
+		<AutoComplete
+			value={subject}
+			autoHighlight
+			selectOnBlur
+			onSelect={(value: string) => void setSubject(value)}
+			onChange={(_, value: string) => void setSubject(value)}
+			items={subjects.filter(item => !subject || item.value.toLowerCase().includes(subject.toLowerCase()))}
+			getItemValue={(item: ISubjects) => item.value}
+			renderItem={(item: ISubjects, highlight: boolean) => (
+				<div key={item.value} className={st(classes.item, { highlight })}>
+					{item.value}
+				</div>
+			)}
+		/>
+	</div>
 )

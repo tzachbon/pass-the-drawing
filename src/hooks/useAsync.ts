@@ -9,6 +9,7 @@ export function useAsync() {
 			T = unknown,
 			P extends Array<unknown> = unknown[]
 		>(callback: (...args: P) => Promise<T> | T) => async (...args: P) => {
+			setLoading(true)
 			try {
 				await callback(...args)
 			} catch (error) {
