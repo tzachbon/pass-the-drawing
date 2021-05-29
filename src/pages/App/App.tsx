@@ -1,10 +1,10 @@
 import type React from 'react'
 import { Route, Switch } from 'react-router'
 import { st, classes } from './App.st.css'
-import { Routes } from '../constants'
+import { Routes } from '../../constants'
 
-import { Home } from '../pages'
-import { CreateGame } from '../pages/CreateGame'
+import { Home } from '..'
+import { CreateGame } from '../CreateGame'
 
 export interface AppProps {
     className?: string

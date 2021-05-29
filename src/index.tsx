@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { firebaseConfig } from './constants'
 import { BrowserRouter } from 'react-router-dom'
-import { App } from './App'
+import { App } from './pages/App'
 
 import './styles/reset.st.css'
 import './styles/globals.st.css'
