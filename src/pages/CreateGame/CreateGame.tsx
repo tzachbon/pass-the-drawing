@@ -18,6 +18,7 @@ export const CreateGame: React.VFC<CreateGameProps> = ({ className }) => {
 	const { register, handleSubmit, watch, formState } = useForm<Inputs>()
 	const onSubmit: SubmitHandler<Inputs> = data => {
 		if (!Object.keys(formState.errors).length) {
+			// eslint-disable-next-line no-console
 			console.log(data)
 		}
 	}

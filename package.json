@@ -20,6 +20,7 @@
   "dependencies": {
     "@stylable/runtime": "^4.2.4",
     "axios": "^0.21.1",
+    "firebase": "^8.6.3",
     "react": "^17.0.2",
     "react-autocomplete": "^1.8.1",
     "react-dom": "^17.0.2",
@@ -40,6 +41,7 @@
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-stylable": "^4.2.4",
+    "firebase-tools": "^9.12.0",
     "html-webpack-plugin": "^5.3.1",
     "rimraf": "^3.0.2",
     "serve": "^11.3.2",
