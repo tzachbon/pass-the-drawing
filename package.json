@@ -28,6 +28,14 @@
     "react-hook-form": "^7.6.10",
     "react-router-dom": "^5.2.0"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "yarn lint --fix"
+  },
   "devDependencies": {
     "@stylable/core": "^4.2.4",
     "@stylable/webpack-plugin": "^4.2.4",
@@ -44,6 +52,8 @@
     "eslint-plugin-stylable": "^4.2.4",
     "firebase-tools": "^9.12.0",
     "html-webpack-plugin": "^5.3.1",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
     "rimraf": "^3.0.2",
     "serve": "^11.3.2",
     "ts-loader": "^9.2.2",
