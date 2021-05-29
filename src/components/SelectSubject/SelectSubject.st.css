@@ -15,7 +15,3 @@
 .root .item {
   color: value(secondaryFontColor);
 }
-
-.root:highlight .item {
-  background: red
-}

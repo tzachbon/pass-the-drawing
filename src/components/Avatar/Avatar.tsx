@@ -9,6 +9,8 @@ export interface HomeProps {
 
 export const BASE_URL = 'https://ui-avatars.com/api/'
 
+export const TEST_ID = 'Avatar'
+
 // eslint-disable-next-line react/display-name
 export const Avatar: React.VFC<HomeProps> = memo(
 	({ className, name, backgroundColor }) => {
@@ -17,7 +19,7 @@ export const Avatar: React.VFC<HomeProps> = memo(
 		}`
 		return (
 			<img
-				data-testid="avatar"
+				data-testid={TEST_ID}
 				className={st(classes.root, className)}
 				src={url}
 			/>

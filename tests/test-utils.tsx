@@ -19,7 +19,7 @@ const renderer = (getUI: () => ReactElement) => {
 		render,
 	}
 
-	function render(ui: ReactElement, options?: Omit<RenderOptions, 'queries'>) {
+	function render(ui: ReactElement = getUI(), options?: Omit<RenderOptions, 'queries'>) {
 		cleanup()
 		container = customRender(ui, options)
 		payload.container = container
