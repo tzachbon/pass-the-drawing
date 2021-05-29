@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist",
-    "prebuild": "npm run clean",
+    "prebuild": "yarn clean",
     "build": "webpack --config webpack.prod.js",
     "start": "webpack serve --config webpack.dev.js",
     "serve": "serve ./dist",
     "lint": "eslint . -f codeframe",
     "typecheck": "tsc --noEmit",
-    "test": "npm run typecheck && npm run lint"
+    "test": "yarn typecheck && yarn lint"
   },
   "keywords": [],
   "author": "",
