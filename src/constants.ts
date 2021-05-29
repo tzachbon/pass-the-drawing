@@ -1,13 +1,13 @@
 export const Routes = {
 	HOME: '/',
 	CREATE_GAME: '/create-game',
-	LOBBY: '/lobby'
+	LOBBY: '/lobby',
 }
 
 export enum GameSubjects {
-	Food = 'Food',
-	Cars = 'Cars',
-	Dessert = 'Dessert'
+    Food = 'Food',
+    Cars = 'Cars',
+    Dessert = 'Dessert',
 }
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -18,5 +18,5 @@ export const firebaseConfig = {
 	storageBucket: 'pass-the-draw.appspot.com',
 	messagingSenderId: '863758399461',
 	appId: '1:863758399461:web:c5705972a6c3c945bca10c',
-	measurementId: 'G-81KK9F1ETD'
+	measurementId: 'G-81KK9F1ETD',
 }

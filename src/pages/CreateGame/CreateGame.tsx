@@ -6,9 +6,8 @@ import { useSubject } from '../../hooks/useSubject'
 import { useSubmit } from '../../hooks/useSubmit'
 import { classes, st } from './CreateGame.st.css'
 
-
 export interface CreateGameProps {
-	className?: string
+    className?: string
 }
 
 export const CreateGame: React.VFC<CreateGameProps> = ({ className }) => {
@@ -17,29 +16,24 @@ export const CreateGame: React.VFC<CreateGameProps> = ({ className }) => {
 	const { onSubmit, loading, error } = useSubmit({
 		subject: subject as GameSubjects,
 		currentUser,
-		isValid
+		isValid,
 	})
 
 	return (
 		<form className={st(classes.root, className)} onSubmit={onSubmit}>
-			<SelectSubject
-				subject={subject}
-				setSubject={setSubject}
-			/>
-			{
-				subjectError && dirty && <h2>{subjectError}</h2>
-			}
-			{
-				currentUser ?
-					<span>Logged in as {currentUser.displayName}</span> :
-					<button onClick={signInWithRedirect}>Sign in with google</button>
-			}
-			<button disabled={loading || !currentUser} type="submit" >Submit</button>
-			{
-				error && (
-					<span>We run into small problem, can you please try again?</span>
-				)
-			}
+			<SelectSubject subject={subject} setSubject={setSubject} />
+			{subjectError && dirty && <h2>{subjectError}</h2>}
+			{currentUser ? (
+				<span>Logged in as {currentUser.displayName}</span>
+			) : (
+				<button onClick={signInWithRedirect}>Sign in with google</button>
+			)}
+			<button disabled={loading || !currentUser} type="submit">
+                Submit
+			</button>
+			{error && (
+				<span>We run into small problem, can you please try again?</span>
+			)}
 		</form>
 	)
 }

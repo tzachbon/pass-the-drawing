@@ -7,13 +7,12 @@ import { GameSubjects, Routes } from '../constants'
 import { useAsync } from './useAsync'
 
 interface Params {
-	subject: GameSubjects | undefined
-	currentUser: firebase.User | undefined
-	isValid: boolean
+    subject: GameSubjects | undefined
+    currentUser: firebase.User | undefined
+    isValid: boolean
 }
 
 export function useSubmit({ subject, isValid, currentUser }: Params) {
-
 	const { push } = useHistory()
 
 	const _onSubmit: FormEventHandler<HTMLFormElement> = useCallback(
@@ -28,7 +27,7 @@ export function useSubmit({ subject, isValid, currentUser }: Params) {
 				push(path)
 			}
 		},
-		[subject, currentUser, push, isValid],
+		[subject, currentUser, push, isValid]
 	)
 
 	const { run, error, loading } = useAsync()

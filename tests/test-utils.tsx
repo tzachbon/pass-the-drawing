@@ -4,17 +4,11 @@ import { BrowserRouter } from 'react-router-dom'
 import '@testing-library/jest-dom/extend-expect'
 
 const AllTheProviders: FC = ({ children }) => {
-	return (
-		<BrowserRouter>
-			{children}
-		</BrowserRouter>
-	)
+	return <BrowserRouter>{children}</BrowserRouter>
 }
 
-const customRender = (
-	ui: ReactElement,
-	options?: Omit<RenderOptions, 'queries'>
-) => render(ui, { wrapper: AllTheProviders, ...options })
+const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'queries'>) =>
+	render(ui, { wrapper: AllTheProviders, ...options })
 
 const renderer = (getUI: () => ReactElement) => {
 	let container = customRender(getUI())
@@ -22,13 +16,10 @@ const renderer = (getUI: () => ReactElement) => {
 	const payload = {
 		container,
 		beforeAndAfter,
-		render
+		render,
 	}
 
-	function render(
-		ui: ReactElement,
-		options?: Omit<RenderOptions, 'queries'>
-	) {
+	function render(ui: ReactElement, options?: Omit<RenderOptions, 'queries'>) {
 		cleanup()
 		container = customRender(ui, options)
 		payload.container = container
@@ -37,7 +28,6 @@ const renderer = (getUI: () => ReactElement) => {
 	}
 
 	function beforeAndAfter() {
-
 		beforeEach(() => {
 			render(getUI())
 		})

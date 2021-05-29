@@ -4,16 +4,15 @@ import { GameSubjects } from '../constants'
 
 const BASE_URL = 'https://random-data-api.com/api'
 
-
 /**
- * 
+ *
  * Gets a subject from type GameSubjects and returns a random word
  * Api docs - https://random-data-api.com/documentation
- * 
- * @param {GameSubjects} subject 
- * 
+ *
+ * @param {GameSubjects} subject
+ *
  * @example
- * 
+ *
  * await getRandomWord({ subject: 'Food' }) // 'Banana'
  */
 export async function getRandomWord(subject: GameSubjects): Promise<string> {

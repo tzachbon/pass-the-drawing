@@ -7,7 +7,6 @@ import { Home } from '..'
 import { CreateGame } from '../CreateGame'
 import { Lobby } from '../Lobby'
 
-
 export const App: React.VFC = () => {
 	return (
 		<section className={st(classes.root)}>

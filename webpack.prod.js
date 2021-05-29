@@ -3,5 +3,5 @@ const common = require('./webpack.common.js')
 
 /** @type {import('webpack').Configuration} */
 module.exports = merge(common, {
-  mode: 'production',
+    mode: 'production',
 })

@@ -2,14 +2,10 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { GameSubjects } from '../constants'
 
 function validateSubject(value: string | undefined) {
-	return Object
-		.values(GameSubjects)
-		.includes(value as GameSubjects) ?
-		undefined :
-		(
-			'Game subject must be one of ' +
-			Object.values(GameSubjects).toLocaleString()
-		)
+	return Object.values(GameSubjects).includes(value as GameSubjects)
+		? undefined
+		: 'Game subject must be one of ' +
+              Object.values(GameSubjects).toLocaleString()
 }
 
 export function useSubject() {
@@ -28,8 +24,9 @@ export function useSubject() {
 			setDirty(true)
 		}
 
-
-		return () => { app.unmounted = true }
+		return () => {
+			app.unmounted = true
+		}
 	}, [subject])
 
 	return {
@@ -37,8 +34,8 @@ export function useSubject() {
 		setSubject,
 		isValid,
 		error,
-		dirty
+		dirty,
 	}
 }
 
-export type UseSubject = typeof useSubject;
+export type UseSubject = typeof useSubject

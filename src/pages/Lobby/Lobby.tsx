@@ -4,15 +4,16 @@ import { useGame } from '../../hooks/useGame'
 import { classes, st } from './Lobby.st.css'
 
 export interface LobbyProps {
-  className?: string
+    className?: string
 }
 
 export const Lobby: React.VFC<LobbyProps> = ({ className }) => {
 	const { id } = useParams<{ id: string }>()
 	const { game } = useGame({ id })
 
-
-	return <div className={st(classes.root, className)}>
-		{JSON.stringify(game, null, 3)}
-	</div>
+	return (
+		<div className={st(classes.root, className)}>
+			{JSON.stringify(game, null, 3)}
+		</div>
+	)
 }
