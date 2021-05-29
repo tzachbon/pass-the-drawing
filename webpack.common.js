@@ -1,5 +1,6 @@
 const { StylableWebpackPlugin } = require('@stylable/webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require("copy-webpack-plugin");
 
 /** @type {import('webpack').Configuration} */
 module.exports = {
@@ -25,6 +26,11 @@ module.exports = {
     new StylableWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: 'public/index.html',
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: "public/404.html", to: "404.html", },
+      ],
     }),
   ],
 }
