@@ -1,0 +1,21 @@
+:import {
+  -st-from: "../../styles/variables.st.css";
+  -st-named: secondaryFontColor;
+}
+
+.root {
+  -st-states: highlight;
+  width: 100%;
+}
+
+.root :is(div, input) {
+  width: inherit;
+}
+
+.root .item {
+  color: value(secondaryFontColor);
+}
+
+.root:highlight .item {
+  background: red
+}

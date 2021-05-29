@@ -1,0 +1,8 @@
+:import {
+  -st-from: "../../styles/common.st.css";
+  -st-named: flexCol;
+}
+
+.root {
+  -st-mixin: flexCol;
+}
