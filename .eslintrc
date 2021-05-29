@@ -11,7 +11,8 @@
     "prettier"
   ],
   "plugins": [
-    "react-hooks"
+    "react-hooks",
+    "prettier"
   ],
   "settings": {
     "react": {
@@ -24,7 +25,7 @@
     "react-hooks/exhaustive-deps": "error",
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
-    "explicit-module-boundary-types": "off"
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   },
   "overrides": [
     {
@@ -40,6 +41,7 @@
         "plugin:@typescript-eslint/recommended-requiring-type-checking"
       ],
       "rules": {
+        "@typescript-eslint/explicit-module-boundary-types": "off",
         "@typescript-eslint/ban-ts-comment": "warn",
         "explicit-module-boundary-types": "off",
         "react/jsx-uses-react": "off",

@@ -14,8 +14,12 @@ export interface CreateGameProps {
 export const CreateGame: React.VFC<CreateGameProps> = ({ className }) => {
 	const { error: subjectError, isValid, setSubject, subject, dirty } = useSubject()
 	const { currentUser, signInWithRedirect } = useAuth()
-	const { onSubmit, loading, error } = useSubmit({ subject: subject as GameSubjects, currentUser, isValid })
-	
+	const { onSubmit, loading, error } = useSubmit({
+		subject: subject as GameSubjects,
+		currentUser,
+		isValid
+	})
+
 	return (
 		<form className={st(classes.root, className)} onSubmit={onSubmit}>
 			<SelectSubject

@@ -1,5 +1,5 @@
 import type firebase from 'firebase/app'
-import { FormEventHandler, useCallback, useEffect } from 'react'
+import { FormEventHandler, useCallback } from 'react'
 import { useHistory } from 'react-router'
 import { createGame } from '../api/createGame'
 import { getRandomWord } from '../api/getRandomWord'
@@ -32,12 +32,6 @@ export function useSubmit({ subject, isValid, currentUser }: Params) {
 	)
 
 	const { run, error, loading } = useAsync()
-
-	useEffect(() => {
-		if (error) {
-			console.error(error)
-		}
-	}, [error])
 
 	return { onSubmit: run(_onSubmit), loading, error }
 }

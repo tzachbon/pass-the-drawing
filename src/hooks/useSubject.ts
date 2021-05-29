@@ -2,7 +2,14 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { GameSubjects } from '../constants'
 
 function validateSubject(value: string | undefined) {
-	return Object.values(GameSubjects).includes(value as GameSubjects) ? undefined : ('Game subject must be one of ' + Object.values(GameSubjects).toLocaleString())
+	return Object
+		.values(GameSubjects)
+		.includes(value as GameSubjects) ?
+		undefined :
+		(
+			'Game subject must be one of ' +
+			Object.values(GameSubjects).toLocaleString()
+		)
 }
 
 export function useSubject() {

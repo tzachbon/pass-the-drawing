@@ -11,7 +11,9 @@ export function useAuth() {
 		async () => {
 			const provider = new firebase.auth.GoogleAuthProvider()
 			await run(async () => {
-				await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+				await firebase
+					.auth()
+					.setPersistence(firebase.auth.Auth.Persistence.SESSION)
 				return await firebase.auth().signInWithPopup(provider)
 			})()
 

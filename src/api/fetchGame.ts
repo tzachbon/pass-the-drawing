@@ -5,7 +5,7 @@ type TGame = Game | undefined | null;
 
 export function fetchGame(
 	id: string,
-	callback: (game: TGame) => any
+	callback: (game: TGame) => void
 ) {
 	const status = { shouldCall: true }
 
