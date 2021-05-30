@@ -4,7 +4,7 @@ import { Routes } from '../../constants'
 import { st, classes } from './Home.st.css'
 
 export interface HomeProps {
-    className?: string
+	className?: string
 }
 
 export const Home: React.VFC<HomeProps> = ({ className }) => {

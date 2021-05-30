@@ -10,7 +10,10 @@
     "plugin:stylable/recommended",
     "prettier"
   ],
-  "plugins": ["react-hooks", "prettier"],
+  "plugins": [
+    "react-hooks",
+    "prettier"
+  ],
   "settings": {
     "react": {
       "version": "detect"
@@ -23,17 +26,35 @@
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "max-len": [
+    "newline-before-return": "error",
+    "no-return-await": "off",
+    "function-call-argument-newline": ["error", "consistent"],
+    "newline-per-chained-call": [
       "error",
       {
-        "code": 85,
-        "ignoreComments": true
+        "ignoreChainWithDepth": 1
+      }
+    ],
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": "always",
+        "ObjectPattern": {
+          "multiline": true
+        },
+        "ExportDeclaration": {
+          "multiline": true,
+          "minProperties": 3
+        }
       }
     ]
   },
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx"],
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
       "parserOptions": {
         "project": "./tsconfig.json"
       },
@@ -47,10 +68,22 @@
         "explicit-module-boundary-types": "off",
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
-        "indent": ["error", "tab"],
-        "linebreak-style": ["error", "unix"],
-        "quotes": ["error", "single"],
-        "semi": ["error", "never"],
+        "indent": [
+          "error",
+          "tab"
+        ],
+        "linebreak-style": [
+          "error",
+          "unix"
+        ],
+        "quotes": [
+          "error",
+          "single"
+        ],
+        "semi": [
+          "error",
+          "never"
+        ],
         "@typescript-eslint/unbound-method": "off"
       }
     }

@@ -8,7 +8,11 @@ const AllTheProviders: FC = ({ children }) => {
 }
 
 const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'queries'>) =>
-	render(ui, { wrapper: AllTheProviders, ...options })
+	render(ui,
+		{
+			wrapper: AllTheProviders,
+			...options,
+		})
 
 const renderer = (getUI: () => ReactElement) => {
 	let container = customRender(getUI())
@@ -19,7 +23,10 @@ const renderer = (getUI: () => ReactElement) => {
 		render,
 	}
 
-	function render(ui: ReactElement = getUI(), options?: Omit<RenderOptions, 'queries'>) {
+	function render(
+		ui: ReactElement = getUI(),
+		options?: Omit<RenderOptions, 'queries'>
+	) {
 		cleanup()
 		container = customRender(ui, options)
 		payload.container = container

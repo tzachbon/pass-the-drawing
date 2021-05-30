@@ -12,17 +12,24 @@ export function useAuth() {
 			await firebase
 				.auth()
 				.setPersistence(firebase.auth.Auth.Persistence.SESSION)
-			return await firebase.auth().signInWithPopup(provider)
+				
+			return await firebase
+				.auth()
+				.signInWithPopup(provider)
 		})()
-	}, [run])
+	},
+	[run])
 
 	useEffect(() => {
-		firebase.auth().onAuthStateChanged((user) => {
-			if (user) {
-				setCurrentUser(user)
-			}
-		})
-	}, [currentUser])
+		firebase
+			.auth()
+			.onAuthStateChanged((user) => {
+				if (user) {
+					setCurrentUser(user)
+				}
+			})
+	},
+	[currentUser])
 
 	return {
 		signInWithRedirect,
