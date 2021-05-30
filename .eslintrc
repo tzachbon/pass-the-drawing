@@ -28,13 +28,31 @@
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "newline-before-return": "error",
     "no-return-await": "off",
-    "function-call-argument-newline": ["error", "consistent"],
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "function-call-argument-newline": [
+      "error",
+      "consistent"
+    ],
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "array-bracket-spacing": [
+      "error",
+      "always"
+    ],
+    "computed-property-spacing": [
+      "error",
+      "always"
+    ],
     "object-curly-newline": [
       "error",
       {
         "ObjectExpression": "always",
         "ObjectPattern": {
-          "minProperties": 1,
           "multiline": true
         },
         "ExportDeclaration": {

@@ -2,7 +2,7 @@
 module.exports = {
     // The root of your source code, typically /src
     // `<rootDir>` is a token Jest substitutes
-    roots: ['<rootDir>/src', '<rootDir>/tests'],
+    roots: [ '<rootDir>/src', '<rootDir>/tests' ],
 
     // Jest transformations -- this adds support for TypeScript
     // using ts-jest
@@ -16,12 +16,12 @@ module.exports = {
     // Runs special logic, such as cleaning up components
     // when using React Testing Library and adds special
     // extended assertions to Jest
-    setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
+    setupFilesAfterEnv: [ '@testing-library/jest-dom/extend-expect' ],
     testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(ts?|tsx?)$',
     // Module file extensions for importing
-    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+    moduleFileExtensions: [ 'ts', 'tsx', 'js', 'jsx', 'json', 'node' ],
     moduleNameMapper: {
         'test-utils': '<rootDir>/tests/test-utils',
     },
-    testPathIgnorePatterns: ['<rootDir>/dist/', '<rootDir>/node_modules/'],
+    testPathIgnorePatterns: [ '<rootDir>/dist/', '<rootDir>/node_modules/' ],
 }

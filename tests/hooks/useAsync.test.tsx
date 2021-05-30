@@ -17,11 +17,11 @@ describe('useAsync', () => {
 	})
 
 	it('should pass args to callback', async () => {
-		const args = [1, 'string']
+		const args = [ 1, 'string' ]
 
 		const {
 			result,
-			waitFor
+			waitFor,
 		} = renderHook(() => useAsync())
 
 		act(() => {
@@ -38,7 +38,7 @@ describe('useAsync', () => {
 	it('should handle loading', async () => {
 		const {
 			result,
-			waitFor
+			waitFor,
 		} = renderHook(() => useAsync())
 
 		expect(result.current.loading).toEqual(false)
@@ -60,7 +60,7 @@ describe('useAsync', () => {
 	it('should throw an error', async () => {
 		const {
 			result,
-			waitFor
+			waitFor,
 		} = renderHook(() => useAsync())
 		const error = new Error('Test')
 

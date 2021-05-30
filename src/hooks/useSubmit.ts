@@ -29,7 +29,7 @@ export function useSubmit({ subject, isValid, currentUser }: Params) {
 			push(path)
 		}
 	},
-	[subject, currentUser, push, isValid])
+	[ subject, currentUser, push, isValid ])
 
 	const { run, error, loading } = useAsync()
 

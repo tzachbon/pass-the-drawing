@@ -10,7 +10,7 @@ describe('Avatar',
 			expect(await testkit.container.findByTestId(TEST_ID))
 				.toHaveAttribute(
 					'src',
-					`${BASE_URL}?name=Test&background=random`
+					`${BASE_URL}?name=Test&background=random`,
 				)
 		})
 
@@ -19,7 +19,7 @@ describe('Avatar',
 			expect(await testkit.container.findByTestId(TEST_ID))
 				.toHaveAttribute(
 					'src',
-					`${BASE_URL}?name=Test%20Test&background=random`
+					`${BASE_URL}?name=Test%20Test&background=random`,
 				)
 		})
 
@@ -28,7 +28,7 @@ describe('Avatar',
 			expect(await testkit.container.findByTestId(TEST_ID))
 				.toHaveAttribute(
 					'src',
-					`${BASE_URL}?name=Test&background=red`
+					`${BASE_URL}?name=Test&background=red`,
 				)
 		})
 	})

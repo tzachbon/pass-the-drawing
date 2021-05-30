@@ -7,7 +7,7 @@ interface Params {
 }
 
 export function useGame({ id }: Params) {
-	const [game, setGame] = useState<Game | null>()
+	const [ game, setGame ] = useState<Game | null>()
 
 	useEffect(() => {
 		const { remove } = fetchGame(id,
@@ -15,7 +15,7 @@ export function useGame({ id }: Params) {
 
 		return () => remove()
 	},
-	[id])
+	[ id ])
 
 	return {
 		game,

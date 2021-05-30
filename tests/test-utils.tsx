@@ -25,7 +25,7 @@ const renderer = (getUI: () => ReactElement) => {
 
 	function render(
 		ui: ReactElement = getUI(),
-		options?: Omit<RenderOptions, 'queries'>
+		options?: Omit<RenderOptions, 'queries'>,
 	) {
 		cleanup()
 		container = customRender(ui, options)

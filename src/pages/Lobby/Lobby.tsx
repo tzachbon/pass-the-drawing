@@ -18,7 +18,7 @@ export const Lobby: React.VFC<LobbyProps> = ({ className }) => {
 			{JSON.stringify(
 				game,
 				null,
-				3
+				3,
 			)}
 		</div>
 	)

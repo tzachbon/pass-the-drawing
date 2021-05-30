@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { useAsync } from './useAsync'
 
 export function useAuth() {
-	const [currentUser, setCurrentUser] = useState<firebase.User | undefined>()
+	const [ currentUser, setCurrentUser ] = useState<firebase.User | undefined>()
 	const { run, error, loading } = useAsync()
 
 	const signInWithRedirect = useCallback(async () => {
@@ -18,7 +18,7 @@ export function useAuth() {
 				.signInWithPopup(provider)
 		})()
 	},
-	[run])
+	[ run ])
 
 	useEffect(() => {
 		firebase
@@ -29,7 +29,7 @@ export function useAuth() {
 				}
 			})
 	},
-	[currentUser])
+	[ currentUser ])
 
 	return {
 		signInWithRedirect,

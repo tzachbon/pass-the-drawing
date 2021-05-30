@@ -13,10 +13,10 @@ function validateSubject(value: string | undefined) {
 }
 
 export function useSubject() {
-	const [subject, setSubject] = useState<string | undefined>()
-	const [dirty, setDirty] = useState(false)
+	const [ subject, setSubject ] = useState<string | undefined>()
+	const [ dirty, setDirty ] = useState(false)
 	const error = useMemo(() => validateSubject(subject),
-		[subject])
+		[ subject ])
 	const isValid = !error
 
 	const firstChange = useRef(true)
@@ -35,7 +35,7 @@ export function useSubject() {
 			app.unmounted = true
 		}
 	},
-	[subject])
+	[ subject ])
 
 	return {
 		subject,
