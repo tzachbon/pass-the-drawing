@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { renderHook, cleanup } from '@testing-library/react-hooks'
 import { act } from 'react-dom/test-utils'
 import { useAsync } from '../../src/hooks/useAsync'
