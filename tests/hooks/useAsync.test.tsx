@@ -1,0 +1,82 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { renderHook, cleanup } from '@testing-library/react-hooks'
+import { act } from 'react-dom/test-utils'
+import { useAsync } from '../../src/hooks/useAsync'
+
+describe('useAsync', () => {
+	let runnerMock = jest.fn()
+	let resolve = (_value?: any) => { return }
+	let reject = (_value?: any) => { return }
+
+	afterEach(() => {
+		void cleanup()
+		runnerMock = jest.fn().mockReturnValue(new Promise(((res, rej) => {
+			resolve = res
+			reject = rej
+		})))
+	})
+
+	it('should pass args to callback', async () => {
+		const args = [1, 'string']
+
+		const {
+			result,
+			waitFor
+		} = renderHook(() => useAsync())
+
+		act(() => {
+			void result.current.run(runnerMock)(...args)
+		})
+
+		resolve()
+
+		await waitFor(() => {
+			expect(runnerMock).toBeCalledWith(...args)
+		})
+	})
+
+	it('should handle loading', async () => {
+		const {
+			result,
+			waitFor
+		} = renderHook(() => useAsync())
+
+		expect(result.current.loading).toEqual(false)
+
+		act(() => {
+			void result.current.run(runnerMock)()
+		})
+
+		expect(result.current.loading).toEqual(true)
+
+		resolve()
+
+		await waitFor(() => {
+			expect(result.current.loading).toEqual(false)
+			expect(result.current.error).toBeUndefined()
+		})
+	})
+
+	it('should throw an error', async () => {
+		const {
+			result,
+			waitFor
+		} = renderHook(() => useAsync())
+		const error = new Error('Test')
+
+		expect(result.current.loading).toEqual(false)
+
+		act(() => {
+			void result.current.run(runnerMock)()
+		})
+
+		expect(result.current.loading).toEqual(true)
+
+		reject(error)
+
+		await waitFor(() => {
+			expect(result.current.loading).toEqual(false)
+			expect(result.current.error).toEqual(error)
+		})
+	})
+})

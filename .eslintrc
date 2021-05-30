@@ -29,17 +29,12 @@
     "newline-before-return": "error",
     "no-return-await": "off",
     "function-call-argument-newline": ["error", "consistent"],
-    "newline-per-chained-call": [
-      "error",
-      {
-        "ignoreChainWithDepth": 1
-      }
-    ],
     "object-curly-newline": [
       "error",
       {
         "ObjectExpression": "always",
         "ObjectPattern": {
+          "minProperties": 1,
           "multiline": true
         },
         "ExportDeclaration": {
