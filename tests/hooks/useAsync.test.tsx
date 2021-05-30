@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { renderHook, cleanup } from '@testing-library/react-hooks'
-import { act } from 'react-dom/test-utils'
+import { renderHook, cleanup, act } from '@testing-library/react-hooks'
 import { useAsync } from '../../src/hooks/useAsync'
 
 describe('useAsync', () => {
@@ -25,11 +24,13 @@ describe('useAsync', () => {
 			waitFor,
 		} = renderHook(() => useAsync())
 
-		act(() => {
+		void act(() => {
 			void result.current.run(runnerMock)(...args)
 		})
 
-		resolve()
+		void act(() => {
+			resolve()
+		})
 
 		await waitFor(() => {
 			expect(runnerMock).toBeCalledWith(...args)
@@ -44,13 +45,16 @@ describe('useAsync', () => {
 
 		expect(result.current.loading).toEqual(false)
 
-		act(() => {
+		void act(() => {
 			void result.current.run(runnerMock)()
 		})
 
 		expect(result.current.loading).toEqual(true)
 
-		resolve()
+
+		void act(() => {
+			resolve()
+		})
 
 		await waitFor(() => {
 			expect(result.current.loading).toEqual(false)
@@ -67,13 +71,15 @@ describe('useAsync', () => {
 
 		expect(result.current.loading).toEqual(false)
 
-		act(() => {
+		void act(() => {
 			void result.current.run(runnerMock)()
 		})
 
 		expect(result.current.loading).toEqual(true)
 
-		reject(error)
+		void act(() => {
+			reject(error)
+		})
 
 		await waitFor(() => {
 			expect(result.current.loading).toEqual(false)
