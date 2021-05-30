@@ -77,7 +77,8 @@
       ],
       "rules": {
         "@typescript-eslint/explicit-module-boundary-types": "off",
-        "@typescript-eslint/ban-ts-comment": "warn",
+        "@typescript-eslint/ban-types": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
         "explicit-module-boundary-types": "off",
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
