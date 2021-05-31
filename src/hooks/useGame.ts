@@ -1,23 +1,19 @@
-import { useEffect, useState } from 'react'
-import { fetchGame } from '../api/fetchGame'
-import type { Game } from '../types'
-
+import firebase from 'firebase/app'
+import { useObject } from 'react-firebase-hooks/database'
 interface Params {
-    id: string
+	id: string
 }
 
 export function useGame({ id }: Params) {
-	const [ game, setGame ] = useState<Game | null>()
-
-	useEffect(() => {
-		const { remove } = fetchGame(id,
-			(currentGame) => setGame(currentGame))
-
-		return () => remove()
-	},
-	[ id ])
+	const [ game, loading, error ] = useObject(
+		firebase
+			.database()
+			.ref(`games/${id}`),
+	)
 
 	return {
 		game,
+		loading,
+		error,
 	}
 }
