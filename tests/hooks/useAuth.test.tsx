@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { act, cleanup, renderHook } from '@testing-library/react-hooks'
-import firebase from 'firebase/app'
 import { useAuth } from '../../src/hooks/useAuth'
 import {
+	mockFirebase,
 	authState,
 	cleanup as firebaseCleanup,
-	firebaseAuthMock,
 	GoogleAuthProvider,
 	Persistence,
 	setPersistence,
 	signInWithPopup,
 } from './__mocks__/firebase'
 
+mockFirebase()
 
 describe('useAuth', () => {
 	const fakeUser = {
@@ -21,14 +21,12 @@ describe('useAuth', () => {
 	const fakeUser2 = {
 		user: 'test2',
 	}
-  
+
 	beforeEach(() => {
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 		void cleanup()
 		void firebaseCleanup()
 
-		// @ts-ignore
-		firebase.auth = firebaseAuthMock()
 	})
 
 	describe('onAuthStateChanged', () => {

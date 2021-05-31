@@ -1,10 +1,24 @@
+import firebase from 'firebase/app'
+
 export const authState = {
 	onAuthStateChangedCallback: (() => { return }) as Function,
+}
+
+export const databaseState = {
+	ref: undefined as string | undefined,
 }
 
 export const Persistence = {
 	SESSION: 'SESSION',
 }
+export const set = jest.fn()
+export const ref = jest.fn().mockImplementation((refValue: string | undefined) => {
+	databaseState.ref = refValue
+
+	return {
+		set,
+	}
+})
 export const GoogleAuthProvider = jest.fn()
 export const setPersistence = jest.fn()
 export const signInWithPopup = jest.fn()
@@ -28,9 +42,28 @@ export function firebaseAuthMock() {
 	return auth
 }
 
+export function firebaseDatabaseMock() {
+	const database = () => ({
+		ref,
+	})
+
+	return database
+}
+
 export function cleanup() {
 	GoogleAuthProvider.mockClear()
 	setPersistence.mockClear()
 	signInWithPopup.mockClear()
 	onAuthStateChanged.mockClear()
+}
+
+export function mockFirebase() {
+	const mock = () => ({
+		auth: firebaseAuthMock(),
+		database: firebaseDatabaseMock(),
+	})
+
+	jest.doMock('firebase/app', () => mock())
+
+	Object.assign(firebase, mock())
 }

@@ -1,8 +1,7 @@
 import type firebase from 'firebase/app'
 import { FormEventHandler, useCallback } from 'react'
-import { useHistory } from 'react-router'
-import { createGame } from '../api/createGame'
-import { getRandomWord } from '../api/getRandomWord'
+import { useHistory } from 'react-router-dom'
+import { createGame, getRandomWord } from '@api'
 import { GameSubjects, Routes } from '../constants'
 import { useAsync } from './useAsync'
 

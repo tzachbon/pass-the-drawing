@@ -20,6 +20,9 @@ module.exports = {
         ],
     },
     resolve: {
+        alias: {
+            '@api': require('path').resolve('src', 'api'),
+        },
         extensions: [ '.ts', '.tsx', '.js', '.json' ],
     },
     plugins: [

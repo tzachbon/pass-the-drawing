@@ -1,16 +1,15 @@
-import type { FC, ReactElement } from 'react'
-import { render, RenderOptions, cleanup } from '@testing-library/react'
-import { BrowserRouter } from 'react-router-dom'
 import '@testing-library/jest-dom/extend-expect'
+import { cleanup, render, RenderOptions } from '@testing-library/react'
+import type { ReactElement } from 'react'
 
-const AllTheProviders: FC = ({ children }) => {
-	return <BrowserRouter>{children}</BrowserRouter>
-}
+// const AllTheProviders: FC = ({ children }) => {
+// 	return <BrowserRouter>{children}</BrowserRouter>
+// }
 
 const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'queries'>) =>
 	render(ui,
 		{
-			wrapper: AllTheProviders,
+			// wrapper: AllTheProviders,
 			...options,
 		})
 
@@ -49,6 +48,6 @@ const renderer = (getUI: () => ReactElement) => {
 	return payload
 }
 
+export const uuidRegexPattern = '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
 export * from '@testing-library/react'
-
 export { customRender as render, renderer }

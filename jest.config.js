@@ -24,7 +24,8 @@ module.exports = {
     // Module file extensions for importing
     moduleFileExtensions: [ 'ts', 'tsx', 'js', 'jsx', 'json', 'node' ],
     moduleNameMapper: {
-        'test-utils': '<rootDir>/tests/test-utils',
+        '@test-utils': '<rootDir>/tests/test-utils',
+        '@api': '<rootDir>/src/api',
     },
     testPathIgnorePatterns: [ '<rootDir>/dist/', '<rootDir>/node_modules/' ],
 }

@@ -1,8 +1,14 @@
-import { renderHook, act } from '@testing-library/react-hooks'
+import { renderHook, act, cleanup } from '@testing-library/react-hooks'
 import { GameSubjects } from '../../src/constants'
 import { getSubjectErrorMessage, useSubject } from '../../src/hooks/useSubject'
 
 describe('useSubject', () => {
+
+	beforeEach(() => {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+		void cleanup()
+	})
+
 	it('should set subject', () => {
 		const { result } = renderHook(() => useSubject())
 

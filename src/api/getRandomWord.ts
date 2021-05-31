@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import axios from 'axios'
 import { GameSubjects } from '../constants'
 
 const BASE_URL = 'https://random-data-api.com/api'
@@ -17,7 +16,14 @@ const BASE_URL = 'https://random-data-api.com/api'
  */
 export async function getRandomWord(subject: GameSubjects): Promise<string> {
 	const url = `${BASE_URL}/${getPathBySubject(subject)}`
-	const { data } = await axios.get<Record<string, unknown>>(url)
+	const data = await fetch(url, {
+		method: 'GET',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json',
+		},
+	})
+		.then(res => res.json() as Promise<unknown>)
 
 	return getWordFromSubjectSchema(subject, data)
 }

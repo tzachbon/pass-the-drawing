@@ -1,4 +1,4 @@
-import { fireEvent, renderer } from 'test-utils'
+import { fireEvent, renderer } from '@test-utils'
 import { GameSubjects } from '../../constants'
 import { getSubjectTestId, INPUT_TEST_ID, SelectSubject } from './SelectSubject'
 
