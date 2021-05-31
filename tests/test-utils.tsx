@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/extend-expect'
-import { cleanup, render, RenderOptions } from '@testing-library/react'
+import { cleanup, fireEvent, render, RenderOptions, RenderResult } from '@testing-library/react'
 import type { ComponentType, ReactElement } from 'react'
 
 // const AllTheProviders: FC = ({ children }) => {
@@ -52,7 +52,10 @@ const renderer = (getUI: () => ReactElement) => {
 
 export const uuidRegexPattern = '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
 export * from '@testing-library/react'
-export { customRender as render, renderer }
+export {
+	customRender as render,
+	renderer,
+}
 
 
 export abstract class Driver<P extends object> {
@@ -85,4 +88,30 @@ export abstract class Driver<P extends object> {
 
 		return this
 	}
+}
+
+
+export function testUtils(testId: string, container: RenderResult) {
+	const utils = {
+		element: () => container.queryByTestId(testId),
+		notExistsError: () => new Error('Element does not exists: ' + testId),
+		_element: () => {
+			const el = utils.element()
+			if (!el) {
+				throw utils.notExistsError()
+			}
+
+			return el
+		},
+		click: () => fireEvent.click(utils._element()),
+		focus: () => fireEvent.focusIn(utils._element()),
+		type: (value: string) => fireEvent.input(utils._element(), {
+			target: {
+				value,
+			},
+		}),
+
+	}
+
+	return utils
 }

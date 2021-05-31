@@ -10,6 +10,12 @@ export interface CreateGameProps {
 	className?: string
 }
 
+export const LOGIN_BUTTON_TEST_ID = 'CreateGame_LOGIN_BUTTON_TEST_ID'
+export const LOGGED_IN_MESSAGE_TEST_ID = 'CreateGame_LOGGED_IN_MESSAGE_TEST_ID'
+export const SUBJECT_ERROR_TEST_ID = 'CreateGame_SUBJECT_ERROR_TEST_ID'
+export const SUBMIT_BUTTON_TEST_ID = 'CreateGame_SUBMIT_BUTTON_TEST_ID'
+export const SUBMIT_ERROR_TEST_ID = 'CreateGame_SUBMIT_ERROR_TEST_ID'
+
 export const CreateGame: React.VFC<CreateGameProps> = ({ className }) => {
 	const { error: subjectError, isValid, setSubject, subject, dirty } = useSubject()
 	const { currentUser, signInWithRedirect } = useAuth()
@@ -28,20 +34,26 @@ export const CreateGame: React.VFC<CreateGameProps> = ({ className }) => {
 				subject={subject}
 				setSubject={setSubject}
 			/>
-			{subjectError && dirty && <h2>{subjectError}</h2>}
+			{subjectError && dirty && <h2 data-testid={SUBJECT_ERROR_TEST_ID}>{subjectError}</h2>}
 			{currentUser ? (
-				<span>Logged in as {currentUser.displayName}</span>
+				<span data-testid={LOGGED_IN_MESSAGE_TEST_ID}>Logged in as {currentUser.displayName}</span>
 			) : (
-				<button onClick={signInWithRedirect}>Sign in with google</button>
+				<button
+					data-testid={LOGIN_BUTTON_TEST_ID}
+					onClick={signInWithRedirect}
+				>
+					Sign in with google
+				</button>
 			)}
 			<button
+				data-testid={SUBMIT_BUTTON_TEST_ID}
 				disabled={loading || !currentUser}
 				type="submit"
 			>
 				Submit
 			</button>
 			{error && (
-				<span>We run into small problem, can you please try again?</span>
+				<span data-testid={SUBMIT_ERROR_TEST_ID}>We run into small problem, can you please try again?</span>
 			)}
 		</form>
 	)
