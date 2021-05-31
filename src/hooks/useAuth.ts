@@ -11,11 +11,11 @@ export function useAuth() {
 		await run(async () => {
 			await firebase
 				.auth()
-				.setPersistence(firebase.auth.Auth.Persistence.SESSION)
-				
+				.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+
 			return await firebase
 				.auth()
-				.signInWithPopup(provider)
+				.signInWithRedirect(provider)
 		})()
 	},
 	[ run ])

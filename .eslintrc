@@ -28,6 +28,7 @@
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "newline-before-return": "error",
     "no-return-await": "off",
+    "no-whitespace-before-property": "error",
     "comma-dangle": [
       "error",
       "always-multiline"

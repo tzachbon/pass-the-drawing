@@ -23,5 +23,7 @@ export function useAsync() {
 		run,
 		loading,
 		error,
+		setLoading,
+		setError,
 	}
 }

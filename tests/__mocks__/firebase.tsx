@@ -10,6 +10,7 @@ export const databaseState = {
 
 export const Persistence = {
 	SESSION: 'SESSION',
+	LOCAL: 'LOCAL',
 }
 export const set = jest.fn()
 export const ref = jest.fn().mockImplementation((refValue: string | undefined) => {
@@ -22,6 +23,7 @@ export const ref = jest.fn().mockImplementation((refValue: string | undefined) =
 export const GoogleAuthProvider = jest.fn()
 export const setPersistence = jest.fn()
 export const signInWithPopup = jest.fn()
+export const signInWithRedirect = jest.fn()
 export const onAuthStateChanged = jest.fn().mockImplementation((callback: Function) => {
 	authState.onAuthStateChangedCallback = callback
 })
@@ -31,6 +33,7 @@ export function firebaseAuthMock() {
 		setPersistence,
 		signInWithPopup,
 		onAuthStateChanged,
+		signInWithRedirect,
 	})
 
 	auth.GoogleAuthProvider = GoogleAuthProvider
@@ -54,6 +57,7 @@ export function cleanup() {
 	GoogleAuthProvider.mockClear()
 	setPersistence.mockClear()
 	signInWithPopup.mockClear()
+	signInWithRedirect.mockClear()
 	onAuthStateChanged.mockClear()
 }
 

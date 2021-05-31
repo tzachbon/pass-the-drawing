@@ -2,13 +2,12 @@
 import { act, cleanup, renderHook } from '@testing-library/react-hooks'
 import { useAuth } from '../../src/hooks/useAuth'
 import {
-	mockFirebase,
 	authState,
 	cleanup as firebaseCleanup,
-	GoogleAuthProvider,
+	GoogleAuthProvider, mockFirebase,
 	Persistence,
 	setPersistence,
-	signInWithPopup,
+	signInWithRedirect,
 } from '../__mocks__/firebase'
 
 mockFirebase()
@@ -69,7 +68,7 @@ describe('useAuth', () => {
 			})
 
 			await waitFor(() => {
-				expect(setPersistence).toBeCalledWith(Persistence.SESSION)
+				expect(setPersistence).toBeCalledWith(Persistence.LOCAL)
 			})
 		})
 
@@ -80,7 +79,7 @@ describe('useAuth', () => {
 				await result.current.signInWithRedirect()
 			})
 
-			expect(signInWithPopup).toBeCalledWithInstance(GoogleAuthProvider)
+			expect(signInWithRedirect).toBeCalledWithInstance(GoogleAuthProvider)
 		})
 	})
 })
