@@ -5,7 +5,7 @@ import type { UseSubject } from '../../hooks/useSubject'
 import type { ISubjects } from '../../types'
 import { classes, st } from './SelectSubject.st.css'
 
-interface Props {
+export interface SelectSubjectProps {
 	subject: ReturnType<UseSubject>['subject']
 	setSubject: ReturnType<UseSubject>['setSubject']
 }
@@ -22,7 +22,7 @@ export const BASE_ITEM_TEST_ID = 'SelectSubject_ITEM'
 export const getSubjectTestId = (item: GameSubjects) =>
 	`${BASE_ITEM_TEST_ID}_${item}`
 
-export const SelectSubject: React.FC<Props> = ({ setSubject, subject }) => (
+export const SelectSubject: React.FC<SelectSubjectProps> = ({ setSubject, subject }) => (
 	<div className={st(classes.root)} data-testid={ROOT_TEST_ID}>
 		<AutoComplete
 			renderInput={(props) => <input {...props} data-testid={INPUT_TEST_ID} />}

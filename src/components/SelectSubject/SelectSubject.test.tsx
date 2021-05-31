@@ -1,6 +1,5 @@
-import { fireEvent, renderer } from '@test-utils'
 import { GameSubjects } from '../../constants'
-import { getSubjectTestId, INPUT_TEST_ID, SelectSubject } from './SelectSubject'
+import { selectSubjectDriver } from './SelectSubject.driver'
 
 describe('SelectSubject',
 	() => {
@@ -10,42 +9,44 @@ describe('SelectSubject',
 			.mockImplementation((aSubject: string | undefined) => {
 				subject = aSubject
 			})
-		const testkit = renderer(() => (
-			<SelectSubject subject={subject} setSubject={setSubject} />
-		))
-			.beforeAndAfter()
+
+		const driver = selectSubjectDriver({
+			props: {
+				subject,
+				setSubject,
+			},
+		}).beforeAndAfter()
 
 		beforeEach(() => {
 			subject = undefined
 			setSubject.mockReset()
 		})
 
-		it('should render subjects', async () => {
-			fireEvent.focusIn(await testkit.container.findByTestId(INPUT_TEST_ID))
+		it('should render subjects',  () => {
+			driver.testkit().input().focus()
 
 			for (const subjectValue of Object.values(GameSubjects)) {
-				expect(await testkit.container.findByTestId(getSubjectTestId(subjectValue)))
+				expect(driver.testkit().subject(subjectValue).element())
 					.toHaveTextContent(subjectValue)
 			}
 		})
 
-		it('should filter subject according to text', async () => {
+		it('should filter subject according to text',  () => {
 			subject = 'food'
-			testkit.render()
+			driver.withProps({
+				subject,
+			}).render()
 
-			fireEvent.focusIn(await testkit.container.findByTestId(INPUT_TEST_ID))
+			driver.testkit().input().focus()
 
-			expect(await testkit.container.findByTestId(getSubjectTestId(GameSubjects.Food)))
-				.toBeDefined()
-			expect(testkit.container.queryByTestId(getSubjectTestId(GameSubjects.Cars)))
-				.toBeNull()
+			expect(driver.testkit().subject(GameSubjects.Food).element()).toBeDefined()
+			expect(driver.testkit().subject(GameSubjects.Cars).element()).toBeNull()
 		})
 
-		it('should call setSubject when clicking item', async () => {
-			fireEvent.focusIn(await testkit.container.findByTestId(INPUT_TEST_ID))
-			fireEvent.click(await testkit.container.findByTestId(getSubjectTestId(GameSubjects.Food)))
+		it('should call setSubject when clicking item',  () => {
+			driver.testkit().input().focus()
+			driver.testkit().subject(GameSubjects.Food).click()
 
-			expect(setSubject)
-				.toHaveBeenCalledWith(GameSubjects.Food)
+			expect(setSubject).toHaveBeenCalledWith(GameSubjects.Food)
 		})
 	})
