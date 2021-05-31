@@ -9,7 +9,7 @@ import {
 	Persistence,
 	setPersistence,
 	signInWithPopup,
-} from './__mocks__/firebase'
+} from '../__mocks__/firebase'
 
 mockFirebase()
 

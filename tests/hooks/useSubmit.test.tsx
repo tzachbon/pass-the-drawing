@@ -8,8 +8,8 @@ import { act, cleanup, renderHook } from '@testing-library/react-hooks'
 import { v4 as uuid } from 'uuid'
 import { GameSubjects } from '../../src/constants'
 import { useSubmit } from '../../src/hooks/useSubmit'
-import { mockFirebase, set, cleanup as firebaseCleanup } from './__mocks__/firebase'
-import { push, mockRouter, cleanup as routerCleanup  } from './__mocks__/react-router-dom'
+import { mockFirebase, set, cleanup as firebaseCleanup } from '../__mocks__/firebase'
+import { push, mockRouter, cleanup as routerCleanup  } from '../__mocks__/react-router-dom'
 
 mockRouter()
 mockFirebase()
