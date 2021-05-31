@@ -20,15 +20,24 @@ export const CreateGame: React.VFC<CreateGameProps> = ({ className }) => {
 	})
 
 	return (
-		<form className={st(classes.root, className)} onSubmit={onSubmit}>
-			<SelectSubject subject={subject} setSubject={setSubject} />
+		<form
+			className={st(classes.root, className)}
+			onSubmit={onSubmit}
+		>
+			<SelectSubject
+				subject={subject}
+				setSubject={setSubject}
+			/>
 			{subjectError && dirty && <h2>{subjectError}</h2>}
 			{currentUser ? (
 				<span>Logged in as {currentUser.displayName}</span>
 			) : (
 				<button onClick={signInWithRedirect}>Sign in with google</button>
 			)}
-			<button disabled={loading || !currentUser} type="submit">
+			<button
+				disabled={loading || !currentUser}
+				type="submit"
+			>
 				Submit
 			</button>
 			{error && (

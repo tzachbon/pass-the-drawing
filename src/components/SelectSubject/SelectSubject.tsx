@@ -23,9 +23,15 @@ export const getSubjectTestId = (item: GameSubjects) =>
 	`${BASE_ITEM_TEST_ID}_${item}`
 
 export const SelectSubject: React.FC<SelectSubjectProps> = ({ setSubject, subject }) => (
-	<div className={st(classes.root)} data-testid={ROOT_TEST_ID}>
+	<div
+		className={st(classes.root)}
+		data-testid={ROOT_TEST_ID}
+	>
 		<AutoComplete
-			renderInput={(props) => <input {...props} data-testid={INPUT_TEST_ID} />}
+			renderInput={(props) => <input
+				{...props}
+				data-testid={INPUT_TEST_ID}
+			/>}
 			value={subject}
 			autoHighlight
 			selectOnBlur

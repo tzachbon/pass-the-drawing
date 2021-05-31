@@ -23,7 +23,10 @@ describe('Avatar', () => {
 	})
 
 	it('should append background color', async () => {
-		testkit.render(<Avatar name="Test" backgroundColor="red" />)
+		testkit.render(<Avatar
+			name="Test"
+			backgroundColor="red"
+		/>)
 		expect(await testkit.container.findByTestId(TEST_ID))
 			.toHaveAttribute(
 				'src',
