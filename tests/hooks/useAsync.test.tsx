@@ -5,24 +5,27 @@ import { useAsync } from '../../src/hooks/useAsync'
 
 describe('useAsync', () => {
 	let runnerMock = jest.fn()
-	let resolve = (_value?: any) => { return }
-	let reject = (_value?: any) => { return }
+	let resolve = (_value?: any) => {
+		return
+	}
+	let reject = (_value?: any) => {
+		return
+	}
 
 	afterEach(() => {
 		void cleanup()
-		runnerMock = jest.fn().mockReturnValue(new Promise(((res, rej) => {
-			resolve = res
-			reject = rej
-		})))
+		runnerMock = jest.fn().mockReturnValue(
+			new Promise((res, rej) => {
+				resolve = res
+				reject = rej
+			}),
+		)
 	})
 
 	it('should pass args to callback', async () => {
 		const args = [ 1, 'string' ]
 
-		const {
-			result,
-			waitFor,
-		} = renderHook(() => useAsync())
+		const { result, waitFor } = renderHook(() => useAsync())
 
 		void act(() => {
 			void result.current.run(runnerMock)(...args)
@@ -38,10 +41,7 @@ describe('useAsync', () => {
 	})
 
 	it('should handle loading', async () => {
-		const {
-			result,
-			waitFor,
-		} = renderHook(() => useAsync())
+		const { result, waitFor } = renderHook(() => useAsync())
 
 		expect(result.current.loading).toEqual(false)
 
@@ -50,7 +50,6 @@ describe('useAsync', () => {
 		})
 
 		expect(result.current.loading).toEqual(true)
-
 
 		void act(() => {
 			resolve()
@@ -63,10 +62,7 @@ describe('useAsync', () => {
 	})
 
 	it('should throw an error', async () => {
-		const {
-			result,
-			waitFor,
-		} = renderHook(() => useAsync())
+		const { result, waitFor } = renderHook(() => useAsync())
 		const error = new Error('Test')
 
 		expect(result.current.loading).toEqual(false)

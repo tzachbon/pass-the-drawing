@@ -13,23 +13,17 @@ export function useAuth() {
 				.auth()
 				.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
 
-			return await firebase
-				.auth()
-				.signInWithRedirect(provider)
+			return await firebase.auth().signInWithRedirect(provider)
 		})()
-	},
-	[ run ])
+	}, [ run ])
 
 	useEffect(() => {
-		firebase
-			.auth()
-			.onAuthStateChanged((user) => {
-				if (user) {
-					setCurrentUser(user)
-				}
-			})
-	},
-	[ currentUser ])
+		firebase.auth().onAuthStateChanged((user) => {
+			if (user) {
+				setCurrentUser(user)
+			}
+		})
+	}, [ currentUser ])
 
 	return {
 		signInWithRedirect,

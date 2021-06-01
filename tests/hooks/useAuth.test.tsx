@@ -4,7 +4,8 @@ import { useAuth } from '../../src/hooks/useAuth'
 import {
 	authState,
 	cleanup as firebaseCleanup,
-	GoogleAuthProvider, mockFirebase,
+	GoogleAuthProvider,
+	mockFirebase,
 	Persistence,
 	setPersistence,
 	signInWithRedirect,
@@ -13,19 +14,14 @@ import {
 mockFirebase()
 
 describe('useAuth', () => {
-	const fakeUser = {
-		user: 'test',
-	}
+	const fakeUser = { user: 'test' }
 
-	const fakeUser2 = {
-		user: 'test2',
-	}
+	const fakeUser2 = { user: 'test2' }
 
 	beforeEach(() => {
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 		void cleanup()
 		void firebaseCleanup()
-
 	})
 
 	describe('onAuthStateChanged', () => {
@@ -62,7 +58,6 @@ describe('useAuth', () => {
 		it('should set persistence', async () => {
 			const { result, waitFor } = renderHook(() => useAuth())
 
-
 			await act(async () => {
 				await result.current.signInWithRedirect()
 			})
@@ -79,7 +74,9 @@ describe('useAuth', () => {
 				await result.current.signInWithRedirect()
 			})
 
-			expect(signInWithRedirect).toBeCalledWithInstance(GoogleAuthProvider)
+			expect(signInWithRedirect).toBeCalledWithInstance(
+				GoogleAuthProvider,
+			)
 		})
 	})
 })

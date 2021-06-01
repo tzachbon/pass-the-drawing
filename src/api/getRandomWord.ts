@@ -19,11 +19,10 @@ export async function getRandomWord(subject: GameSubjects): Promise<string> {
 	const data = await fetch(url, {
 		method: 'GET',
 		headers: {
-			'Accept': 'application/json',
+			Accept: 'application/json',
 			'Content-Type': 'application/json',
 		},
-	})
-		.then(res => res.json() as Promise<unknown>)
+	}).then((res) => res.json() as Promise<unknown>)
 
 	return getWordFromSubjectSchema(subject, data)
 }

@@ -3,7 +3,6 @@ import { GameSubjects } from '../../src/constants'
 import { getSubjectErrorMessage, useSubject } from '../../src/hooks/useSubject'
 
 describe('useSubject', () => {
-
 	beforeEach(() => {
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 		void cleanup()
@@ -52,19 +51,22 @@ describe('useSubject', () => {
 		expect(result.current.error).toEqual(getSubjectErrorMessage())
 	})
 
-	it.each(Object.values(GameSubjects))('should be valid for game subject (%s)', (subject: GameSubjects) => {
-		const { result } = renderHook(() => useSubject())
+	it.each(Object.values(GameSubjects))(
+		'should be valid for game subject (%s)',
+		(subject: GameSubjects) => {
+			const { result } = renderHook(() => useSubject())
 
-		expect(result.current.isValid).toBeFalsy()
-		expect(result.current.error).toEqual(getSubjectErrorMessage())
-		expect(result.current.dirty).toBeFalsy()
+			expect(result.current.isValid).toBeFalsy()
+			expect(result.current.error).toEqual(getSubjectErrorMessage())
+			expect(result.current.dirty).toBeFalsy()
 
-		void act(() => {
-			result.current.setSubject(subject)
-		})
+			void act(() => {
+				result.current.setSubject(subject)
+			})
 
-		expect(result.current.isValid).toBeTruthy()
-		expect(result.current.error).toBeUndefined()
-		expect(result.current.dirty).toBeTruthy()
-	})
+			expect(result.current.isValid).toBeTruthy()
+			expect(result.current.error).toBeUndefined()
+			expect(result.current.dirty).toBeTruthy()
+		},
+	)
 })

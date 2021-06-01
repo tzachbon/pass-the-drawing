@@ -9,9 +9,7 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
-                options: {
-                    transpileOnly: true,
-                },
+                options: { transpileOnly: true },
             },
             {
                 test: /\.(png|jpg|jpeg|gif|svg)$/,
@@ -20,16 +18,12 @@ module.exports = {
         ],
     },
     resolve: {
-        alias: {
-            '@api': require('path').resolve('src', 'api'),
-        },
+        alias: { '@api': require('path').resolve('src', 'api') },
         extensions: [ '.ts', '.tsx', '.js', '.json' ],
     },
     plugins: [
         new StylableWebpackPlugin(),
-        new HtmlWebpackPlugin({
-            template: 'public/index.html',
-        }),
+        new HtmlWebpackPlugin({ template: 'public/index.html' }),
         new CopyPlugin({
             patterns: [
                 {

@@ -11,10 +11,7 @@ export async function createGame(params: CreateGameParams): Promise<Game> {
 		currentPlayingIndex: 0,
 	}
 
-	await firebase
-		.database()
-		.ref(`games/${game.id}`)
-		.set(game)
+	await firebase.database().ref(`games/${game.id}`).set(game)
 
 	return game
 }

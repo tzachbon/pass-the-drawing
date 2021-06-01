@@ -14,21 +14,23 @@ interface Params {
 export function useSubmit({ subject, isValid, currentUser }: Params) {
 	const { push } = useHistory()
 
-	const _onSubmit: FormEventHandler<HTMLFormElement> = useCallback(async (event) => {
-		event.preventDefault()
+	const _onSubmit: FormEventHandler<HTMLFormElement> = useCallback(
+		async (event) => {
+			event.preventDefault()
 
-		if (subject && currentUser && isValid) {
-			const word = await getRandomWord(subject)
-			const game = await createGame({
-				subject,
-				word,
-			})
-			const path = `${Routes.LOBBY}/${game.id}`
+			if (subject && currentUser && isValid) {
+				const word = await getRandomWord(subject)
+				const game = await createGame({
+					subject,
+					word,
+				})
+				const path = `${Routes.LOBBY}/${game.id}`
 
-			push(path)
-		}
-	},
-	[ subject, currentUser, push, isValid ])
+				push(path)
+			}
+		},
+		[ subject, currentUser, push, isValid ],
+	)
 
 	const { run, error, loading } = useAsync()
 

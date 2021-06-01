@@ -16,10 +16,10 @@ module.exports = {
     // Runs special logic, such as cleaning up components
     // when using React Testing Library and adds special
     // extended assertions to Jest
-    setupFilesAfterEnv: [ 
+    setupFilesAfterEnv: [
         '@testing-library/jest-dom/extend-expect',
         '<rootDir>/tests/test-setup.tsx',
-     ],
+    ],
     testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(ts?|tsx?)$',
     // Module file extensions for importing
     moduleFileExtensions: [ 'ts', 'tsx', 'js', 'jsx', 'json', 'node' ],

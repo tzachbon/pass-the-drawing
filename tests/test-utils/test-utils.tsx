@@ -14,12 +14,8 @@ export function testUtils(testId: string, container: RenderResult) {
 		},
 		click: () => fireEvent.click(utils._element()),
 		focus: () => fireEvent.focusIn(utils._element()),
-		type: (value: string) => fireEvent.input(utils._element(), {
-			target: {
-				value,
-			},
-		}),
-
+		type: (value: string) =>
+			fireEvent.input(utils._element(), { target: { value } }),
 	}
 
 	return utils

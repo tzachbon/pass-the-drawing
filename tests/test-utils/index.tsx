@@ -5,8 +5,4 @@ export * from '@testing-library/react'
 export * from './constants'
 export * from './test-utils'
 export * from './driver'
-export {
-	render,
-	Renderer,
-	renderer,
-}
+export { render, Renderer, renderer }

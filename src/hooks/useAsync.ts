@@ -4,9 +4,10 @@ export function useAsync() {
 	const [ loading, setLoading ] = useState(false)
 	const [ error, setError ] = useState<Error | undefined>()
 
-	const run = useCallback(<T = unknown, P extends Array<unknown> = unknown[]>(
-		callback: (...args: P) => Promise<T> | T,
-	) =>
+	const run = useCallback(
+        <T = unknown, P extends Array<unknown> = unknown[]>(
+			callback: (...args: P) => Promise<T> | T,
+		) =>
 			async (...args: P) => {
 				setLoading(true)
 				try {
@@ -17,7 +18,8 @@ export function useAsync() {
 					setLoading(false)
 				}
 			},
-	[])
+        [],
+	)
 
 	return {
 		run,

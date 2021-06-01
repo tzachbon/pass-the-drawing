@@ -1,9 +1,14 @@
 import { Driver, RenderResult, testUtils } from '@test-utils'
 import type { GameSubjects } from 'src/constants'
-import { getSubjectTestId, INPUT_TEST_ID, SelectSubject, SelectSubjectProps } from './SelectSubject'
+import {
+	getSubjectTestId,
+	INPUT_TEST_ID,
+	SelectSubject,
+	SelectSubjectProps,
+} from './SelectSubject'
 
 interface Params {
-	props: SelectSubjectProps
+    props: SelectSubjectProps
 }
 
 export function selectSubjectDriver({ props }: Params) {
@@ -30,13 +35,12 @@ export function selectSubjectTestkit(container: RenderResult) {
 
 		subject: (value: GameSubjects) => {
 			const utils = testUtils(getSubjectTestId(value), container)
-			
+
 			return {
 				element: utils.element,
 				click: utils.click,
 			}
 		},
-
 	}
 
 	return testkit

@@ -3,12 +3,10 @@ import type { ReactElement } from 'react'
 
 export type Renderer = ReturnType<typeof renderer>
 
-const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'queries'>) =>
-	render(ui,
-		{
-			// wrapper: AllTheProviders,
-			...options,
-		})
+const customRender = (
+	ui: ReactElement,
+	options?: Omit<RenderOptions, 'queries'>,
+) => render(ui, { ...options })
 
 export const renderer = (getUI: () => ReactElement) => {
 	let container = customRender(getUI())
