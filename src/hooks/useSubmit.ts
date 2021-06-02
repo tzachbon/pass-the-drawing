@@ -6,9 +6,9 @@ import { GameSubjects, Routes } from '@constants'
 import { useAsync } from './useAsync'
 
 interface Params {
-    subject: GameSubjects | undefined
-    currentUser: firebase.User | undefined
-    isValid: boolean
+	subject: GameSubjects | undefined
+	currentUser: firebase.User | undefined
+	isValid: boolean
 }
 
 export function useSubmit({ subject, isValid, currentUser }: Params) {
@@ -20,10 +20,13 @@ export function useSubmit({ subject, isValid, currentUser }: Params) {
 
 			if (subject && currentUser && isValid) {
 				const word = await getRandomWord(subject)
-				const game = await createGame({
-					subject,
-					word,
-				})
+				const game = await createGame(
+					{
+						subject,
+						word,
+					},
+					currentUser,
+				)
 				const path = `${Routes.LOBBY}/${game.id}`
 
 				push(path)

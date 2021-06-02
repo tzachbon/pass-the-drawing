@@ -3,20 +3,17 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { uuidRegexPattern } from '@test-utils'
-import { act, cleanup, renderHook } from '@testing-library/react-hooks'
-import { v4 as uuid } from 'uuid'
 import { GameSubjects } from '@constants'
 import { useSubmit } from '@hooks/useSubmit'
+import { aUser, aUserToPlayer, uuidRegexPattern } from '@test-utils'
+import { act, cleanup, renderHook } from '@testing-library/react-hooks'
+import { v4 as uuid } from 'uuid'
 import {
-	mockFirebase,
+	cleanup as firebaseCleanup, mockFirebase,
 	set,
-	cleanup as firebaseCleanup,
 } from '../__mocks__/firebase'
 import {
-	push,
-	mockRouter,
-	cleanup as routerCleanup,
+	cleanup as routerCleanup, mockRouter, push,
 } from '../__mocks__/react-router-dom'
 
 mockRouter()
@@ -26,7 +23,7 @@ describe('useSubmit', () => {
 	const { state } = setup().beforeAndAfter()
 
 	it('should create game', async () => {
-		const { currentUser, eventMock, isValid, subject, word } = state
+		const { currentUser, eventMock, isValid, subject, word, player } = state
 		const { result } = renderHook((props) => useSubmit(props), {
 			initialProps: {
 				currentUser,
@@ -50,7 +47,7 @@ describe('useSubmit', () => {
 			expect.objectContaining({
 				currentPlayingIndex: 0,
 				id: expect.stringMatching(new RegExp(uuidRegexPattern)),
-				players: [],
+				players: [ player ],
 				startTime: expect.any(Number),
 				subject,
 				word,
@@ -61,38 +58,40 @@ describe('useSubmit', () => {
 	it.each([ 'subject', 'currentUser', 'isValid' ])(
 		'should navigate with %s is falsy',
 		async (key: string) => {
-            type KeyOfState = keyof typeof state
-            state[ key as KeyOfState ] = undefined as never
+			type KeyOfState = keyof typeof state
+			state[ key as KeyOfState ] = undefined as never
 
-            const { currentUser, eventMock, isValid, subject } = state
+			const { currentUser, eventMock, isValid, subject } = state
 
-            const { result } = renderHook((props) => useSubmit(props), {
-            	initialProps: {
-            		currentUser,
-            		isValid,
-            		subject,
-            	},
-            })
+			const { result } = renderHook((props) => useSubmit(props), {
+				initialProps: {
+					currentUser,
+					isValid,
+					subject,
+				},
+			})
 
-            await act(async () => {
-            	await result.current.onSubmit(eventMock as any)
-            })
+			await act(async () => {
+				await result.current.onSubmit(eventMock as any)
+			})
 
-            expect(push).not.toBeCalled()
+			expect(push).not.toBeCalled()
 		},
 	)
 })
 
 function setup() {
 	const eventMock = { preventDefault: jest.fn() }
-
+	const currentUser = aUser() as any
 	const payload = {
+
 		state: {
-			currentUser: { user: 'test' } as any,
+			currentUser,
 			isValid: true,
 			subject: GameSubjects.Food as GameSubjects | undefined,
 			word: '',
 			eventMock,
+			player: aUserToPlayer(currentUser),
 		},
 		beforeAndAfter() {
 			beforeEach(() => {
@@ -104,7 +103,8 @@ function setup() {
 				payload.state.word = uuid()
 				payload.state.subject = GameSubjects.Food
 				payload.state.isValid = true
-				payload.state.currentUser = { user: 'test' }
+				payload.state.currentUser = aUser()
+				payload.state.player = aUserToPlayer(payload.state.currentUser)
 
 				fetchMock.doMock(() =>
 					Promise.resolve({

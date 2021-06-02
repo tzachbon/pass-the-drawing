@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { v4 as uuid } from 'uuid'
-import { uuidRegexPattern, wait, waitForDomChange } from '@test-utils'
+import { aUser, aUserToPlayer, uuidRegexPattern, wait, waitForDomChange } from '@test-utils'
 import { cleanup as fetchCleanup, fetch } from '../../../tests/__mocks__/fetch'
 import {
 	authState,
@@ -22,7 +22,8 @@ mockFirebase()
 
 describe('CreateGame', () => {
 	let word = uuid()
-	const fakeUser = { displayName: 'test' }
+	const fakeUser = aUser()
+	const fakePlayer = aUserToPlayer(fakeUser)
 	const driver = createGameDriver().beforeAndAfter()
 
 	beforeEach(() => {
@@ -62,7 +63,7 @@ describe('CreateGame', () => {
 				expect.objectContaining({
 					currentPlayingIndex: 0,
 					id: expect.stringMatching(new RegExp(uuidRegexPattern)),
-					players: [],
+					players: [ fakePlayer ],
 					startTime: expect.any(Number),
 					subject,
 					word,
@@ -111,7 +112,7 @@ describe('CreateGame', () => {
 
 		expect(driver.testkit().login().button().element()).toBeNull()
 		expect(driver.testkit().login().message().element()).toHaveTextContent(
-			'Logged in as test',
+			'Logged in as ' + String(fakeUser.displayName),
 		)
 	})
 })

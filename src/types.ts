@@ -19,9 +19,9 @@ export interface Game extends CreateGameParams {
 }
 
 export interface Player {
-    id?: string
+    id?: string | null
     name: string
-    image?: string
+    image?: string | null
     role: PlayerRoles
 }
 
