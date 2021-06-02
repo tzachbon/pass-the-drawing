@@ -11,7 +11,6 @@ interface Utils {
 }
 
 type UtilsKeys = keyof Utils
-
 interface TestUtilsOptions<K extends UtilsKeys> {
 	keys?: K[]
 }

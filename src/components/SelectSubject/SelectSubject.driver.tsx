@@ -8,7 +8,7 @@ import {
 } from './SelectSubject'
 
 interface Params {
-    props: SelectSubjectProps
+	props: SelectSubjectProps
 }
 
 export function selectSubjectDriver({ props }: Params) {
@@ -23,24 +23,8 @@ export class SelectSubjectDriver extends Driver<Params['props']> {
 
 export function selectSubjectTestkit(container: RenderResult) {
 	const testkit = {
-		input: () => {
-			const utils = testUtils(INPUT_TEST_ID, container)
-
-			return {
-				element: utils.element,
-				focus: utils.focus,
-				type: utils.type,
-			}
-		},
-
-		subject: (value: GameSubjects) => {
-			const utils = testUtils(getSubjectTestId(value), container)
-
-			return {
-				element: utils.element,
-				click: utils.click,
-			}
-		},
+		input: () => testUtils(INPUT_TEST_ID, container, { keys: [ 'focus', 'type' ] }),
+		subject: (value: GameSubjects) => testUtils(getSubjectTestId(value), container, { keys: [ 'click' ] }),
 	}
 
 	return testkit

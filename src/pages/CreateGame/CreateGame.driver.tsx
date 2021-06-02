@@ -10,7 +10,7 @@ import {
 } from './CreateGame'
 
 interface Params {
-    props?: CreateGameProps
+	props?: CreateGameProps
 }
 
 export function createGameDriver({ props }: Params = {}) {
@@ -29,34 +29,12 @@ export function createGameTestkit(container: RenderResult) {
 			return selectSubjectTestkit(container)
 		},
 		submit: () => ({
-			button: () => {
-				const utils = testUtils(SUBMIT_BUTTON_TEST_ID, container)
-
-				return {
-					element: utils.element,
-					click: utils.click,
-				}
-			},
-			error: () => {
-				const utils = testUtils(SUBMIT_ERROR_TEST_ID, container)
-
-				return { element: utils.element }
-			},
+			button: () => testUtils(SUBMIT_BUTTON_TEST_ID, container, { keys: [ 'click' ] }),
+			error: () => testUtils(SUBMIT_ERROR_TEST_ID, container, { keys: [] }),
 		}),
 		login: () => ({
-			message: () => {
-				const utils = testUtils(LOGGED_IN_MESSAGE_TEST_ID, container)
-
-				return { element: utils.element }
-			},
-			button: () => {
-				const utils = testUtils(LOGIN_BUTTON_TEST_ID, container)
-
-				return {
-					element: utils.element,
-					click: utils.click,
-				}
-			},
+			message: () => testUtils(LOGGED_IN_MESSAGE_TEST_ID, container, { keys: [] }),
+			button: () => testUtils(LOGIN_BUTTON_TEST_ID, container, { keys: [ 'click' ] }),
 		}),
 	}
 }
