@@ -28,6 +28,7 @@ module.exports = {
         '@api': '<rootDir>/src/api',
         '@components': '<rootDir>/src/components',
         '@hooks': '<rootDir>/src/hooks',
+        '@types': '<rootDir>/src/types',
     },
     testPathIgnorePatterns: [ '<rootDir>/dist/', '<rootDir>/node_modules/' ],
 }
