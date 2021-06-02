@@ -26,6 +26,8 @@ module.exports = {
     moduleNameMapper: {
         '@test-utils': '<rootDir>/tests/test-utils',
         '@api': '<rootDir>/src/api',
+        '@components': '<rootDir>/src/components',
+        '@hooks': '<rootDir>/src/hooks',
     },
     testPathIgnorePatterns: [ '<rootDir>/dist/', '<rootDir>/node_modules/' ],
 }

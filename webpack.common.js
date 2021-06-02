@@ -18,7 +18,11 @@ module.exports = {
         ],
     },
     resolve: {
-        alias: { '@api': require('path').resolve('src', 'api') },
+        alias: {
+            '@api': require('path').resolve('src', 'api'),
+            '@components': require('path').resolve('src', 'components'),
+            '@hooks': require('path').resolve('src', 'hooks'),
+        },
         extensions: [ '.ts', '.tsx', '.js', '.json' ],
     },
     plugins: [
