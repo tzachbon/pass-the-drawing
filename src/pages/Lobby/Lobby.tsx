@@ -18,13 +18,11 @@ export const Lobby: React.VFC<LobbyProps> = ({ className }) => {
 
 	return (
 		<div className={st(classes.root, className)}>
-			{
-				(loading || !game) ? (
-					<span>Loading</span>
-				) : (
-					<LobbyWithGame game={game} />
-				)
-			}
+			{loading || !game ? (
+				<span>Loading</span>
+			) : (
+				<LobbyWithGame game={game} />
+			)}
 		</div>
 	)
 }

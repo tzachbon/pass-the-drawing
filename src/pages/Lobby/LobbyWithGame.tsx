@@ -9,31 +9,31 @@ export interface LobbyWithGameProps {
 	game: Game
 }
 
-export const LobbyWithGame: React.VFC<LobbyWithGameProps> = ({ className, game }) => {
+export const LobbyWithGame: React.VFC<LobbyWithGameProps> = ({
+	className,
+	game,
+}) => {
 	const { id, subject, word } = game
 	const { run, loading } = useAsync()
 	const onUpdateGame = run(
-		useCallback(
-			async () => {
-				if (!subject) {
-					throw new Error('Cannot create new word when game is undefined')
-				}
+		useCallback(async () => {
+			if (!subject) {
+				throw new Error('Cannot create new word when game is undefined')
+			}
 
-				const word = await getRandomWord(subject)
+			const word = await getRandomWord(subject)
 
-				await updateGame(id, { word })
-			},
-			[ subject, id ],
-		),
+			await updateGame(id, { word })
+		}, [ subject, id ]),
 	)
 
 	return (
-		<div className={className} >
+		<div className={className}>
 			<WordBoard
 				loading={loading}
 				word={word}
 				updateWord={onUpdateGame}
 			/>
-		</div >
+		</div>
 	)
 }

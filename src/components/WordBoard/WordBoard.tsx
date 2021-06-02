@@ -3,10 +3,10 @@ import { FaSync } from 'react-icons/fa'
 import { classes, st } from './WordBoard.st.css'
 
 export interface WordBoardProps {
-	className?: string
-	word: string
-	updateWord: Function
-	loading?: boolean
+    className?: string
+    word: string
+    updateWord: Function
+    loading?: boolean
 }
 
 export const WordBoard: React.VFC<WordBoardProps> = ({
@@ -15,12 +15,8 @@ export const WordBoard: React.VFC<WordBoardProps> = ({
 	updateWord,
 	loading,
 }) => (
-	<div
-		className={st(classes.root, className)}
-	>
-		<span className={classes.text}>
-			{loading ? 'Loading...' : word}
-		</span>
+	<div className={st(classes.root, className)}>
+		<span className={classes.text}>{loading ? 'Loading...' : word}</span>
 		<button
 			disabled={loading}
 			className={classes.button}
