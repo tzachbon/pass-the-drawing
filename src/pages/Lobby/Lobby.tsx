@@ -19,7 +19,7 @@ export const Lobby: React.VFC<LobbyProps> = ({ className }) => {
 	return (
 		<div className={st(classes.root, className)}>
 			{loading || !game ? (
-				<span>Loading</span>
+				<span>Wait here, we are getting the game...</span>
 			) : (
 				<LobbyWithGame game={game} />
 			)}
