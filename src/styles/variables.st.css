@@ -16,7 +16,7 @@
   white-light-washed: rgba(255, 255, 255, 0.1);
   mainDarkColor: value(grey-dark);
   mainLightColor: value(white-strong);
-  backgroundColor: value(mainDark);
+  backgroundColor: value(mainDarkColor);
   fontColor: value(white);
   secondaryFontColor: value(mainLightColor);
 }
