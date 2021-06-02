@@ -42,11 +42,13 @@ export function testUtils<K extends UtilsKeys>(
 	}
 
 	if (keys) {
+		type KeysWithElement = K | 'element'
+		
 		const filteredUtils = Object.fromEntries(
 			Object.entries(utils).filter(
-				([ key ]) => ([ ...keys, 'element' ] as K[]).includes(key as K),
+				([ key ]) => ([ ...keys, 'element' ] as KeysWithElement[]).includes(key as K),
 			),
-		) as Pick<Utils, K | 'element'>
+		) as Pick<Utils, KeysWithElement>
 
 		return filteredUtils
 	} else {
