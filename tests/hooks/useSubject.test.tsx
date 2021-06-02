@@ -1,6 +1,6 @@
 import { renderHook, act, cleanup } from '@testing-library/react-hooks'
-import { GameSubjects } from '../../src/constants'
-import { getSubjectErrorMessage, useSubject } from '../../src/hooks/useSubject'
+import { GameSubjects } from '@constants'
+import { getSubjectErrorMessage, useSubject } from '@hooks/useSubject'
 
 describe('useSubject', () => {
 	beforeEach(() => {

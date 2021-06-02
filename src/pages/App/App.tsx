@@ -1,7 +1,7 @@
 import type React from 'react'
 import { Route, Switch } from 'react-router'
 import { st, classes } from './App.st.css'
-import { Routes } from '../../constants'
+import { Routes } from '@constants'
 
 import { Home } from '..'
 import { CreateGame } from '../CreateGame'

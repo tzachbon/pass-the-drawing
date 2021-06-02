@@ -1,8 +1,8 @@
 import type React from 'react'
 import AutoComplete from 'react-autocomplete'
-import { GameSubjects } from '../../constants'
-import type { UseSubject } from '../../hooks/useSubject'
-import type { ISubjects } from '../../types'
+import { GameSubjects } from '@constants'
+import type { UseSubject } from '@hooks/useSubject'
+import type { ISubjects } from '@types'
 import { classes, st } from './SelectSubject.st.css'
 
 export interface SelectSubjectProps {

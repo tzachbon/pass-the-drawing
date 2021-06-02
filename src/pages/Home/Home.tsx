@@ -1,6 +1,6 @@
 import type React from 'react'
 import { Link } from 'react-router-dom'
-import { Routes } from '../../constants'
+import { Routes } from '@constants'
 import { st, classes } from './Home.st.css'
 
 export interface HomeProps {

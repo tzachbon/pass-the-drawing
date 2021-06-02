@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { act, cleanup, renderHook } from '@testing-library/react-hooks'
-import { useAuth } from '../../src/hooks/useAuth'
+import { useAuth } from '@hooks/useAuth'
 import {
 	authState,
 	cleanup as firebaseCleanup,

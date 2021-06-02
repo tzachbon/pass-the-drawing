@@ -23,6 +23,7 @@ module.exports = {
             '@components': require('path').resolve('src', 'components'),
             '@hooks': require('path').resolve('src', 'hooks'),
             '@types': require('path').resolve('src', 'types'),
+            '@constants': require('path').resolve('src', 'constants'),
         },
         extensions: [ '.ts', '.tsx', '.js', '.json' ],
     },

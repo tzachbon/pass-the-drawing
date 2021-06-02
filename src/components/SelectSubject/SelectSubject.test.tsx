@@ -1,4 +1,4 @@
-import { GameSubjects } from '../../constants'
+import { GameSubjects } from '@constants'
 import { selectSubjectDriver } from './SelectSubject.driver'
 
 describe('SelectSubject', () => {

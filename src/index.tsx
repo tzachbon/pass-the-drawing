@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { firebaseConfig } from './constants'
+import { firebaseConfig } from '@constants'
 import { BrowserRouter } from 'react-router-dom'
 import { App } from './pages/App'
 

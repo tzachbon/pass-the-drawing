@@ -12,7 +12,7 @@ import {
 import {
 	cleanup as routerCleanup, mockRouter, push,
 } from '../../../tests/__mocks__/react-router-dom'
-import { GameSubjects } from '../../constants'
+import { GameSubjects } from '@constants'
 import { createGameDriver } from './CreateGame.driver'
 
 mockRouter()

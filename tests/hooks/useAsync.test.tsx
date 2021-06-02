@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { renderHook, cleanup, act } from '@testing-library/react-hooks'
-import { useAsync } from '../../src/hooks/useAsync'
+import { useAsync } from '@hooks/useAsync'
 
 describe('useAsync', () => {
 	let runnerMock = jest.fn()

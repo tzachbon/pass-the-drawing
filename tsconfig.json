@@ -55,6 +55,9 @@
       "@types": [
         "src/types"
       ],
+      "@constants": [
+        "src/constants"
+      ],
       "@components/*": [
         "src/components/*"
       ],

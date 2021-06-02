@@ -1,9 +1,9 @@
 import type React from 'react'
-import type { GameSubjects } from '../../constants'
-import { SelectSubject } from '../../components/SelectSubject'
-import { useAuth } from '../../hooks/useAuth'
-import { useSubject } from '../../hooks/useSubject'
-import { useSubmit } from '../../hooks/useSubmit'
+import type { GameSubjects } from '@constants'
+import { SelectSubject } from '@components/SelectSubject'
+import { useAuth } from '@hooks/useAuth'
+import { useSubject } from '@hooks/useSubject'
+import { useSubmit } from '@hooks/useSubmit'
 import { classes, st } from './CreateGame.st.css'
 
 export interface CreateGameProps {

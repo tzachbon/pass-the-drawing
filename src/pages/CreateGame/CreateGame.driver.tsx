@@ -1,5 +1,5 @@
 import { Driver, RenderResult, testUtils } from '@test-utils'
-import { selectSubjectTestkit } from '../../components/SelectSubject/SelectSubject.driver'
+import { selectSubjectTestkit } from '@components/SelectSubject/SelectSubject.driver'
 import {
 	CreateGame,
 	CreateGameProps,

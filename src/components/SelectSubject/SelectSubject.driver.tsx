@@ -1,5 +1,5 @@
 import { Driver, RenderResult, testUtils } from '@test-utils'
-import type { GameSubjects } from 'src/constants'
+import type { GameSubjects } from '@constants'
 import {
 	getSubjectTestId,
 	INPUT_TEST_ID,

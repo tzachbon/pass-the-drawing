@@ -6,8 +6,8 @@
 import { uuidRegexPattern } from '@test-utils'
 import { act, cleanup, renderHook } from '@testing-library/react-hooks'
 import { v4 as uuid } from 'uuid'
-import { GameSubjects } from '../../src/constants'
-import { useSubmit } from '../../src/hooks/useSubmit'
+import { GameSubjects } from '@constants'
+import { useSubmit } from '@hooks/useSubmit'
 import {
 	mockFirebase,
 	set,

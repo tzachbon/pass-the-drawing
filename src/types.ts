@@ -1,4 +1,4 @@
-import type { GameSubjects } from './constants'
+import type { GameSubjects } from '@constants'
 
 export interface ISubjects {
     value: GameSubjects

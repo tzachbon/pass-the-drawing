@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { GameSubjects } from '../constants'
+import { GameSubjects } from '@constants'
 
 export function getSubjectErrorMessage() {
 	return (

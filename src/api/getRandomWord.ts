@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { GameSubjects } from '../constants'
+import { GameSubjects } from '@constants'
 
 const BASE_URL = 'https://random-data-api.com/api'
 
