@@ -1,6 +1,6 @@
 import firebase from 'firebase/app'
 import { useObjectVal } from 'react-firebase-hooks/database'
-import type { Game } from 'src/types'
+import type { Game } from '@types'
 
 interface Params {
 	id: string

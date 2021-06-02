@@ -1,5 +1,5 @@
 import firebase from 'firebase/app'
-import type { Game } from 'src/types'
+import type { Game } from '@types'
 
 export async function updateGame(id: string, game: Partial<Game>) {
 	return new Promise((res, rej) => {
