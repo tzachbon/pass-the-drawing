@@ -1,0 +1,48 @@
+:import {
+  -st-from: "../../styles/common.st.css";
+  -st-named: flex, flexCenter;
+}
+
+:import {
+  -st-from: "../../styles/variables.st.css";
+  -st-named: secondaryFontColor, backgroundColor;
+}
+
+:vars {
+  buttonXTransition: -0.5rem
+}
+
+.root {
+  -st-extends: flexCenter;
+  gap: 1rem;
+  margin: 1rem;
+  padding: 1rem 0;
+  text-align: center;
+  background-color: value(secondaryFontColor);
+  border-radius: 0.5rem;
+  color: value(backgroundColor);
+}
+
+.text {
+  margin: auto;
+}
+
+.button {
+  -st-extends: flexCenter;
+  background: none;
+  transform: translateX(value(buttonXTransition));
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  transition: all cubic-bezier(0.075, 0.82, 0.165, 1) .5s;
+}
+
+.button:hover {
+  box-shadow: 0 0 .4rem .2rem rgba(24, 24, 24, 0.438);
+}
+
+.button:active {
+  transform: translate(-0.5rem, value(buttonXTransition));
+}

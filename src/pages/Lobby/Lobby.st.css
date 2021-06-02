@@ -1,1 +1,9 @@
-.root {}
+:import {
+  -st-from: "../../styles/common.st.css";
+  -st-named: flexCol;
+}
+
+.root {
+  -st-extends: flexCol;
+  flex: 1;
+}

@@ -1,12 +1,15 @@
 import firebase from 'firebase/app'
-import { useObject } from 'react-firebase-hooks/database'
+import { useObjectVal } from 'react-firebase-hooks/database'
+import type { Game } from 'src/types'
 interface Params {
-    id: string
+	id: string
 }
 
 export function useGame({ id }: Params) {
-	const [ game, loading, error ] = useObject(
-		firebase.database().ref(`games/${id}`),
+	const [ game, loading, error ] = useObjectVal<Game>(
+		firebase
+			.database()
+			.ref(`games/${id}`),
 	)
 
 	return {
