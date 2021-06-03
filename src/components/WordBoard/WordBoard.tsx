@@ -9,6 +9,7 @@ export interface WordBoardProps {
 	loading?: boolean
 }
 
+export const ROOT_TEST_ID = 'WordBoard_ROOT_TEST_ID'
 export const WORD_TEXT_TEST_ID = 'WordBoard_WORD_TEXT_TEST_ID'
 export const RESET_WORD_BUTTON_TEST_ID = 'WordBoard_RESET_WORD_BUTTON_TEST_ID'
 
@@ -18,7 +19,10 @@ export const WordBoard: React.VFC<WordBoardProps> = ({
 	updateWord,
 	loading,
 }) => (
-	<div className={st(classes.root, className)}>
+	<div
+		className={st(classes.root, className)}
+		data-testid={ROOT_TEST_ID}
+	>
 		<span
 			data-testid={WORD_TEXT_TEST_ID}
 			className={classes.text}

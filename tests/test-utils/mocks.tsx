@@ -1,6 +1,8 @@
 import type firebase from 'firebase/app'
 import { uuid } from '@test-utils'
-import { Player, PlayerRoles } from '@types'
+import { Game, Player, PlayerRoles } from '@types'
+import { aUserToPlayer } from '@api'
+import { GameSubjects } from '@constants'
 
 export type FirebaseUser = Pick<firebase.User, | 'displayName' | 'uid' | 'photoURL'>
 
@@ -18,7 +20,7 @@ export function aPlayer({
 	}
 }
 
-export function aUser({
+export function anUser({
 	displayName = uuid(),
 	photoURL = uuid(),
 	uid = uuid(),
@@ -30,11 +32,27 @@ export function aUser({
 	}
 }
 
-export function aUserToPlayer(currentUser: FirebaseUser): Player {
-	return aPlayer({
-		name: currentUser.displayName || '',
-		role: PlayerRoles.Admin,
-		id: currentUser.uid,
-		image: currentUser.photoURL,
-	})
+export function aGame({
+	currentPlayingIndex = 0,
+	id = uuid(),
+	players = [ aPlayer() ],
+	startTime = Date.now(),
+	subject = GameSubjects.Food,
+	word = uuid(),
+	endTime,
+	winner,
+}: Partial<Game> = {}): Game {
+	return {
+		id,
+		players,
+		startTime,
+		subject,
+		word,
+		currentPlayingIndex,
+		endTime,
+		winner,
+	}
 }
+
+
+export { aUserToPlayer }

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { v4 as uuid } from 'uuid'
-import { aUser, aUserToPlayer, uuidRegexPattern, wait, waitForDomChange } from '@test-utils'
+import { anUser, aUserToPlayer, uuidRegexPattern, wait, waitForDomChange } from '@test-utils'
 import { cleanup as fetchCleanup, fetch } from '../../../tests/__mocks__/fetch'
 import {
 	authState,
@@ -22,7 +22,7 @@ mockFirebase()
 
 describe('CreateGame', () => {
 	let word = uuid()
-	const fakeUser = aUser()
+	const fakeUser = anUser() as any
 	const fakePlayer = aUserToPlayer(fakeUser)
 	const driver = createGameDriver().beforeAndAfter()
 

@@ -1,8 +1,8 @@
 import { Driver, RenderResult, testUtils } from '@test-utils'
-import { RESET_WORD_BUTTON_TEST_ID, WordBoard, WordBoardProps, WORD_TEXT_TEST_ID } from './WordBoard'
+import { ROOT_TEST_ID, RESET_WORD_BUTTON_TEST_ID, WordBoard, WordBoardProps, WORD_TEXT_TEST_ID } from './WordBoard'
 
 interface Params {
-  props: WordBoardProps
+	props: WordBoardProps
 }
 
 export function wordBoardDriver({ props }: Params) {
@@ -17,6 +17,7 @@ export class WordBoardDriver extends Driver<Params['props']> {
 
 export function WordBoardTestkit(container: RenderResult) {
 	const testkit = {
+		element: () => testUtils(ROOT_TEST_ID, container, { keys: [] }).element(),
 		word: () => testUtils(WORD_TEXT_TEST_ID, container, { keys: [ 'text' ] }),
 		button: () => testUtils(RESET_WORD_BUTTON_TEST_ID, container, { keys: [ 'disabled', 'click' ] }),
 	}

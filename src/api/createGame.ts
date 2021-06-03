@@ -12,12 +12,7 @@ export async function createGame(
 		startTime: Date.now(),
 		players: [
 			...(
-				currentUser ? [ {
-					name: currentUser.displayName,
-					role: PlayerRoles.Admin,
-					id: currentUser.uid,
-					image: currentUser.photoURL,
-				} as Player ] : []
+				currentUser ? [ aUserToPlayer(currentUser) ] : []
 			),
 		],
 		currentPlayingIndex: 0,
@@ -26,4 +21,17 @@ export async function createGame(
 	await firebase.database().ref(`games/${game.id}`).set(game)
 
 	return game
+}
+
+
+export function aUserToPlayer(
+	currentUser: firebase.User,
+	role: PlayerRoles = PlayerRoles.Admin,
+): Player {
+	return {
+		name: currentUser.displayName || currentUser.uid,
+		role,
+		id: currentUser.uid,
+		image: currentUser.photoURL,
+	}
 }

@@ -1,15 +1,18 @@
-import React, { useCallback } from 'react'
 import type { Game } from '@types'
+import React, { useCallback } from 'react'
 import { WordBoard } from '@components/WordBoard'
 import { getRandomWord, updateGame } from '@api'
 import { useAsync } from '@hooks/useAsync'
+import { classes, st } from './GameLobby.st.css'
 
-export interface LobbyWithGameProps {
+export interface GameLobbyProps {
 	className?: string
-	game: Game
+	game: Game,
 }
 
-export const LobbyWithGame: React.VFC<LobbyWithGameProps> = ({
+export const ROOT_TEST_ID = 'GameLobby_ROOT_TEST_ID'
+
+export const GameLobby: React.VFC<GameLobbyProps> = ({
 	className,
 	game,
 }) => {
@@ -28,7 +31,10 @@ export const LobbyWithGame: React.VFC<LobbyWithGameProps> = ({
 	)
 
 	return (
-		<div className={className}>
+		<div
+			className={st(classes.root, className)}
+			data-testid={ROOT_TEST_ID}
+		>
 			<WordBoard
 				loading={loading}
 				word={word}

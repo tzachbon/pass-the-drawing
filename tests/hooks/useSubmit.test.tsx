@@ -5,7 +5,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { GameSubjects } from '@constants'
 import { useSubmit } from '@hooks/useSubmit'
-import { aUser, aUserToPlayer, uuidRegexPattern } from '@test-utils'
+import { anUser, aUserToPlayer, uuidRegexPattern } from '@test-utils'
 import { act, cleanup, renderHook } from '@testing-library/react-hooks'
 import { v4 as uuid } from 'uuid'
 import {
@@ -82,7 +82,7 @@ describe('useSubmit', () => {
 
 function setup() {
 	const eventMock = { preventDefault: jest.fn() }
-	const currentUser = aUser() as any
+	const currentUser = anUser() as any
 	const payload = {
 
 		state: {
@@ -103,7 +103,7 @@ function setup() {
 				payload.state.word = uuid()
 				payload.state.subject = GameSubjects.Food
 				payload.state.isValid = true
-				payload.state.currentUser = aUser()
+				payload.state.currentUser = anUser()
 				payload.state.player = aUserToPlayer(payload.state.currentUser)
 
 				fetchMock.doMock(() =>

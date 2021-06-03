@@ -1,4 +1,4 @@
-export { getRandomWord } from './getRandomWord'
-export { fetchGame } from './fetchGame'
-export { createGame } from './createGame'
-export { updateGame } from './updateGame'
+export * from './getRandomWord'
+export * from './fetchGame'
+export * from './createGame'
+export * from './updateGame'
