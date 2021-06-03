@@ -5,7 +5,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { GameSubjects } from '@constants'
 import { useSubmit } from '@hooks/useSubmit'
-import { anUser, aUserToPlayer, uuidRegexPattern } from '@test-utils'
+import { anUser, anUserToPlayer, uuidRegexPattern } from '@test-utils'
 import { act, cleanup, renderHook } from '@testing-library/react-hooks'
 import { v4 as uuid } from 'uuid'
 import {
@@ -91,7 +91,7 @@ function setup() {
 			subject: GameSubjects.Food as GameSubjects | undefined,
 			word: '',
 			eventMock,
-			player: aUserToPlayer(currentUser),
+			player: anUserToPlayer(currentUser),
 		},
 		beforeAndAfter() {
 			beforeEach(() => {
@@ -104,7 +104,7 @@ function setup() {
 				payload.state.subject = GameSubjects.Food
 				payload.state.isValid = true
 				payload.state.currentUser = anUser()
-				payload.state.player = aUserToPlayer(payload.state.currentUser)
+				payload.state.player = anUserToPlayer(payload.state.currentUser)
 
 				fetchMock.doMock(() =>
 					Promise.resolve({

@@ -1,4 +1,4 @@
-import { aGame, anUser, aUserToPlayer, wait } from '@test-utils'
+import { aGame, anUser, anUserToPlayer, wait } from '@test-utils'
 import { PlayerRoles } from '@types'
 import {
 	authState,
@@ -73,7 +73,7 @@ describe('Lobby', () => {
 
 		await wait(() => {
 			expect(update).toHaveBeenCalledWith({
-				players: [ ...gameMock.players, aUserToPlayer(fakeUser as any, PlayerRoles.Regular) ],
+				players: [ ...gameMock.players, anUserToPlayer(fakeUser as any, PlayerRoles.Regular) ],
 			})
 		})
 

@@ -12,7 +12,7 @@ export async function createGame(
 		startTime: Date.now(),
 		players: [
 			...(
-				currentUser ? [ aUserToPlayer(currentUser) ] : []
+				currentUser ? [ anUserToPlayer(currentUser) ] : []
 			),
 		],
 		currentPlayingIndex: 0,
@@ -24,7 +24,7 @@ export async function createGame(
 }
 
 
-export function aUserToPlayer(
+export function anUserToPlayer(
 	currentUser: User,
 	role: PlayerRoles = PlayerRoles.Admin,
 ): Player {

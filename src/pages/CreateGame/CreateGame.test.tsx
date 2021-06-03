@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { GameSubjects } from '@constants'
-import { anUser, aUserToPlayer, uuidRegexPattern, wait } from '@test-utils'
+import { anUser, anUserToPlayer, uuidRegexPattern, wait } from '@test-utils'
 import { v4 as uuid } from 'uuid'
 import { cleanup as fetchCleanup, fetch } from '../../../tests/__mocks__/fetch'
 import {
@@ -32,7 +32,7 @@ describe('CreateGame', () => {
 
 	let word = uuid()
 	const fakeUser = anUser() as any
-	const fakePlayer = aUserToPlayer(fakeUser)
+	const fakePlayer = anUserToPlayer(fakeUser)
 	const driver = createGameDriver().beforeAndAfter()
 
 

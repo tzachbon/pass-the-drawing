@@ -1,4 +1,4 @@
-import { aUserToPlayer } from '@api'
+import { anUserToPlayer } from '@api'
 import { GameSubjects } from '@constants'
 import { uuid } from '@test-utils'
 import { Game, Player, PlayerRoles, User } from '@types'
@@ -54,4 +54,4 @@ export function aGame({
 }
 
 
-export { aUserToPlayer }
+export { anUserToPlayer }

@@ -3,7 +3,7 @@ import { useGame } from '@hooks/useGame'
 import { useParams } from 'react-router'
 import { classes, st } from './Lobby.st.css'
 import { useAuth } from '@hooks/useAuth'
-import { aUserToPlayer, updateGame } from '@api'
+import { anUserToPlayer, updateGame } from '@api'
 import { useAsync } from '@hooks/useAsync'
 import { Player, PlayerRoles } from '@types'
 import { GameLobby } from '@components/GameLobby'
@@ -35,7 +35,7 @@ export const Lobby: React.VFC<LobbyProps> = ({ className }) => {
 					{
 						players: [
 							...game.players,
-							aUserToPlayer(currentUser, PlayerRoles.Regular),
+							anUserToPlayer(currentUser, PlayerRoles.Regular),
 						],
 					},
 				)
