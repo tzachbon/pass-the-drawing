@@ -1,10 +1,9 @@
-import type firebase from 'firebase/app'
-import { uuid } from '@test-utils'
-import { Game, Player, PlayerRoles } from '@types'
 import { aUserToPlayer } from '@api'
 import { GameSubjects } from '@constants'
+import { uuid } from '@test-utils'
+import { Game, Player, PlayerRoles, User } from '@types'
 
-export type FirebaseUser = Pick<firebase.User, | 'displayName' | 'uid' | 'photoURL'>
+export type FirebaseUser = Pick<User, | 'displayName' | 'uid' | 'photoURL'>
 
 export function aPlayer({
 	id = uuid(),

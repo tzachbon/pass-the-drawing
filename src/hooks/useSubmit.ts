@@ -1,13 +1,13 @@
-import type firebase from 'firebase/app'
-import { FormEventHandler, useCallback } from 'react'
-import { useHistory } from 'react-router-dom'
 import { createGame, getRandomWord } from '@api'
 import { GameSubjects, Routes } from '@constants'
+import type { User } from '@types'
+import { FormEventHandler, useCallback } from 'react'
+import { useHistory } from 'react-router-dom'
 import { useAsync } from './useAsync'
 
 interface Params {
 	subject: GameSubjects | undefined
-	currentUser: firebase.User | undefined
+	currentUser: User | undefined
 	isValid: boolean
 }
 

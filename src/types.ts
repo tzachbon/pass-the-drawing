@@ -1,5 +1,7 @@
+import type firebase from 'firebase/app'
 import type { GameSubjects } from '@constants'
 
+export type User = firebase.User
 export interface ISubjects {
     value: GameSubjects
 }

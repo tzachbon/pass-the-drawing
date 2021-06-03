@@ -1,9 +1,10 @@
+import type { User } from '@types'
 import firebase from 'firebase/app'
 import { useCallback, useEffect, useState } from 'react'
 import { useAsync } from './useAsync'
 
 export function useAuth() {
-	const [ currentUser, setCurrentUser ] = useState<firebase.User | undefined>()
+	const [ currentUser, setCurrentUser ] = useState<User | undefined>()
 	const { run, error, loading } = useAsync()
 
 	const signInWithRedirect = useCallback(async () => {

@@ -1,10 +1,10 @@
+import { CreateGameParams, Game, Player, PlayerRoles, User } from '@types'
 import firebase from 'firebase/app'
 import { v4 as uuid } from 'uuid'
-import { CreateGameParams, Game, Player, PlayerRoles } from '@types'
 
 export async function createGame(
 	params: CreateGameParams,
-	currentUser?: firebase.User,
+	currentUser?: User,
 ): Promise<Game> {
 	const game: Game = {
 		...params,
@@ -25,7 +25,7 @@ export async function createGame(
 
 
 export function aUserToPlayer(
-	currentUser: firebase.User,
+	currentUser: User,
 	role: PlayerRoles = PlayerRoles.Admin,
 ): Player {
 	return {
