@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import { GameSubjects } from '@constants'
+import { anUser, aUserToPlayer, uuidRegexPattern, wait } from '@test-utils'
 import { v4 as uuid } from 'uuid'
-import { anUser, aUserToPlayer, uuidRegexPattern, wait, waitForDomChange } from '@test-utils'
 import { cleanup as fetchCleanup, fetch } from '../../../tests/__mocks__/fetch'
 import {
 	authState,
 	cleanup as firebaseCleanup,
 	mockFirebase,
+
 	set,
 	signInWithRedirect,
 } from '../../../tests/__mocks__/firebase'
@@ -14,17 +16,12 @@ import {
 	mockRouter,
 	push,
 } from '../../../tests/__mocks__/react-router-dom'
-import { GameSubjects } from '@constants'
 import { createGameDriver } from './CreateGame.driver'
 
 mockRouter()
 mockFirebase()
 
 describe('CreateGame', () => {
-	let word = uuid()
-	const fakeUser = anUser() as any
-	const fakePlayer = aUserToPlayer(fakeUser)
-	const driver = createGameDriver().beforeAndAfter()
 
 	beforeEach(() => {
 		word = uuid()
@@ -33,6 +30,12 @@ describe('CreateGame', () => {
 		void routerCleanup()
 	})
 
+	let word = uuid()
+	const fakeUser = anUser() as any
+	const fakePlayer = aUserToPlayer(fakeUser)
+	const driver = createGameDriver().beforeAndAfter()
+
+
 	it('should create a game', async () => {
 		const subject = GameSubjects.Food
 		fetch.mockResponse(() =>
@@ -40,11 +43,11 @@ describe('CreateGame', () => {
 		)
 
 		driver.testkit().selectSubject().input().type(subject)
-
 		driver.testkit().login().button().click()
-		authState.onAuthStateChangedCallback(fakeUser)
 
-		await waitForDomChange()
+		await wait(() => {
+			authState.onAuthStateChangedCallback(fakeUser)
+		})
 
 		expect(
 			driver.testkit().submit().button().element(),
@@ -76,11 +79,11 @@ describe('CreateGame', () => {
 		fetch.mockRejectedValue(new Error())
 
 		driver.testkit().selectSubject().input().type(GameSubjects.Food)
-
 		driver.testkit().login().button().click()
-		authState.onAuthStateChangedCallback(fakeUser)
 
-		await waitForDomChange()
+		await wait(() => {
+			authState.onAuthStateChangedCallback(fakeUser)
+		})
 
 		expect(
 			driver.testkit().submit().button().element(),
@@ -108,10 +111,13 @@ describe('CreateGame', () => {
 			expect(signInWithRedirect).toBeCalled()
 		})
 
-		authState.onAuthStateChangedCallback(fakeUser)
+		await wait(() => {
+			authState.onAuthStateChangedCallback(fakeUser)
+		})
 
 		expect(driver.testkit().login().button().element()).toBeNull()
 		expect(driver.testkit().login().message().element()).toHaveTextContent(
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 			'Logged in as ' + String(fakeUser.displayName),
 		)
 	})

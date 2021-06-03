@@ -23,7 +23,7 @@ export function useAuth() {
 				setCurrentUser(user)
 			}
 		})
-	}, [ currentUser ])
+	}, [])
 
 	return {
 		signInWithRedirect,

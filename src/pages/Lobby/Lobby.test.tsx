@@ -1,6 +1,11 @@
-import { aGame, anUser, wait } from '@test-utils'
+import { aGame, anUser, aUserToPlayer, wait } from '@test-utils'
+import { PlayerRoles } from '@types'
 import {
 	authState,
+	cleanup,
+
+	databaseState,
+
 	mockFirebase,
 	ref,
 	update,
@@ -20,7 +25,7 @@ describe('Lobby', () => {
 
 	beforeEach(() => {
 		useObjectValMock()
-		jest.clearAllMocks()
+		cleanup()
 	})
 
 	const fakeUser = anUser()
@@ -56,6 +61,24 @@ describe('Lobby', () => {
 		expect(driver.testkit().gameLobby().element()).toBeInTheDocument()
 	})
 
+	it('should add player', async () => {
+		useObjectValMock(gameMock)
+
+		update.mockImplementation((newGame) => Promise.resolve(databaseState.setValue(newGame)))
+
+		driver.render()
+		driver.testkit().login().button().click()
+
+		authState.onAuthStateChangedCallback(fakeUser)
+
+		await wait(() => {
+			expect(update).toHaveBeenCalledWith({
+				players: [ ...gameMock.players, aUserToPlayer(fakeUser as any, PlayerRoles.Regular) ],
+			})
+		})
+
+	})
+
 	describe('should show loading', () => {
 		it('when game is loading', () => {
 			expect(driver.testkit().loading().message().text()).toEqual('Wait here, we are getting the game...')
@@ -66,7 +89,10 @@ describe('Lobby', () => {
 			update.mockReturnValue(new Promise(res => { resolve = res }))
 
 			driver.render()
-			driver.testkit().login().button().click()
+
+			await wait(() => {
+				driver.testkit().login().button().click()
+			})
 
 			authState.onAuthStateChangedCallback(fakeUser)
 

@@ -1,12 +1,17 @@
 import firebase from 'firebase/app'
 
-export const authState = {
-	onAuthStateChangedCallback: (() => {
-		return
-	}) as Function,
-}
+const initialAuthState = () => ({
+	onAuthStateChangedCallback: undefined as unknown as Function,
+})
 
-export const databaseState = { ref: undefined as string | undefined }
+const initialDatabaseState = () => ({
+	setValue: undefined as unknown as Function,
+	ref: undefined as string | undefined,
+})
+
+export const authState = initialAuthState()
+
+export const databaseState = initialDatabaseState()
 
 export const Persistence = {
 	SESSION: 'SESSION',
@@ -14,9 +19,13 @@ export const Persistence = {
 }
 export const set = jest.fn().mockReturnValue(jest.fn())
 export const isEqual = jest.fn().mockReturnValue(jest.fn())
-export const on = jest.fn().mockReturnValue(jest.fn())
+export const on = jest.fn().mockImplementation((_, setValue: Function) => {
+	databaseState.setValue = setValue
+	
+	return {}
+})
 export const off = jest.fn().mockReturnValue(jest.fn())
-export const update = jest.fn().mockReturnValue(jest.fn())
+export const update = jest.fn().mockResolvedValue(jest.fn())
 export const ref = jest
 	.fn()
 	.mockImplementation((refValue: string | undefined) => {
@@ -67,6 +76,9 @@ export function cleanup() {
 		off,
 		update,
 	].forEach(_ => _.mockClear())
+
+	Object.assign(authState, initialAuthState())
+	Object.assign(databaseState, initialDatabaseState())
 }
 
 export function mockFirebase() {
@@ -82,7 +94,8 @@ export function mockFirebase() {
 
 export function useObjectValMock<T extends object>(val?: T | null) {
 	on.mockImplementation((_, setValue: Function) => {
-		setValue({ exists: true, val: () => val })
+		databaseState.setValue = setValue
+		databaseState.setValue({ exists: true, val: () => val })
 
 		return {}
 	})

@@ -54,7 +54,8 @@ export const Lobby: React.VFC<LobbyProps> = ({ className }) => {
 	}, [ currentUser, addPlayer, game ])
 
 	if (error || addPlayerError) {
-		throw error
+
+		throw (error || addPlayerError)
 	}
 
 	return (

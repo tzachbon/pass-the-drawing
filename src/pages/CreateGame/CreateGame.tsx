@@ -7,7 +7,7 @@ import { useSubmit } from '@hooks/useSubmit'
 import { classes, st } from './CreateGame.st.css'
 
 export interface CreateGameProps {
-    className?: string
+	className?: string
 }
 
 export const LOGIN_BUTTON_TEST_ID = 'CreateGame_LOGIN_BUTTON_TEST_ID'
@@ -45,14 +45,14 @@ export const CreateGame: React.VFC<CreateGameProps> = ({ className }) => {
 			)}
 			{currentUser ? (
 				<span data-testid={LOGGED_IN_MESSAGE_TEST_ID}>
-                    Logged in as {currentUser.displayName}
+					Logged in as {currentUser.displayName}
 				</span>
 			) : (
 				<button
 					data-testid={LOGIN_BUTTON_TEST_ID}
 					onClick={signInWithRedirect}
 				>
-                    Sign in with google
+					Sign in with google
 				</button>
 			)}
 			<button
@@ -60,11 +60,11 @@ export const CreateGame: React.VFC<CreateGameProps> = ({ className }) => {
 				disabled={loading || !currentUser}
 				type="submit"
 			>
-                Submit
+				Submit
 			</button>
 			{error && (
 				<span data-testid={SUBMIT_ERROR_TEST_ID}>
-                    We ran into small problem, can you please try again?
+					We ran into small problem, can you please try again?
 				</span>
 			)}
 		</form>
