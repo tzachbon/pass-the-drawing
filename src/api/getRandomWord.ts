@@ -24,7 +24,7 @@ export async function getRandomWord(subject: GameSubjects): Promise<string> {
 		},
 	}).then((res) => res.json() as Promise<unknown>)
 
-	return getWordFromSubjectSchema(subject, data)
+	return getWordFromSubjectSchema(subject, data).split(' ').shift() || ''
 }
 
 function getPathBySubject(subject: GameSubjects): string {
