@@ -12,11 +12,11 @@ export const Persistence = {
 	SESSION: 'SESSION',
 	LOCAL: 'LOCAL',
 }
-export const set = jest.fn().mockReturnValue(console.log)
-export const isEqual = jest.fn().mockReturnValue(console.log)
-export const on = jest.fn().mockReturnValue(console.log)
-export const off = jest.fn().mockReturnValue(console.log)
-export const update = jest.fn().mockReturnValue(console.log)
+export const set = jest.fn().mockReturnValue(jest.fn())
+export const isEqual = jest.fn().mockReturnValue(jest.fn())
+export const on = jest.fn().mockReturnValue(jest.fn())
+export const off = jest.fn().mockReturnValue(jest.fn())
+export const update = jest.fn().mockReturnValue(jest.fn())
 export const ref = jest
 	.fn()
 	.mockImplementation((refValue: string | undefined) => {
