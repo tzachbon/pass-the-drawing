@@ -13,13 +13,11 @@ describe('Players', () => {
 	}).beforeAndAfter()
 
 	it('should render players', () => {
-		const playersTestkit = driver.testkit().players()
+		players.forEach((player, index) => {
+			const playerTestkit = driver.testkit().player(index)
 
-		playersTestkit.forEach((playerTestkit, index) => {
-			const player = players[ index ]
-
-			expect(playerTestkit.image()).toHaveAttribute('src', player!.image)
-			expect(playerTestkit.text()).toEqual(player!.name)
+			expect(playerTestkit.image()).toHaveAttribute('src', player.image)
+			expect(playerTestkit.text()).toEqual(player.name)
 		})
 	})
 
