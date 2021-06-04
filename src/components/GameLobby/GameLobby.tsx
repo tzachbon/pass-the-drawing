@@ -1,13 +1,15 @@
-import type { Game } from '@types'
+import type { Game, User } from '@types'
 import React, { useCallback } from 'react'
 import { WordBoard } from '@components/WordBoard'
 import { getRandomWord, updateGame } from '@api'
 import { useAsync } from '@hooks/useAsync'
 import { classes, st } from './GameLobby.st.css'
+import { Players } from '@components/Players/Players'
 
 export interface GameLobbyProps {
 	className?: string
 	game: Game,
+	currentUser: User
 }
 
 export const ROOT_TEST_ID = 'GameLobby_ROOT_TEST_ID'
@@ -15,6 +17,7 @@ export const ROOT_TEST_ID = 'GameLobby_ROOT_TEST_ID'
 export const GameLobby: React.VFC<GameLobbyProps> = ({
 	className,
 	game,
+	currentUser,
 }) => {
 	const { id, subject, word } = game
 	const { run, loading } = useAsync()
@@ -39,6 +42,10 @@ export const GameLobby: React.VFC<GameLobbyProps> = ({
 				loading={loading}
 				word={word}
 				updateWord={onUpdateGame}
+			/>
+			<Players
+				currentPlayerId={currentUser.uid}
+				players={game.players}
 			/>
 		</div>
 	)

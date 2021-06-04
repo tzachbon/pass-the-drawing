@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "@stylable/core": "^4.2.4",
+    "@stylable/dom-test-kit": "^4.2.4",
     "@stylable/jest": "3.12.4",
     "@stylable/webpack-plugin": "^4.2.4",
     "@testing-library/dom": "4",

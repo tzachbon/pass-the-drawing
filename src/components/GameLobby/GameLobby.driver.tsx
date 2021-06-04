@@ -1,3 +1,4 @@
+import { playersTestkit } from '@components/Players/Players.driver'
 import { WordBoardTestkit } from '@components/WordBoard/WordBoard.driver'
 import { Driver, RenderResult, testUtils } from '@test-utils'
 import { GameLobby, GameLobbyProps, ROOT_TEST_ID } from './GameLobby'
@@ -20,6 +21,7 @@ export function gameLobbyTestkit(container: RenderResult) {
 	const testkit = {
 		element: () => testUtils(ROOT_TEST_ID, container, { keys: [] }).element(),
 		wordBoard: () => WordBoardTestkit(container),
+		players: () => playersTestkit(container),
 	}
 
 	return testkit

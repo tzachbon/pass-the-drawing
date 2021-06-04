@@ -1,0 +1,43 @@
+:import {
+  -st-from: "../../styles/common.st.css";
+  -st-named: flexCol;
+}
+
+:import {
+  -st-from: "../../styles/variables.st.css";
+  -st-named: mainLightColor, white-light-mid, white-light-strong;
+}
+
+.root {
+  -st-extends: flexCol;
+  margin: 1rem;
+  border: 0.1rem solid value(mainLightColor);
+  border-radius: 1rem;
+}
+
+.player {
+  -st-states: currentPlayerId;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  transition: all .2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.player:hover {
+  background: value(white-light-mid)
+}
+
+.player:currentPlayerId:hover {
+  background: value(white-light-strong)
+}
+
+.image {
+  border-radius: 50%;
+}
+
+.player:currentPlayerId .image {
+  border: .2rem solid value(mainLightColor);
+}
+
+.playerName {}

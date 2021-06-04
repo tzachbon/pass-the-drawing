@@ -10,8 +10,9 @@
   yellow: #FFFFA7;
   red: #fa2200;
   white: #fff;
-  white-strong: #aaa;
+  white-strong: rgb(202, 202, 202);
   white-light: rgba(255, 255, 255, 0.904);
+  white-light-strong: rgba(255, 255, 255, 0.5);
   white-light-mid: rgba(255, 255, 255, 0.3);
   white-light-washed: rgba(255, 255, 255, 0.1);
   mainDarkColor: value(grey-dark);

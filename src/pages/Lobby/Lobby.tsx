@@ -88,7 +88,10 @@ export const Lobby: React.VFC<LobbyProps> = ({ className }) => {
 					) :
 						(
 							currentUser ? (
-								<GameLobby game={game} />
+								<GameLobby 
+									game={game}
+									currentUser={currentUser}
+								/>
 							) : (
 								<>
 									<h1

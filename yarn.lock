@@ -915,6 +915,14 @@
     postcss-value-parser "^4.1.0"
     toky "^0.1.0"
 
+"@stylable/dom-test-kit@^4.2.4":
+  version "4.2.4"
+  resolved "https://registry.npmjs.org/@stylable/dom-test-kit/-/dom-test-kit-4.2.4.tgz#e593ea581e9b947037f4e061d334d87d75ae10cf"
+  integrity sha512-qHHjJokImJuRi/AZMCIfCrxCKwHGAQI9DqEl+uaLizI5FZpNnF6BpbJNEfj7dEwkgnaTUkQ3PyBVQDfpow3e6A==
+  dependencies:
+    "@stylable/core" "^4.2.4"
+    "@stylable/runtime" "^4.2.4"
+
 "@stylable/jest@3.12.4":
   version "3.12.4"
   resolved "https://registry.npmjs.org/@stylable/jest/-/jest-3.12.4.tgz#2335208b17ee68cd69c6e8fc205d33fa443f8f86"
