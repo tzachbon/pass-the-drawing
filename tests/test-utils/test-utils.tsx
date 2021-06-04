@@ -55,3 +55,15 @@ export function testUtils<K extends UtilsKeys>(
 		return utils
 	}
 }
+
+
+export function localStorageCleanup() {
+	window.localStorage.clear()
+}
+
+export function localStorageUtils(key: string) {
+	return {
+		get: () => localStorage.getItem(key),
+		set: (value: string) => localStorage.setItem(key, value),
+	}
+}

@@ -1,6 +1,7 @@
 import { renderHook, act, cleanup } from '@testing-library/react-hooks'
 import { GameSubjects } from '@constants'
 import { getSubjectErrorMessage, useSubject } from '@hooks/useSubject'
+import { localStorageCleanup, localStorageUtils } from '@test-utils'
 
 describe('useSubject', () => {
 	beforeEach(() => {
@@ -8,7 +9,7 @@ describe('useSubject', () => {
 	})
 
 	afterEach(() => {
-		window.localStorage.setItem('subject', '')
+		void localStorageCleanup()
 	})
 
 	it('should set subject', () => {
@@ -29,7 +30,7 @@ describe('useSubject', () => {
 		})
 
 		expect(result.current.subject).toEqual(GameSubjects.Food)
-		expect(window.localStorage.getItem('subject')).toEqual(result.current.subject)
+		expect(localStorageUtils('subject').get()).toEqual(result.current.subject)
 	})
 
 	it('should clear local storage', () => {
@@ -44,7 +45,7 @@ describe('useSubject', () => {
 		})
 
 		expect(result.current.subject).toEqual(GameSubjects.Food)
-		expect(window.localStorage.getItem('subject')).toEqual('')
+		expect(localStorageUtils('subject').get()).toEqual('')
 	})
 
 	it('should update dirty', () => {

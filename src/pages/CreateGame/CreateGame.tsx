@@ -1,4 +1,4 @@
-import type React from 'react'
+import React, { FormEventHandler, useCallback } from 'react'
 import type { GameSubjects } from '@constants'
 import { SelectSubject } from '@components/SelectSubject'
 import { useAuth } from '@hooks/useAuth'
@@ -23,6 +23,7 @@ export const CreateGame: React.VFC<CreateGameProps> = ({ className }) => {
 		setSubject,
 		subject,
 		dirty,
+		clearSubjectFromStorage,
 	} = useSubject()
 	const { currentUser, signInWithRedirect } = useAuth()
 	const { onSubmit, loading, error } = useSubmit({
@@ -31,10 +32,18 @@ export const CreateGame: React.VFC<CreateGameProps> = ({ className }) => {
 		isValid,
 	})
 
+	const handleSubmit: FormEventHandler<HTMLFormElement> = useCallback(
+		async (event) => {
+			await onSubmit(event)
+			clearSubjectFromStorage()
+		},
+		[ onSubmit, clearSubjectFromStorage ],
+	)
+
 	return (
 		<form
 			className={st(classes.root, className)}
-			onSubmit={onSubmit}
+			onSubmit={handleSubmit}
 		>
 			<SelectSubject
 				subject={subject}

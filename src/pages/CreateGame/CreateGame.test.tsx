@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { GameSubjects } from '@constants'
-import { anUser, anUserToPlayer, uuidRegexPattern, wait } from '@test-utils'
+import { anUser, anUserToPlayer, localStorageCleanup, uuidRegexPattern, wait } from '@test-utils'
 import type { User } from '@types'
 import { v4 as uuid } from 'uuid'
 import { cleanup as fetchCleanup, fetch } from '../../../tests/__mocks__/fetch'
@@ -28,6 +28,7 @@ describe('CreateGame', () => {
 		void fetchCleanup()
 		void firebaseCleanup()
 		void routerCleanup()
+		void localStorageCleanup()
 	})
 
 	let word = uuid()
@@ -72,6 +73,37 @@ describe('CreateGame', () => {
 					word,
 				}),
 			)
+		})
+	})
+
+	it('should add subject to local storage', () => {
+		driver.testkit().selectSubject().input().type('test')
+
+		expect(driver.testkit().selectSubject().localStorage().get()).toEqual('test')
+	})
+
+	it('should clear local storage when submit finished', async () => {
+		const subject = GameSubjects.Food
+		fetch.mockResponse(() =>
+			Promise.resolve({ body: JSON.stringify({ dish: word }) }),
+		)
+
+		driver.testkit().selectSubject().input().type(subject)
+		driver.testkit().login().button().click()
+
+		await wait(() => {
+			authState.onAuthStateChangedCallback(fakeUser)
+		})
+
+		expect(
+			driver.testkit().submit().button().element(),
+		).not.toHaveAttribute('disabled')
+
+		driver.testkit().submit().button().click()
+
+		await wait(() => {
+			expect(push).toHaveBeenCalled()
+			expect(driver.testkit().selectSubject().localStorage().get()).toEqual('')
 		})
 	})
 
