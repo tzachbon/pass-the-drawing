@@ -1,11 +1,9 @@
 import { aGame, anUser, anUserToPlayer, wait } from '@test-utils'
-import { PlayerRoles } from '@types'
+import { PlayerRoles, User } from '@types'
 import {
 	authState,
 	cleanup,
-
 	databaseState,
-
 	mockFirebase,
 	ref,
 	update,
@@ -73,7 +71,7 @@ describe('Lobby', () => {
 
 		await wait(() => {
 			expect(update).toHaveBeenCalledWith({
-				players: [ ...gameMock.players, anUserToPlayer(fakeUser as any, PlayerRoles.Regular) ],
+				players: [ ...gameMock.players, anUserToPlayer(fakeUser as unknown as User, PlayerRoles.Regular) ],
 			})
 		})
 

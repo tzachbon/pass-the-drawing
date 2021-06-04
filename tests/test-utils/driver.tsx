@@ -1,7 +1,8 @@
+import { StylableDOMUtil } from '@stylable/dom-test-kit'
+import type { RuntimeStylesheet } from '@stylable/runtime'
 import type { ComponentType, ReactElement } from 'react'
-import { StylableDOMUtil } from "@stylable/dom-test-kit";
+import type * as stylesheet from './../../src/styles/globals.st.css'
 import { renderer, Renderer } from './render'
-import type * as stylesheet from '*.st.css'
 
 export interface Options {
 	stylesheet?: typeof stylesheet
@@ -34,7 +35,7 @@ import * as stylesheet from './MyStyles.st.css'`)
 		}
 
 		return new StylableDOMUtil(
-			this.options.stylesheet as any,
+			this.options.stylesheet as unknown as RuntimeStylesheet,
 			this.wrapper.container.container,
 		)
 	}

@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { GameSubjects } from '@constants'
 import { anUser, anUserToPlayer, uuidRegexPattern, wait } from '@test-utils'
+import type { User } from '@types'
 import { v4 as uuid } from 'uuid'
 import { cleanup as fetchCleanup, fetch } from '../../../tests/__mocks__/fetch'
 import {
 	authState,
 	cleanup as firebaseCleanup,
 	mockFirebase,
-
 	set,
 	signInWithRedirect,
 } from '../../../tests/__mocks__/firebase'
@@ -31,7 +31,7 @@ describe('CreateGame', () => {
 	})
 
 	let word = uuid()
-	const fakeUser = anUser() as any
+	const fakeUser = anUser() as unknown as User
 	const fakePlayer = anUserToPlayer(fakeUser)
 	const driver = createGameDriver().beforeAndAfter()
 
