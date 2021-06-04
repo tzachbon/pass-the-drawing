@@ -24,6 +24,7 @@ export const CreateGame: React.VFC<CreateGameProps> = ({ className }) => {
 		subject,
 		dirty,
 		clearSubjectFromStorage,
+		setDirty,
 	} = useSubject()
 	const { currentUser, signInWithRedirect } = useAuth()
 	const { onSubmit, loading, error } = useSubmit({
@@ -34,10 +35,11 @@ export const CreateGame: React.VFC<CreateGameProps> = ({ className }) => {
 
 	const handleSubmit: FormEventHandler<HTMLFormElement> = useCallback(
 		async (event) => {
+			setDirty(true)
 			await onSubmit(event)
 			clearSubjectFromStorage()
 		},
-		[ onSubmit, clearSubjectFromStorage ],
+		[ onSubmit, clearSubjectFromStorage, setDirty ],
 	)
 
 	return (

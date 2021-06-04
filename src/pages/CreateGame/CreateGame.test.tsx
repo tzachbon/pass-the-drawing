@@ -82,6 +82,20 @@ describe('CreateGame', () => {
 		expect(driver.testkit().selectSubject().localStorage().get()).toEqual('test')
 	})
 
+	it('should show invalid subject error message when subject is invalid and submit clicked', async () => {
+		driver.testkit().selectSubject().input().type('Invalid')
+
+		await wait(() => {
+			authState.onAuthStateChangedCallback(fakeUser)
+		})
+
+		driver.testkit().submit().button().click()
+
+		await wait(() => {
+			expect(driver.testkit().selectSubject().error().text()).toEqual('Game subject must be one of Food,Cars,Dessert')
+		})
+	})
+
 	it('should clear local storage when submit finished', async () => {
 		const subject = GameSubjects.Food
 		fetch.mockResponse(() =>

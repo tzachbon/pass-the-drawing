@@ -5,6 +5,7 @@ import {
 	CreateGameProps,
 	LOGGED_IN_MESSAGE_TEST_ID,
 	LOGIN_BUTTON_TEST_ID,
+	SUBJECT_ERROR_TEST_ID,
 	SUBMIT_BUTTON_TEST_ID,
 	SUBMIT_ERROR_TEST_ID,
 } from './CreateGame'
@@ -26,7 +27,10 @@ export class CreateGameDriver extends Driver<CreateGameProps> {
 export function createGameTestkit(container: RenderResult) {
 	return {
 		selectSubject: () => {
-			return selectSubjectTestkit(container)
+			return {
+				...selectSubjectTestkit(container),
+				error: () => testUtils(SUBJECT_ERROR_TEST_ID, container, { keys: [ 'text' ] }),
+			}
 		},
 		submit: () => ({
 			button: () => testUtils(SUBMIT_BUTTON_TEST_ID, container, { keys: [ 'click' ] }),
