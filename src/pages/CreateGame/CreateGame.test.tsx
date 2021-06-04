@@ -50,9 +50,7 @@ describe('CreateGame', () => {
 			authState.onAuthStateChangedCallback(fakeUser)
 		})
 
-		expect(
-			driver.testkit().submit().button().element(),
-		).not.toHaveAttribute('disabled')
+		expect(driver.testkit().submit().button().disabled()).toBeFalsy()
 
 		driver.testkit().submit().button().click()
 
@@ -131,9 +129,7 @@ describe('CreateGame', () => {
 			authState.onAuthStateChangedCallback(fakeUser)
 		})
 
-		expect(
-			driver.testkit().submit().button().element(),
-		).not.toHaveAttribute('disabled')
+		expect(driver.testkit().submit().button().disabled()).toBeFalsy()
 
 		driver.testkit().submit().button().click()
 
