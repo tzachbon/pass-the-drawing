@@ -23,8 +23,8 @@ export class SelectSubjectDriver extends Driver<Params['props']> {
 
 export function selectSubjectTestkit(container: RenderResult) {
 	const testkit = {
-		input: () => testUtils(INPUT_TEST_ID, container, { keys: ['focus', 'type'] }),
-		subject: (value: GameSubjects) => testUtils(getSubjectTestId(value), container, { keys: ['click'] }),
+		input: () => testUtils(INPUT_TEST_ID, container, { keys: [ 'focus', 'type' ] }),
+		subject: (value: GameSubjects) => testUtils(getSubjectTestId(value), container, { keys: [ 'click' ] }),
 		localStorage: () => localStorageUtils('subject'),
 	}
 
