@@ -1,0 +1,26 @@
+{
+  "kind": "identitytoolkit#GetAccountInfoResponse",
+  "users": [
+    {
+      "localId": "NQvqrYkmuGcDWdlkyGn6QrZ3VJD2",
+      "email": "tzachbonfil@gmail.com",
+      "displayName": "Tzach Bonfil",
+      "photoUrl": "https://lh3.googleusercontent.com/a-/AOh14Gh6VHl2Pi5BSDnrc5pvWOBvXVjC9TCZq4zcsLo_kw=s96-c",
+      "emailVerified": true,
+      "providerUserInfo": [
+        {
+          "providerId": "google.com",
+          "displayName": "Tzach Bonfil",
+          "photoUrl": "https://lh3.googleusercontent.com/a-/AOh14Gh6VHl2Pi5BSDnrc5pvWOBvXVjC9TCZq4zcsLo_kw=s96-c",
+          "federatedId": "118146978354650938369",
+          "email": "tzachbonfil@gmail.com",
+          "rawId": "118146978354650938369"
+        }
+      ],
+      "validSince": "1622286790",
+      "lastLoginAt": "1622815111566",
+      "createdAt": "1622286790537",
+      "lastRefreshAt": "2021-06-04T13:58:31.566Z"
+    }
+  ]
+}
