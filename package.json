@@ -30,6 +30,7 @@
     "react-firebase-hooks": "^3.0.4",
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0",
+    "react-use-localstorage": "^3.5.3",
     "uuid": "^8.3.2"
   },
   "husky": {

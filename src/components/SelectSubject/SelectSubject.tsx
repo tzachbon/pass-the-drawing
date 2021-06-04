@@ -6,8 +6,8 @@ import type { ISubjects } from '@types'
 import { classes, st } from './SelectSubject.st.css'
 
 export interface SelectSubjectProps {
-    subject: ReturnType<UseSubject>['subject']
-    setSubject: ReturnType<UseSubject>['setSubject']
+	subject: ReturnType<UseSubject>['subject']
+	setSubject: ReturnType<UseSubject>['setSubject']
 }
 
 const subjects: ISubjects[] = Object.values(GameSubjects).map((value) => ({
@@ -44,7 +44,7 @@ export const SelectSubject: React.FC<SelectSubjectProps> = ({
 			items={subjects.filter(
 				(item) =>
 					!subject ||
-                    item.value.toLowerCase().includes(subject.toLowerCase()),
+					item.value.toLowerCase().includes(subject.toLowerCase()),
 			)}
 			getItemValue={(item: ISubjects) => item.value}
 			renderItem={(item: ISubjects, highlight: boolean) => (

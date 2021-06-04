@@ -4,8 +4,11 @@ import { getSubjectErrorMessage, useSubject } from '@hooks/useSubject'
 
 describe('useSubject', () => {
 	beforeEach(() => {
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 		void cleanup()
+	})
+
+	afterEach(() => {
+		window.localStorage.setItem('subject', '')
 	})
 
 	it('should set subject', () => {
@@ -16,6 +19,32 @@ describe('useSubject', () => {
 		})
 
 		expect(result.current.subject).toEqual(GameSubjects.Food)
+	})
+
+	it('should update local storage', () => {
+		const { result } = renderHook(() => useSubject())
+
+		void act(() => {
+			result.current.setSubject(GameSubjects.Food)
+		})
+
+		expect(result.current.subject).toEqual(GameSubjects.Food)
+		expect(window.localStorage.getItem('subject')).toEqual(result.current.subject)
+	})
+
+	it('should clear local storage', () => {
+		const { result } = renderHook(() => useSubject())
+
+		void act(() => {
+			result.current.setSubject(GameSubjects.Food)
+		})
+
+		void act(() => {
+			result.current.clearSubjectFromStorage()
+		})
+
+		expect(result.current.subject).toEqual(GameSubjects.Food)
+		expect(window.localStorage.getItem('subject')).toEqual('')
 	})
 
 	it('should update dirty', () => {
