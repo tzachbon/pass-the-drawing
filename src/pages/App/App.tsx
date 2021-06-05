@@ -12,6 +12,12 @@ export const App: React.VFC = () => {
 		<section className={st(classes.root)}>
 			<Switch>
 				<Route
+					path={`${Routes.GAME}/:id`}
+					exact
+				>
+					GAME!
+				</Route>
+				<Route
 					path={`${Routes.LOBBY}/:id`}
 					exact
 				>

@@ -5,6 +5,7 @@ import { getRandomWord, updateGame } from '@api'
 import { useAsync } from '@hooks/useAsync'
 import { classes, st } from './GameLobby.st.css'
 import { Players } from '@components/Players/Players'
+import { StartGameButton } from '@components/StartGameButton'
 
 export interface GameLobbyProps {
 	className?: string
@@ -47,6 +48,7 @@ export const GameLobby: React.VFC<GameLobbyProps> = ({
 				currentPlayerId={currentUser.uid}
 				players={game.players}
 			/>
+			<StartGameButton game={game} />
 		</div>
 	)
 }

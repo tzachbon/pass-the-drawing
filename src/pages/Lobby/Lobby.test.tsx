@@ -10,7 +10,11 @@ import {
 } from '../../../tests/__mocks__/firebase'
 import { lobbyDriver } from './Lobby.driver'
 
-jest.mock('react-router', () => ({ match: jest.fn(), useParams: jest.fn().mockReturnValue({ id: '123' }) }))
+jest.mock('react-router', () => ({
+	match: jest.fn(),
+	useParams: jest.fn().mockReturnValue({ id: '123' }),
+	useHistory: jest.fn().mockReturnValue({ push: jest.fn() }),
+}))
 
 
 mockFirebase()
