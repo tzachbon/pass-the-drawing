@@ -66,7 +66,7 @@ describe('CreateGame', () => {
 					currentPlayingIndex: 0,
 					id: expect.stringMatching(new RegExp(uuidRegexPattern)),
 					players: [ fakePlayer ],
-					startTime: expect.any(Number),
+					createdTime: expect.any(Number),
 					subject,
 					word,
 				}),

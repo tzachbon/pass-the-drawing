@@ -13,7 +13,9 @@ export interface CreateGameParams {
 
 export interface Game extends CreateGameParams {
     id: string
-    startTime: number
+    createdTime: number
+    startTime?: number
+    started?: boolean
     players: Player[]
     endTime?: number
     currentPlayingIndex?: number

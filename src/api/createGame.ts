@@ -9,7 +9,7 @@ export async function createGame(
 	const game: Game = {
 		...params,
 		id: uuid(),
-		startTime: Date.now(),
+		createdTime: Date.now(),
 		players: [
 			...(
 				currentUser ? [ anUserToPlayer(currentUser) ] : []

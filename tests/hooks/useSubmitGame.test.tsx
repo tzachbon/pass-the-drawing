@@ -48,7 +48,7 @@ describe('useSubmitGame', () => {
 				currentPlayingIndex: 0,
 				id: expect.stringMatching(new RegExp(uuidRegexPattern)),
 				players: [ player ],
-				startTime: expect.any(Number),
+				createdTime: expect.any(Number),
 				subject,
 				word,
 			}),
