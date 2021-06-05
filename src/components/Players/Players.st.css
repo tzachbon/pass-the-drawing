@@ -22,7 +22,7 @@
 }
 
 .player {
-  -st-states: currentPlayerId;
+  -st-states: currentPlayer;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -39,7 +39,7 @@
   background: value(white-light-mid)
 }
 
-.player:currentPlayerId:hover {
+.player:currentPlayer:hover {
   background: value(white-light-strong)
 }
 
@@ -47,7 +47,7 @@
   border-radius: 50%;
 }
 
-.player:currentPlayerId .image {
+.player:currentPlayer .image {
   border: .2rem solid value(mainLightColor)
 }
 
