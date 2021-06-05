@@ -17,7 +17,8 @@
   margin: 1rem;
   border: value(border);
   border-radius: 1rem;
-  overflow: hidden;
+  overflow: scroll;
+  max-height: 60vh;
 }
 
 .player {
