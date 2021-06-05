@@ -1,32 +1,21 @@
-import { renderer } from '@test-utils'
-import { Avatar, BASE_URL, TEST_ID } from './Avatar'
+import { BASE_URL } from './Avatar'
+import { avatarDriver } from './Avatar.driver'
 
 describe('Avatar', () => {
-	const testkit = renderer(() => <Avatar name="Test" />).beforeAndAfter()
+	const name = 'test'
+	const driver = avatarDriver({ props: { name } }).beforeAndAfter()
 
-	it('should have avatar src', async () => {
-		expect(await testkit.container.findByTestId(TEST_ID)).toHaveAttribute(
-			'src',
-			`${BASE_URL}?name=Test&background=random`,
-		)
+	it('should have avatar src', () => {
+		expect(driver.testkit().image().src()).toEqual(`${BASE_URL}?name=test&background=random`)
 	})
 
-	it('should encode avatar src', async () => {
-		testkit.render(<Avatar name="Test Test" />)
-		expect(await testkit.container.findByTestId(TEST_ID)).toHaveAttribute(
-			'src',
-			`${BASE_URL}?name=Test%20Test&background=random`,
-		)
+	it('should encode avatar src', () => {
+		driver.withProps({ name: 'Test Test' }).render()
+		expect(driver.testkit().image().src()).toEqual(`${BASE_URL}?name=Test%20Test&background=random`)
 	})
 
-	it('should append background color', async () => {
-		testkit.render(<Avatar
-			name="Test"
-			backgroundColor="red"
-		/>)
-		expect(await testkit.container.findByTestId(TEST_ID)).toHaveAttribute(
-			'src',
-			`${BASE_URL}?name=Test&background=red`,
-		)
+	it('should append background color', () => {
+		driver.withProps({ name: 'test', backgroundColor: 'red' }).render()
+		expect(driver.testkit().image().src()).toEqual(`${BASE_URL}?name=test&background=red`)
 	})
 })

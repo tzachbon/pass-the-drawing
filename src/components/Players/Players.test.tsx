@@ -1,5 +1,5 @@
 import { aPlayer } from '@test-utils'
-import { PlayerRoles } from '@types'
+import { Player, PlayerRoles } from '@types'
 import { playersDriver } from './Players.driver'
 import * as stylesheet from './Players.st.css'
 
@@ -7,6 +7,8 @@ describe('Players', () => {
 
 	const players = [ aPlayer(), aPlayer({ role: PlayerRoles.Regular }) ]
 	const [ currentPlayer, otherPlayer ] = players
+	const playerWithNoImage = Object.fromEntries(Object.entries(currentPlayer!).filter(([ key ]) => key !== 'image')) as Player
+
 	const driver = playersDriver({
 		props: { currentPlayerId: currentPlayer!.id!, players },
 		stylesheet,
@@ -33,5 +35,13 @@ describe('Players', () => {
 
 		expect(playerTestkit.text()).toEqual(otherPlayer!.name)
 		expect(driver.styleUtils().hasStyleState(playerTestkit.element()!, 'currentPlayer')).toBeFalsy()
+	})
+
+	it('should show avatar component when image not defined', () => {
+		driver.withProps({ players: [ playerWithNoImage ] }).render()
+
+		expect(playerWithNoImage).not.toHaveProperty('image')
+		expect(driver.testkit().player(0).image()).not.toBeInTheDocument()
+		expect(driver.testkit().player(0).avatar().image().src()).toContain(encodeURI(playerWithNoImage.name))
 	})
 })

@@ -1,3 +1,4 @@
+import { avatarTestkit } from '@components/Avatar/Avatar.driver'
 import { Driver, Options, RenderResult, testUtils } from '@test-utils'
 import { getPlayerTestId, Players, PlayersProps, ROOT_TEST_ID } from './Players'
 
@@ -28,7 +29,8 @@ export function playersTestkit(container: RenderResult) {
 			const utils = testUtils(testId, container, { keys: [ '_element', 'text' ] })
 
 			return {
-				image: () => utils._element().querySelector('img'),
+				image: () => testUtils(`${testId}_IMAGE`, container).element(),
+				avatar: () => avatarTestkit(container),
 				element: utils.element,
 				text: utils.text,
 			}

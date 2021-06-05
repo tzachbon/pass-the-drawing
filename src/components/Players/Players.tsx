@@ -1,3 +1,4 @@
+import { Avatar } from '@components/Avatar'
 import type { Game } from '@types'
 import type React from 'react'
 import { classes, st } from './Players.st.css'
@@ -27,11 +28,21 @@ export const Players: React.VFC<PlayersProps> = ({
 					data-testid={getPlayerTestId(String(i))}
 					className={st(classes.player, { currentPlayer: player.id === currentPlayerId })}
 				>
-					<img
-						className={classes.image}
-						src={player.image!}
-						referrerPolicy='no-referrer'
-					/>
+					{
+						player.image ? (
+							<img
+								data-testid={getPlayerTestId(String(i)) + '_IMAGE'}
+								className={classes.image}
+								src={player.image}
+								referrerPolicy='no-referrer'
+							/>
+						) : (
+							<Avatar
+								name={player.name}
+								className={classes.image}
+							/>
+						)
+					}
 					<span className={classes.playerName}>
 						{player.name}
 					</span>

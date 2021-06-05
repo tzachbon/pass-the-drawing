@@ -8,7 +8,9 @@ interface Utils {
 	focus: () => boolean;
 	type: (value: string) => boolean;
 	text: () => string | null;
-	disabled: () => boolean
+	disabled: () => boolean;
+	hasAttribute: (attr: string) => boolean
+	getAttribute: (attr: string) => string | null
 }
 
 type UtilsKeys = keyof Utils
@@ -36,9 +38,11 @@ export function testUtils<K extends UtilsKeys>(
 		click: () => fireEvent.click(utils._element()),
 		focus: () => fireEvent.focusIn(utils._element()),
 		text: () => utils._element().textContent,
+		hasAttribute: (attr: string) => utils._element().hasAttribute(attr),
+		getAttribute: (attr: string) => utils._element().getAttribute(attr),
 		type: (value: string) =>
 			fireEvent.input(utils._element(), { target: { value } }),
-		disabled: () => utils._element().hasAttribute('disabled'),
+		disabled: () => utils.hasAttribute('disabled'),
 	}
 
 	if (keys) {
