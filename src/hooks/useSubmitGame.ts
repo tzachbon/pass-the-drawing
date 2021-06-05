@@ -11,7 +11,7 @@ interface Params {
 	isValid: boolean
 }
 
-export function useSubmit({ subject, isValid, currentUser }: Params) {
+export function useSubmitGame({ subject, isValid, currentUser }: Params) {
 	const { push } = useHistory()
 
 	const _onSubmit: FormEventHandler<HTMLFormElement> = useCallback(

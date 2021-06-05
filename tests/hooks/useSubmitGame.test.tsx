@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { GameSubjects } from '@constants'
-import { useSubmit } from '@hooks/useSubmit'
+import { useSubmitGame } from '@hooks/useSubmitGame'
 import { anUser, anUserToPlayer, uuidRegexPattern } from '@test-utils'
 import { act, cleanup, renderHook } from '@testing-library/react-hooks'
 import { v4 as uuid } from 'uuid'
@@ -19,12 +19,12 @@ import {
 mockRouter()
 mockFirebase()
 
-describe('useSubmit', () => {
+describe('useSubmitGame', () => {
 	const { state } = setup().beforeAndAfter()
 
 	it('should create game', async () => {
 		const { currentUser, eventMock, isValid, subject, word, player } = state
-		const { result } = renderHook((props) => useSubmit(props), {
+		const { result } = renderHook((props) => useSubmitGame(props), {
 			initialProps: {
 				currentUser,
 				isValid,
@@ -63,7 +63,7 @@ describe('useSubmit', () => {
 
 			const { currentUser, eventMock, isValid, subject } = state
 
-			const { result } = renderHook((props) => useSubmit(props), {
+			const { result } = renderHook((props) => useSubmitGame(props), {
 				initialProps: {
 					currentUser,
 					isValid,

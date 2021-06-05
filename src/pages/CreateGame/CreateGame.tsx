@@ -3,7 +3,7 @@ import type { GameSubjects } from '@constants'
 import { SelectSubject } from '@components/SelectSubject'
 import { useAuth } from '@hooks/useAuth'
 import { useSubject } from '@hooks/useSubject'
-import { useSubmit } from '@hooks/useSubmit'
+import { useSubmitGame } from '@hooks/useSubmitGame'
 import { classes, st } from './CreateGame.st.css'
 
 export interface CreateGameProps {
@@ -27,7 +27,7 @@ export const CreateGame: React.VFC<CreateGameProps> = ({ className }) => {
 		setDirty,
 	} = useSubject()
 	const { currentUser, signInWithRedirect } = useAuth()
-	const { onSubmit, loading, error } = useSubmit({
+	const { onSubmit, loading, error } = useSubmitGame({
 		subject: subject as GameSubjects,
 		currentUser,
 		isValid,
