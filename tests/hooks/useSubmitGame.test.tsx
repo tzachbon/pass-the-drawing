@@ -6,15 +6,13 @@
 import { GameSubjects } from '@constants'
 import { useSubmitGame } from '@hooks/useSubmitGame'
 import { anUser, anUserToPlayer, uuidRegexPattern } from '@test-utils'
-import { act, cleanup, renderHook } from '@testing-library/react-hooks'
+import { act, renderHook } from '@testing-library/react-hooks'
 import { v4 as uuid } from 'uuid'
 import {
-	cleanup as firebaseCleanup, mockFirebase,
+	mockFirebase,
 	set,
 } from '../__mocks__/firebase'
-import {
-	cleanup as routerCleanup, mockRouter, push,
-} from '../__mocks__/react-router-dom'
+import { mockRouter, push } from '../__mocks__/react-router-dom'
 
 mockRouter()
 mockFirebase()
@@ -95,11 +93,6 @@ function setup() {
 		},
 		beforeAndAfter() {
 			beforeEach(() => {
-				void cleanup()
-				void firebaseCleanup()
-				void routerCleanup()
-
-				eventMock.preventDefault.mockClear()
 				payload.state.word = uuid()
 				payload.state.subject = GameSubjects.Food
 				payload.state.isValid = true

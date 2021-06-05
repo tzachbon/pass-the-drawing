@@ -7,10 +7,6 @@ describe('WordBoard', () => {
 	const word = uuid()
 	const driver = wordBoardDriver({ props: { updateWord: updateWordMock, word } }).beforeAndAfter()
 
-	beforeEach(() => {
-		updateWordMock.mockClear()
-	})
-
 	it('should show word', () => {
 		expect(driver.testkit().word().text()).toEqual(word)
 	})

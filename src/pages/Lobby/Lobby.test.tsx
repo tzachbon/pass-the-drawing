@@ -2,7 +2,6 @@ import { aGame, anUser, anUserToPlayer, wait } from '@test-utils'
 import { PlayerRoles, User } from '@types'
 import {
 	authState,
-	cleanup,
 	databaseState,
 	mockFirebase,
 	ref,
@@ -23,7 +22,6 @@ describe('Lobby', () => {
 
 	beforeEach(() => {
 		useObjectValMock()
-		cleanup()
 	})
 
 	const fakeUser = anUser()

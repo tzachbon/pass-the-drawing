@@ -1,13 +1,9 @@
-import { renderHook, act, cleanup } from '@testing-library/react-hooks'
 import { GameSubjects } from '@constants'
 import { getSubjectErrorMessage, useSubject } from '@hooks/useSubject'
 import { localStorageCleanup, localStorageUtils } from '@test-utils'
+import { act, renderHook } from '@testing-library/react-hooks'
 
 describe('useSubject', () => {
-	beforeEach(() => {
-		void cleanup()
-	})
-
 	afterEach(() => {
 		void localStorageCleanup()
 	})

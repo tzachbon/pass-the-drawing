@@ -33,10 +33,6 @@ export const renderer = (getUI: () => ReactElement) => {
 			render(getUI())
 		})
 
-		afterEach(() => {
-			cleanup()
-		})
-
 		return payload
 	}
 

@@ -35,13 +35,17 @@ export function aGame({
 	currentPlayingIndex = 0,
 	id = uuid(),
 	players = [ aPlayer() ],
-	startTime = Date.now(),
 	subject = GameSubjects.Food,
+	createdTime = Date.now(),
 	word = uuid(),
+	started,
+	startTime,
 	endTime,
 	winner,
 }: Partial<Game> = {}): Game {
 	return {
+		started,
+		createdTime,
 		id,
 		players,
 		startTime,

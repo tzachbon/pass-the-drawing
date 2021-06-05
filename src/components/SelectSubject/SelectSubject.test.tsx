@@ -19,7 +19,6 @@ describe('SelectSubject', () => {
 
 	beforeEach(() => {
 		subject = undefined
-		setSubject.mockReset()
 	})
 
 	it('should render subjects', () => {

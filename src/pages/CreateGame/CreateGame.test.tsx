@@ -1,18 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { GameSubjects } from '@constants'
-import { anUser, anUserToPlayer, localStorageCleanup, uuidRegexPattern, wait } from '@test-utils'
+import { anUser, anUserToPlayer, uuidRegexPattern, wait } from '@test-utils'
 import type { User } from '@types'
 import { v4 as uuid } from 'uuid'
-import { cleanup as fetchCleanup, fetch } from '../../../tests/__mocks__/fetch'
+import { fetch } from '../../../tests/__mocks__/fetch'
 import {
 	authState,
-	cleanup as firebaseCleanup,
 	mockFirebase,
 	set,
 	signInWithRedirect,
 } from '../../../tests/__mocks__/firebase'
 import {
-	cleanup as routerCleanup,
 	mockRouter,
 	push,
 } from '../../../tests/__mocks__/react-router-dom'
@@ -25,10 +23,6 @@ describe('CreateGame', () => {
 
 	beforeEach(() => {
 		word = uuid()
-		void fetchCleanup()
-		void firebaseCleanup()
-		void routerCleanup()
-		void localStorageCleanup()
 	})
 
 	let word = uuid()
