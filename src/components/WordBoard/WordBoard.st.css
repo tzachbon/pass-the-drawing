@@ -5,7 +5,7 @@
 
 :import {
   -st-from: "../../styles/variables.st.css";
-  -st-named: secondaryFontColor, backgroundColor;
+  -st-named: mainLightColor, mainDarkColor;
 }
 
 :vars {
@@ -18,9 +18,9 @@
   margin: 1rem;
   padding: 1rem 0;
   text-align: center;
-  background-color: value(secondaryFontColor);
+  background-color: value(mainLightColor);
   border-radius: 0.5rem;
-  color: value(backgroundColor);
+  color: value(mainDarkColor);
 }
 
 .text {
@@ -39,10 +39,7 @@
   width: 2rem;
   height: 2rem;
   transition: all cubic-bezier(0.075, 0.82, 0.165, 1) .5s;
-}
-
-.button:hover {
-  box-shadow: 0 0 .4rem .2rem rgba(24, 24, 24, 0.438);
+  border: .5px solid value(mainDarkColor);
 }
 
 .button:active {
