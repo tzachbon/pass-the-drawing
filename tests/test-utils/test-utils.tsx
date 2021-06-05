@@ -26,7 +26,7 @@ export function testUtils<K extends UtilsKeys>(
 	const { keys } = options || {}
 	const utils: Utils = {
 		element: () => container.queryByTestId(testId),
-		notExistsError: () => new Error(`Element does not exists: ${testId}. \nCurrent HTML: \n ${container.container.innerHTML}`),
+		notExistsError: () => new Error(`Element does not exist: ${testId}. \nCurrent HTML: \n ${container.container.innerHTML}`),
 		_element: () => {
 			const el = utils.element()
 			if (!el) {
