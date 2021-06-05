@@ -8,11 +8,16 @@
   -st-named: mainLightColor, white-light-mid, white-light-strong;
 }
 
+:vars {
+  border: 0.1rem solid value(mainLightColor)
+}
+
 .root {
   -st-extends: flexCol;
   margin: 1rem;
-  border: 0.1rem solid value(mainLightColor);
+  border: value(border);
   border-radius: 1rem;
+  overflow: hidden;
 }
 
 .player {
@@ -22,6 +27,10 @@
   gap: 1rem;
   padding: 1rem;
   transition: all .2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.player:not(:last-child) {
+  border-bottom: value(border);
 }
 
 .player:hover {
@@ -37,7 +46,7 @@
 }
 
 .player:currentPlayerId .image {
-  border: .2rem solid value(mainLightColor);
+  border: .2rem solid value(mainLightColor)
 }
 
 .playerName {}
