@@ -26,7 +26,7 @@ export const Lobby: React.VFC<LobbyProps> = ({ className }) => {
 	const { game, loading, error } = useGame({ id })
 	const { currentUser, signInWithRedirect } = useAuth()
 	const { run, error: addPlayerError, loading: addPlayerLoading } = useAsync()
-
+	
 	const addPlayer = run(
 		useCallback(
 			() =>

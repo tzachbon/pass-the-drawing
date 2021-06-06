@@ -2,7 +2,7 @@ import { gameLobbyTestkit } from '@components/GameLobby/GameLobby.driver'
 import { Routes } from '@constants'
 import { Driver, Options, RenderResult, testUtils } from '@test-utils'
 import { Route } from 'react-router'
-import { LOADING_TEST_ID, Lobby, LobbyProps, LOGIN_BUTTON_TEST_ID, LOGIN_MESSAGE_TEST_ID, NO_GAME_MESSAGE_TEST_ID } from './Lobby'
+import { LOADING_TEST_ID, Lobby, LobbyProps, LOGIN_BUTTON_TEST_ID, LOGIN_MESSAGE_TEST_ID, NO_GAME_LINK_TEST_ID, NO_GAME_MESSAGE_TEST_ID } from './Lobby'
 
 interface Params {
 	props?: LobbyProps
@@ -39,7 +39,7 @@ export function lobbyTestkit(container: RenderResult) {
 		}),
 		notFound: () => ({
 			message: () => testUtils(NO_GAME_MESSAGE_TEST_ID, container, { keys: [ 'text' ] }),
-			link: () => testUtils(NO_GAME_MESSAGE_TEST_ID, container, { keys: [ 'text', 'click' ] }),
+			link: () => testUtils(NO_GAME_LINK_TEST_ID, container, { keys: [ 'text', 'click' ] }),
 		}),
 		gameLobby: () => gameLobbyTestkit(container),
 	}

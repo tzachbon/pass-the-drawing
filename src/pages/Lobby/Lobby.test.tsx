@@ -38,14 +38,16 @@ describe('Lobby', () => {
 		expect(driver.testkit().loading().message().text()).toEqual('Wait here, we are getting the game...')
 	})
 
-	it.skip('should show game not found layout', () => {
+	it('should show game not found layout', async () => {
 		useObjectValMock(null)
 
 		driver.render()
 
-		expect(driver.testkit().notFound().message().text()).toEqual('We could not find this game :(')
-		expect(driver.testkit().notFound().link().text()).toEqual('Create a new game')
-		expect(driver.testkit().notFound().link().element()).toHaveAttribute('href', '/')
+		await wait(() => {
+			expect(driver.testkit().notFound().message().text()).toEqual('We could not find this game :(')
+			expect(driver.testkit().notFound().link().text()).toEqual('Create a new game')
+			expect(driver.testkit().notFound().link().element()).toHaveAttribute('href', '/')
+		})
 	})
 
 	it('should show the game lobby', () => {
