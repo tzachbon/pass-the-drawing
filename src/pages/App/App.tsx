@@ -6,6 +6,7 @@ import { Routes } from '@constants'
 import { Home } from '..'
 import { CreateGame } from '../CreateGame'
 import { Lobby } from '../Lobby'
+import { Game } from '../Game'
 
 export const App: React.VFC = () => {
 	return (
@@ -15,7 +16,7 @@ export const App: React.VFC = () => {
 					path={`${Routes.GAME}/:id`}
 					exact
 				>
-					GAME!
+					<Game />
 				</Route>
 				<Route
 					path={`${Routes.LOBBY}/:id`}
