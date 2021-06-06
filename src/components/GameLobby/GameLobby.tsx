@@ -1,11 +1,13 @@
 import type { Game, User } from '@types'
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { WordBoard } from '@components/WordBoard'
 import { getRandomWord, updateGame } from '@api'
 import { useAsync } from '@hooks/useAsync'
 import { classes, st } from './GameLobby.st.css'
 import { Players } from '@components/Players/Players'
 import { StartGameButton } from '@components/StartGameButton'
+import { useHistory } from 'react-router-dom'
+import { Routes } from '@constants'
 
 export interface GameLobbyProps {
 	className?: string
@@ -20,8 +22,9 @@ export const GameLobby: React.VFC<GameLobbyProps> = ({
 	game,
 	currentUser,
 }) => {
-	const { id, subject, word } = game
+	const { id, subject, word, started } = game
 	const { run, loading } = useAsync()
+	const { push } = useHistory()
 	const onUpdateGame = run(
 		useCallback(async () => {
 			if (!subject) {
@@ -33,6 +36,12 @@ export const GameLobby: React.VFC<GameLobbyProps> = ({
 			await updateGame(id, { word })
 		}, [ subject, id ]),
 	)
+
+	useEffect(() => {
+		if (started) {
+			push(`${Routes.GAME}/${id}`)
+		}
+	}, [ started, id, push ])
 
 	return (
 		<div

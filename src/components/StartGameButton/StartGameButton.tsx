@@ -1,9 +1,8 @@
-import type { Game } from '@types'
 import { updateGame } from '@api'
-import { MINIMUM_PLAYERS_LENGTH, Routes } from '@constants'
+import { MINIMUM_PLAYERS_LENGTH } from '@constants'
 import { useAsync } from '@hooks/useAsync'
+import type { Game } from '@types'
 import { useCallback, useMemo } from 'react'
-import { useHistory } from 'react-router-dom'
 import { classes, st } from './StartGameButton.st.css'
 
 export interface StartGameButtonProps {
@@ -22,7 +21,6 @@ export const StartGameButton: React.VFC<StartGameButtonProps> = (
 ) => {
 	const invalidPlayersLength = useMemo(() => players.length < MINIMUM_PLAYERS_LENGTH, [ players.length ])
 	const { run, loading } = useAsync()
-	const { push } = useHistory()
 
 	const onStartGame = run(
 		useCallback(
@@ -34,9 +32,8 @@ export const StartGameButton: React.VFC<StartGameButtonProps> = (
 						started: true,
 					},
 				)
-				push(`${Routes.GAME}/${id}`)
 			},
-			[ id, push ],
+			[ id ],
 		),
 	)
 
