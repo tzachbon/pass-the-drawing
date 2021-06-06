@@ -10,7 +10,7 @@
     "plugin:stylable/recommended",
     "prettier"
   ],
-  "plugins": ["react-hooks", "prettier"],
+  "plugins": ["react-hooks", "prettier", "jest"],
   "settings": {
     "react": {
       "version": "detect"
@@ -39,7 +39,12 @@
     "object-curly-spacing": ["error", "always"],
     "array-bracket-spacing": ["error", "always"],
     "computed-property-spacing": ["error", "always"],
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error"
   },
   "overrides": [
     {
