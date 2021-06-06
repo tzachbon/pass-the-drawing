@@ -1,3 +1,4 @@
+import { Routes } from '@constants'
 import { aGame, anUser, anUserToPlayer, wait } from '@test-utils'
 import { PlayerRoles, User } from '@types'
 import {
@@ -10,29 +11,27 @@ import {
 } from '../../../tests/__mocks__/firebase'
 import { lobbyDriver } from './Lobby.driver'
 
-jest.mock('react-router', () => ({
-	match: jest.fn(),
-	useParams: jest.fn().mockReturnValue({ id: '123' }),
-	useHistory: jest.fn().mockReturnValue({ push: jest.fn() }),
-}))
-
-
 mockFirebase()
 
 describe('Lobby', () => {
 
 	let resolve = (_: unknown) => { return _ }
 	const gameMock = aGame()
+	const initialRoute = `${Routes.LOBBY}/${gameMock.id}`
 
 	beforeEach(() => {
 		useObjectValMock()
 	})
 
 	const fakeUser = anUser()
-	const driver = lobbyDriver({ props: {} }).beforeAndAfter()
+	const driver = lobbyDriver({ initialRoute }).beforeAndAfter()
 
-	it('should call game route', () => {
-		expect(ref).toBeCalledWith('games/123')
+	it('should call game route', async () => {
+
+		await wait(() => {
+
+			expect(ref).toBeCalledWith('games/' + gameMock.id)
+		})
 	})
 
 	it('should show login screen', () => {

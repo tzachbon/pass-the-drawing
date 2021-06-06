@@ -1,13 +1,25 @@
 import { gameLobbyTestkit } from '@components/GameLobby/GameLobby.driver'
-import { Driver, RenderResult, testUtils } from '@test-utils'
+import { Routes } from '@constants'
+import { Driver, Options, RenderResult, testUtils } from '@test-utils'
+import { Route } from 'react-router'
 import { LOADING_TEST_ID, Lobby, LobbyProps, LOGIN_BUTTON_TEST_ID, LOGIN_MESSAGE_TEST_ID, NO_GAME_MESSAGE_TEST_ID } from './Lobby'
 
 interface Params {
 	props?: LobbyProps
+	initialRoute?: Options['initialRoute']
 }
 
-export function lobbyDriver({ props }: Params = {}) {
-	return new LobbyDriver(props || {}, Lobby)
+const LobbyMock: React.ComponentType<Params['props']> = (props) => (
+	<Route
+		path={`${Routes.LOBBY}/:id`}
+		exact
+	>
+		<Lobby {...props} />
+	</Route>
+)
+
+export function lobbyDriver({ props, initialRoute }: Params) {
+	return new LobbyDriver(props || {}, LobbyMock, { initialRoute })
 }
 
 export class LobbyDriver extends Driver<NonNullable<Params['props']>> {

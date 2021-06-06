@@ -15,7 +15,7 @@ describe('StartGameButton', () => {
 
 	const game = aGame({ players })
 	const driver = startGameButtonDriver({ props: { game } }).beforeAndAfter()
-
+	
 	beforeEach(() => {
 		update.mockResolvedValue({})
 	})
@@ -26,6 +26,7 @@ describe('StartGameButton', () => {
 		driver.testkit().button().click()
 
 		await wait(() => {
+			
 			expect(databaseState.ref).toEqual(`games/${game.id}`)
 			expect(update).toBeCalledWith(expect.objectContaining({
 				startTime: expect.any(Number),

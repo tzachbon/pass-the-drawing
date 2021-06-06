@@ -5,24 +5,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { GameSubjects } from '@constants'
 import { useSubmitGame } from '@hooks/useSubmitGame'
-import { anUser, anUserToPlayer, uuidRegexPattern } from '@test-utils'
+import { anUser, anUserToPlayer, createRouterMockProvider, uuidRegexPattern } from '@test-utils'
 import { act, renderHook } from '@testing-library/react-hooks'
 import { v4 as uuid } from 'uuid'
 import {
 	mockFirebase,
 	set,
 } from '../__mocks__/firebase'
-import { mockRouter, push } from '../__mocks__/react-router-dom'
 
-mockRouter()
 mockFirebase()
 
 describe('useSubmitGame', () => {
 	const { state } = setup().beforeAndAfter()
 
 	it('should create game', async () => {
-		const { currentUser, eventMock, isValid, subject, word, player } = state
-		const { result } = renderHook((props) => useSubmitGame(props), {
+		const { currentUser, eventMock, isValid, subject, word, player, history, RouterWrapperMock } = state
+		const { result } = renderHook((props) => useSubmitGame(props as any), {
+			wrapper: RouterWrapperMock,
 			initialProps: {
 				currentUser,
 				isValid,
@@ -38,7 +37,7 @@ describe('useSubmitGame', () => {
 		expect(result.current.loading).toBeFalsy()
 		expect(result.current.error).toBeUndefined()
 
-		expect(push).toBeCalledWith(
+		expect(history.location.pathname).toEqual(
 			expect.stringMatching(new RegExp(`/lobby/${uuidRegexPattern}`, 'g')),
 		)
 		expect(set).toBeCalledWith(
@@ -59,9 +58,10 @@ describe('useSubmitGame', () => {
 			type KeyOfState = keyof typeof state
 			state[ key as KeyOfState ] = undefined as never
 
-			const { currentUser, eventMock, isValid, subject } = state
+			const { currentUser, isValid, subject, eventMock, RouterWrapperMock } = state
 
-			const { result } = renderHook((props) => useSubmitGame(props), {
+			const { result } = renderHook((props) => useSubmitGame(props as any), {
+				wrapper: RouterWrapperMock,
 				initialProps: {
 					currentUser,
 					isValid,
@@ -69,11 +69,11 @@ describe('useSubmitGame', () => {
 				},
 			})
 
+
+
 			await act(async () => {
 				await result.current.onSubmit(eventMock as any)
 			})
-
-			expect(push).not.toBeCalled()
 		},
 	)
 })
@@ -81,9 +81,10 @@ describe('useSubmitGame', () => {
 function setup() {
 	const eventMock = { preventDefault: jest.fn() }
 	const currentUser = anUser() as any
+	const initialHistory = createRouterMockProvider()
 	const payload = {
-
 		state: {
+			...initialHistory,
 			currentUser,
 			isValid: true,
 			subject: GameSubjects.Food as GameSubjects | undefined,
@@ -93,11 +94,16 @@ function setup() {
 		},
 		beforeAndAfter() {
 			beforeEach(() => {
+
+				const { RouterWrapperMock, history } = createRouterMockProvider()
+
 				payload.state.word = uuid()
 				payload.state.subject = GameSubjects.Food
 				payload.state.isValid = true
 				payload.state.currentUser = anUser()
 				payload.state.player = anUserToPlayer(payload.state.currentUser)
+				payload.state.RouterWrapperMock = RouterWrapperMock
+				payload.state.history = history
 
 				fetchMock.doMock(() =>
 					Promise.resolve({

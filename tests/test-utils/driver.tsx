@@ -1,15 +1,20 @@
+import type { History } from 'history'
 import { StylableDOMUtil } from '@stylable/dom-test-kit'
 import type { RuntimeStylesheet } from '@stylable/runtime'
+import type { LocationDescriptor } from 'history'
 import type { ComponentType, ReactElement } from 'react'
 import type * as stylesheet from './../../src/styles/globals.st.css'
+import { createRouterMockProvider } from './create-router-mock-provider'
 import { renderer, Renderer } from './render'
-
 export interface Options {
 	stylesheet?: typeof stylesheet
+	initialRoute?: string
 }
 
 export abstract class Driver<P extends object> {
 	public wrapper: Renderer
+	public history: History | undefined
+	public pushSpy: jest.SpyInstance<void, [location: LocationDescriptor<unknown>]> | undefined
 	private getUI: (newProps: P) => () => ReactElement
 
 	constructor(
@@ -17,8 +22,25 @@ export abstract class Driver<P extends object> {
 		private Component: ComponentType<P>,
 		private options: Options = {},
 	) {
-		// eslint-disable-next-line react/display-name
-		this.getUI = (newProps: P) => () => <this.Component {...newProps} />
+		this.getUI = (newProps: P) => {
+			const { RouterWrapperMock, history, pushSpy } = createRouterMockProvider({
+				initialRoute: this.options.initialRoute,
+			})
+
+			this.history = history
+			this.pushSpy = pushSpy
+
+			const component = () => (
+				<RouterWrapperMock>
+					<this.Component {...newProps} />
+				</RouterWrapperMock>
+			)
+
+			component.displayName = this.Component.displayName
+
+			return component
+		}
+
 		this.wrapper = renderer(this.getUI(this.props))
 	}
 

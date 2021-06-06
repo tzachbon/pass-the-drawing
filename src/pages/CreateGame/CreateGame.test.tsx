@@ -10,13 +10,9 @@ import {
 	set,
 	signInWithRedirect,
 } from '../../../tests/__mocks__/firebase'
-import {
-	mockRouter,
-	push,
-} from '../../../tests/__mocks__/react-router-dom'
+
 import { createGameDriver } from './CreateGame.driver'
 
-mockRouter()
 mockFirebase()
 
 describe('CreateGame', () => {
@@ -44,17 +40,14 @@ describe('CreateGame', () => {
 			authState.onAuthStateChangedCallback(fakeUser)
 		})
 
-		expect(driver.testkit().submit().button().disabled()).toBeFalsy()
+		await wait(() => {
+			expect(driver.testkit().submit().button().disabled()).toBeFalsy()
+		})
 
 		driver.testkit().submit().button().click()
 
 		await wait(() => {
 			expect(driver.testkit().submit().error().element()).toBeNull()
-			expect(push).toBeCalledWith(
-				expect.stringMatching(
-					new RegExp(`/lobby/${uuidRegexPattern}`, 'g'),
-				),
-			)
 			expect(set).toBeCalledWith(
 				expect.objectContaining({
 					currentPlayingIndex: 0,
@@ -108,7 +101,7 @@ describe('CreateGame', () => {
 		driver.testkit().submit().button().click()
 
 		await wait(() => {
-			expect(push).toHaveBeenCalled()
+			expect(driver.history?.location.pathname).toEqual('/')
 			expect(driver.testkit().selectSubject().localStorage().get()).toEqual('')
 		})
 	})

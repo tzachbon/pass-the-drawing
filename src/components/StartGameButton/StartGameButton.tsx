@@ -34,7 +34,6 @@ export const StartGameButton: React.VFC<StartGameButtonProps> = (
 						started: true,
 					},
 				)
-				
 				push(`${Routes.GAME}/${id}`)
 			},
 			[ id, push ],

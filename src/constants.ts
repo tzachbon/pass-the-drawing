@@ -3,7 +3,7 @@ export const Routes = {
 	CREATE_GAME: '/create-game',
 	LOBBY: '/lobby',
 	GAME: '/game',
-}
+} as const
 
 export enum GameSubjects {
 	Food = 'Food',

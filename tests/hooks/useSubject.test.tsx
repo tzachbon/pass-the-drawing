@@ -66,7 +66,7 @@ describe('useSubject', () => {
 			result.current.setSubject(GameSubjects.Cars)
 		})
 
-		expect(result.current.isValid).toBeTruthy
+		expect(result.current.isValid).toBeTruthy()
 		expect(result.current.error).toBeUndefined()
 
 		void act(() => {
