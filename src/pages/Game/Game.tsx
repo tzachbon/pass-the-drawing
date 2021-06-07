@@ -40,7 +40,10 @@ export const Game: React.FC<GameProps> = (
 						Loading...
 					</span>
 				) : showGame ? (
-					<GameContainer />
+					<GameContainer
+						game={game!}
+						currentUser={currentUser!}
+					/>
 				) : (
 					<span
 						data-testid={NOT_FOUND_TEST_ID}
