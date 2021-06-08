@@ -11,4 +11,19 @@ describe('GameContainer', () => {
 		expect(driver.testkit().element()).toBeInTheDocument()
 	})
 
+	it('should render standby screen when the player is not currently playing', () => {
+		const user = anUser() as User
+		const newGame = aGame({
+			currentPlayingIndex: 0,
+			players: [
+				anUserToPlayer(user),
+				anUserToPlayer(currentUser),
+			],
+		})
+
+		driver.withProps({ game: newGame, currentUser }).render()
+
+		expect(driver.testkit().standbyScreen().element()).toBeInTheDocument()
+	})
+
 })
