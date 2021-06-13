@@ -16,17 +16,20 @@ interface Utils {
 type UtilsKeys = keyof Utils
 interface TestUtilsOptions<K extends UtilsKeys> {
 	keys?: K[]
+	isSelector?: boolean
 }
 
 export function testUtils<K extends UtilsKeys>(
-	testId: string,
+	testIdOrSelector: string,
 	container: RenderResult,
 	options?: TestUtilsOptions<K>,
 ) {
-	const { keys } = options || {}
+	const { keys, isSelector } = options || {}
+	const selector = isSelector ? testIdOrSelector : testIdToSelector(testIdOrSelector)
+
 	const utils: Utils = {
-		element: () => container.queryByTestId(testId),
-		notExistsError: () => new Error(`Element does not exist: ${testId}. \nCurrent HTML: \n ${container.container.innerHTML}`),
+		element: () => container.container.querySelector(selector),
+		notExistsError: () => new Error(`Element does not exist: ${selector}. \nCurrent HTML: \n ${container.container.innerHTML}`),
 		_element: () => {
 			const el = utils.element()
 			if (!el) {
@@ -70,4 +73,8 @@ export function localStorageUtils(key: string) {
 		get: () => localStorage.getItem(key),
 		set: (value: string) => localStorage.setItem(key, value),
 	}
+}
+
+export function testIdToSelector(testId: string) {
+	return `[data-testid="${testId}"]`
 }

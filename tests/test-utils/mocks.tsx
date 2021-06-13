@@ -10,12 +10,14 @@ export function aPlayer({
 	image = uuid(),
 	name = uuid(),
 	role = PlayerRoles.Admin,
+	draw,
 }: Partial<Player> = {}): Player {
 	return {
 		id,
 		name,
 		role,
 		image,
+		draw,
 	}
 }
 

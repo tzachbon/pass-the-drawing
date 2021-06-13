@@ -7,8 +7,9 @@ describe('GameContainer', () => {
 	const game = aGame({ players: [ anUserToPlayer(currentUser) ] })
 	const driver = gameContainerDriver({ props: { game, currentUser } }).beforeAndAfter()
 
-	it('should be in document', () => {
+	it('should render play screen when the current player is playing', () => {
 		expect(driver.testkit().element()).toBeInTheDocument()
+		expect(driver.testkit().playScreen().element()).toBeInTheDocument()
 	})
 
 	it('should render standby screen when the player is not currently playing', () => {
@@ -24,6 +25,6 @@ describe('GameContainer', () => {
 		driver.withProps({ game: newGame, currentUser }).render()
 
 		expect(driver.testkit().standbyScreen().element()).toBeInTheDocument()
+		expect(driver.testkit().playScreen().element()).not.toBeInTheDocument()
 	})
-
 })

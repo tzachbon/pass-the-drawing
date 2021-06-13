@@ -1,3 +1,4 @@
+import { PlayScreen } from '@components/PlayScreen'
 import { StandbyScreen } from '@components/StandbyScreen'
 import type { Game, User } from '@types'
 import React, { useMemo } from 'react'
@@ -19,7 +20,7 @@ export const GameContainer: React.VFC<GameContainerProps> = (
 		currentUser,
 	},
 ) => {
-	const { currentIndex } = useMemo(() => {
+	const { currentIndex, currentPlayer } = useMemo(() => {
 		const index = game.players.findIndex(player => player.id === currentUser.uid)
 		const player = game.players[ index ]!
 
@@ -39,9 +40,10 @@ export const GameContainer: React.VFC<GameContainerProps> = (
 		>
 			{
 				isPlaying ? (
-					<span>
-						should play
-					</span>
+					<PlayScreen
+						game={game}
+						currentPlayer={currentPlayer}
+					/>
 				) : (
 					<StandbyScreen currentPlayingPlayer={currentPlayingPlayer} />
 				)

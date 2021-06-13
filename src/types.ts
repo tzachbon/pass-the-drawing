@@ -18,7 +18,7 @@ export interface Game extends CreateGameParams {
     started?: boolean
     players: Player[]
     endTime?: number
-    currentPlayingIndex?: number
+    currentPlayingIndex: number
     winner?: Player
 }
 
@@ -27,6 +27,7 @@ export interface Player {
     name: string
     image?: string | null
     role: PlayerRoles
+    draw?: string
 }
 
 export enum PlayerRoles {
