@@ -10,7 +10,11 @@
     "plugin:stylable/recommended",
     "prettier"
   ],
-  "plugins": ["react-hooks", "prettier", "jest"],
+  "plugins": [
+    "react-hooks",
+    "prettier",
+    "jest"
+  ],
   "settings": {
     "react": {
       "version": "detect"
@@ -26,19 +30,44 @@
     "newline-before-return": "error",
     "no-return-await": "off",
     "no-whitespace-before-property": "error",
-    "react/jsx-first-prop-new-line": [1, "multiline"],
-    "react/jsx-closing-bracket-location": [1, "line-aligned"],
+    "react/jsx-first-prop-new-line": [
+      1,
+      "multiline"
+    ],
+    "react/jsx-closing-bracket-location": [
+      1,
+      "line-aligned"
+    ],
     "react/jsx-max-props-per-line": [
       1,
       {
         "maximum": 1
       }
     ],
-    "comma-dangle": ["error", "always-multiline"],
-    "function-call-argument-newline": ["error", "consistent"],
-    "object-curly-spacing": ["error", "always"],
-    "array-bracket-spacing": ["error", "always"],
-    "computed-property-spacing": ["error", "always"],
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "function-call-argument-newline": [
+      "error",
+      "consistent"
+    ],
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "array-bracket-spacing": [
+      "error",
+      "always"
+    ],
+    "computed-property-spacing": [
+      "error",
+      "always"
+    ],
+    "quote-props": [
+      "error",
+      "as-needed"
+    ],
     "object-curly-newline": "off",
     "jest/no-disabled-tests": "warn",
     "jest/no-focused-tests": "error",
@@ -48,7 +77,10 @@
   },
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx"],
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
       "parserOptions": {
         "project": "./tsconfig.json"
       },
@@ -66,10 +98,22 @@
         "explicit-module-boundary-types": "off",
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
-        "indent": ["error", "tab"],
-        "linebreak-style": ["error", "unix"],
-        "quotes": ["error", "single"],
-        "semi": ["error", "never"],
+        "indent": [
+          "error",
+          "tab"
+        ],
+        "linebreak-style": [
+          "error",
+          "unix"
+        ],
+        "quotes": [
+          "error",
+          "single"
+        ],
+        "semi": [
+          "error",
+          "never"
+        ],
         "@typescript-eslint/unbound-method": "off"
       }
     }
