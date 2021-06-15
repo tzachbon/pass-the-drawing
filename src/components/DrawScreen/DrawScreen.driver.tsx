@@ -4,6 +4,7 @@ import {
 	DrawScreen,
 	DrawScreenProps,
 	ROOT_TEST_ID,
+	TIMER_TEST_ID,
 } from './DrawScreen'
 
 interface Params {
@@ -24,6 +25,7 @@ export function drawScreenTestkit(container: RenderResult) {
 	const utils = testUtils(ROOT_TEST_ID, container)
 	const testkit = {
 		element: utils.element,
+		timer: () => testUtils(TIMER_TEST_ID, container, { keys: [ 'text' ] }),
 		canvas: () => canvasTestkit(container),
 	}
 

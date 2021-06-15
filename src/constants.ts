@@ -22,4 +22,5 @@ export const firebaseConfig = {
 }
 
 
+export const MAXIMUM_EXPIRE_TIME = 13
 export const MINIMUM_PLAYERS_LENGTH = 3
