@@ -76,4 +76,8 @@ import * as stylesheet from './MyStyles.st.css'`)
 
 		return this
 	}
+
+	get html() {
+		return this.wrapper.container.container.innerHTML
+	}
 }
