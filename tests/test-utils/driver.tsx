@@ -6,15 +6,22 @@ import type { ComponentType, ReactElement } from 'react'
 import type * as stylesheet from './../../src/styles/globals.st.css'
 import { createRouterMockProvider } from './create-router-mock-provider'
 import { renderer, Renderer } from './render'
+
 export interface Options {
 	stylesheet?: typeof stylesheet
 	initialRoute?: string
 }
 
+export interface DriverSpies {
+	history: Partial<{
+		push: jest.SpyInstance<void, [location: LocationDescriptor<unknown>]>
+	}>
+}
+
 export abstract class Driver<P extends object> {
 	public wrapper: Renderer
 	public history: History | undefined
-	public pushSpy: jest.SpyInstance<void, [location: LocationDescriptor<unknown>]> | undefined
+	public spies: DriverSpies = { history: {} }
 	private getUI: (newProps: P) => () => ReactElement
 
 	constructor(
@@ -28,7 +35,7 @@ export abstract class Driver<P extends object> {
 			})
 
 			this.history = history
-			this.pushSpy = pushSpy
+			this.spies.history.push = pushSpy
 
 			const component = () => (
 				<RouterWrapperMock>
