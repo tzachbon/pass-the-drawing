@@ -1,4 +1,5 @@
 import { DrawScreen } from '@components/DrawScreen'
+import { GuessWordScreen } from '@components/GuessWordScreen'
 import type { Game, Player } from '@types'
 import React, { useMemo } from 'react'
 import { classes, st } from './PlayScreen.st.css'
@@ -31,7 +32,7 @@ export const PlayScreen: React.VFC<PlayScreenProps> = (
 		>
 			{
 				isLastPlayer ? (
-					<span>TODO add GuessWordScreen</span>
+					<GuessWordScreen />
 				) : (
 					<DrawScreen
 						game={game}

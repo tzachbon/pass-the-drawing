@@ -1,0 +1,1 @@
+export { GuessWordScreen } from './GuessWordScreen'
