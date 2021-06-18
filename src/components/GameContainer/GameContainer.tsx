@@ -1,7 +1,8 @@
+import type React from 'react'
+import type { Game, User } from '@types'
 import { PlayScreen } from '@components/PlayScreen'
 import { StandbyScreen } from '@components/StandbyScreen'
-import type { Game, User } from '@types'
-import React, { useMemo } from 'react'
+import { useCurrentPlayer } from '@hooks/useCurrentPlayer'
 import { classes, st } from './GameContainer.st.css'
 
 export interface GameContainerProps {
@@ -20,18 +21,11 @@ export const GameContainer: React.VFC<GameContainerProps> = (
 		currentUser,
 	},
 ) => {
-	const { currentIndex, currentPlayer } = useMemo(() => {
-		const index = game.players.findIndex(player => player.id === currentUser.uid)
-		const player = game.players[ index ]!
-
-		return {
-			currentIndex: index,
-			currentPlayer: player,
-		}
-	}, [ game.players, currentUser.uid ])
-
-	const isPlaying = game.currentPlayingIndex === currentIndex
-	const currentPlayingPlayer = game.players[ game.currentPlayingIndex || 0 ]!
+	const { 
+		isPlaying, 
+		currentPlayer,
+		currentPlayingPlayer,
+	 } = useCurrentPlayer({ currentUser, game })
 
 	return (
 		<div
