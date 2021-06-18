@@ -1,4 +1,4 @@
-import { drawScreenTestkit } from '@components/DrawScreen/DrawScreen.driver'
+import { drawScreenTestkit } from '@screens/DrawScreen/DrawScreen.driver'
 import { Driver, RenderResult, testUtils } from '@test-utils'
 import {
 	PlayScreen, PlayScreenProps, ROOT_TEST_ID,

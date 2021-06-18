@@ -1,5 +1,5 @@
-import { DrawScreen } from '@components/DrawScreen'
-import { GuessWordScreen } from '@components/GuessWordScreen'
+import { DrawScreen } from '@screens/DrawScreen'
+import { GuessWordScreen } from '@screens/GuessWordScreen'
 import type { Game, Player } from '@types'
 import React, { useMemo } from 'react'
 import { classes, st } from './PlayScreen.st.css'

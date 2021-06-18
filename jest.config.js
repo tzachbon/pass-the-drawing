@@ -26,6 +26,7 @@ module.exports = {
     moduleNameMapper: {
         '@test-utils': '<rootDir>/tests/test-utils',
         '@api': '<rootDir>/src/api',
+        '^@screens(.*)$': '<rootDir>/src/screens$1',
         '^@components(.*)$': '<rootDir>/src/components$1',
         '^@hooks(.*)$': '<rootDir>/src/hooks$1',
         '@types': '<rootDir>/src/types',

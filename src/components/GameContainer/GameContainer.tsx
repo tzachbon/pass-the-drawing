@@ -1,7 +1,7 @@
 import type React from 'react'
 import type { Game, User } from '@types'
-import { PlayScreen } from '@components/PlayScreen'
-import { StandbyScreen } from '@components/StandbyScreen'
+import { PlayScreen } from '@screens/PlayScreen'
+import { StandbyScreen } from '@screens/StandbyScreen'
 import { useCurrentPlayer } from '@hooks/useCurrentPlayer'
 import { classes, st } from './GameContainer.st.css'
 

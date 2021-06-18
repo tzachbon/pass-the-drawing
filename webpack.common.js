@@ -21,6 +21,7 @@ module.exports = {
         alias: {
             '@api': require('path').resolve('src', 'api'),
             '@components': require('path').resolve('src', 'components'),
+            '@screens': require('path').resolve('src', 'screens'),
             '@hooks': require('path').resolve('src', 'hooks'),
             '@types': require('path').resolve('src', 'types'),
             '@constants': require('path').resolve('src', 'constants'),

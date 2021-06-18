@@ -1,5 +1,5 @@
-import { playScreenTestkit } from '@components/PlayScreen/PlayScreen.driver'
-import { standbyScreenTestkit } from '@components/StandbyScreen/StandbyScreen.driver'
+import { playScreenTestkit } from '@screens/PlayScreen/PlayScreen.driver'
+import { standbyScreenTestkit } from '@screens/StandbyScreen/StandbyScreen.driver'
 import { Driver, RenderResult, testUtils } from '@test-utils'
 import { GameContainer, GameContainerProps, ROOT_TEST_ID } from './GameContainer'
 
