@@ -19,8 +19,8 @@ export class CanvasDriver extends Driver<Params['props']> {
 	}
 }
 
-export function canvasTestkit(container: RenderResult) {
-	const utils = testUtils(`${testIdToSelector(ROOT_TEST_ID)} canvas`, container, { isSelector: true })
+export function canvasTestkit(container: RenderResult, testId: string = ROOT_TEST_ID) {
+	const utils = testUtils(`${testIdToSelector(testId)} canvas`, container, { isSelector: true })
 	const testkit = {
 		element: utils.element,
 		draw: (x: number, y: number, { start }: { start?: { x: number, y: number } } = {}) => {

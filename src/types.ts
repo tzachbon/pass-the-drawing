@@ -19,7 +19,8 @@ export interface Game extends CreateGameParams {
     players: Player[]
     endTime?: number
     currentPlayingIndex: number
-    winner?: Player
+    finished?: boolean
+    isWon?: boolean
 }
 
 export interface Player {

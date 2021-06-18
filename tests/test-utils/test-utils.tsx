@@ -11,6 +11,8 @@ interface Utils {
 	disabled: () => boolean;
 	hasAttribute: (attr: string) => boolean
 	getAttribute: (attr: string) => string | null
+	placeholder: () => string | null
+	value: () => string | null
 }
 
 type UtilsKeys = keyof Utils
@@ -46,6 +48,8 @@ export function testUtils<K extends UtilsKeys>(
 		type: (value: string) =>
 			fireEvent.input(utils._element(), { target: { value } }),
 		disabled: () => utils.hasAttribute('disabled'),
+		placeholder: () => utils.getAttribute('placeholder'),
+		value: () => utils.getAttribute('value'),
 	}
 
 	if (keys) {

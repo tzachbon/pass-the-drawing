@@ -32,7 +32,7 @@ export const PlayScreen: React.VFC<PlayScreenProps> = (
 		>
 			{
 				isLastPlayer ? (
-					<GuessWordScreen />
+					<GuessWordScreen game={game} />
 				) : (
 					<DrawScreen
 						game={game}

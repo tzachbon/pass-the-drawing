@@ -29,6 +29,7 @@ module.exports = {
         '^@screens(.*)$': '<rootDir>/src/screens$1',
         '^@components(.*)$': '<rootDir>/src/components$1',
         '^@hooks(.*)$': '<rootDir>/src/hooks$1',
+        '^@utils(.*)$': '<rootDir>/src/utils$1',
         '@types': '<rootDir>/src/types',
         '@constants': '<rootDir>/src/constants',
     },

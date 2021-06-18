@@ -43,7 +43,6 @@ export function aGame({
 	started,
 	startTime,
 	endTime,
-	winner,
 }: Partial<Game> = {}): Game {
 	return {
 		started,
@@ -55,9 +54,38 @@ export function aGame({
 		word,
 		currentPlayingIndex,
 		endTime,
-		winner,
 	}
 }
+
+export const FAKE_DRAWING_DATA = JSON.stringify({
+	lines:
+		[
+			{
+				points:
+					[
+						{
+							x: 0.7999999999999545,
+							y: 0.6000000000000227,
+						},
+						{
+							x: 0.7999999999999545,
+							y: 0.6000000000000227,
+						},
+						{
+							x: 4.309524253317494,
+							y: 4.276644455856433,
+						}, {
+							x: 4.309524253317494,
+							y: 4.276644455856433,
+						},
+					],
+				brushColor: '#444',
+				brushRadius: 5,
+			},
+		],
+	width: 400,
+	height: 400,
+})
 
 
 export { anUserToPlayer }

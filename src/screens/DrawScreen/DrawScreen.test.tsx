@@ -1,4 +1,4 @@
-import { aGame, aPlayer, wait } from '@test-utils'
+import { aGame, aPlayer, FAKE_DRAWING_DATA, wait } from '@test-utils'
 import { mockFirebase, update } from '../../../tests/__mocks__/firebase'
 import { drawScreenDriver } from './DrawScreen.driver'
 
@@ -13,35 +13,7 @@ describe('DrawScreen', () => {
 
 	it('show draw on canvas and save to database', async () => {
 		driver.testkit().canvas().draw(5, 5)
-		const expectedDraw = JSON.stringify({
-			lines:
-				[
-					{
-						points:
-							[
-								{
-									x: 0.7999999999999545,
-									y: 0.6000000000000227,
-								},
-								{
-									x: 0.7999999999999545,
-									y: 0.6000000000000227,
-								},
-								{
-									x: 4.309524253317494,
-									y: 4.276644455856433,
-								}, {
-									x: 4.309524253317494,
-									y: 4.276644455856433,
-								},
-							],
-						brushColor: '#444',
-						brushRadius: 5,
-					},
-				],
-			width: 400,
-			height: 400,
-		})
+		const expectedDraw = FAKE_DRAWING_DATA
 
 		await wait(() => {
 			expect(update).toBeCalledWith({

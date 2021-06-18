@@ -1,1 +1,17 @@
-.root {}
+:import {
+  -st-from: "../../styles/common.st.css";
+  -st-named: flex, flexCol;
+}
+
+.root {
+  -st-mixin: flexCol;
+  overflow: auto;
+}
+
+.drawsContainer {
+  -st-mixin: flex;
+  gap: 1rem;
+  width: 100vw;
+}
+
+.draw {}
