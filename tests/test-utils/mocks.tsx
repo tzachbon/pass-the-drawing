@@ -43,6 +43,8 @@ export function aGame({
 	started,
 	startTime,
 	endTime,
+	finished,
+	isWon,
 }: Partial<Game> = {}): Game {
 	return {
 		started,
@@ -54,6 +56,8 @@ export function aGame({
 		word,
 		currentPlayingIndex,
 		endTime,
+		finished,
+		isWon,
 	}
 }
 

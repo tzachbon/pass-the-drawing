@@ -1,3 +1,5 @@
+import { wonScreenTestkit } from '@screens/WonScreen/WonScreen.driver'
+import { lostScreenTestkit } from '@screens/LostScreen/LostScreen.driver'
 import { playScreenTestkit } from '@screens/PlayScreen/PlayScreen.driver'
 import { standbyScreenTestkit } from '@screens/StandbyScreen/StandbyScreen.driver'
 import { Driver, RenderResult, testUtils } from '@test-utils'
@@ -22,6 +24,8 @@ export function gameContainerTestkit(container: RenderResult) {
 		element: () => testUtils(ROOT_TEST_ID, container, { keys: [] }).element(),
 		standbyScreen: () => standbyScreenTestkit(container),
 		playScreen: () => playScreenTestkit(container),
+		lostScreen: () => lostScreenTestkit(container),
+		wonScreen: () => wonScreenTestkit(container),
 	}
 
 	return testkit

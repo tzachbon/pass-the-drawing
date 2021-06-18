@@ -27,4 +27,31 @@ describe('GameContainer', () => {
 		expect(driver.testkit().standbyScreen().element()).toBeInTheDocument()
 		expect(driver.testkit().playScreen().element()).not.toBeInTheDocument()
 	})
+
+	it('should show win screen', () => {
+		driver
+			.withProps({
+				game: aGame({
+					finished: true,
+					isWon: true,
+				}),
+			})
+			.render()
+
+		expect(driver.testkit().wonScreen().element()).toBeInTheDocument()
+	})
+
+	it('should show lost screen', () => {
+		driver
+			.withProps({
+				game: aGame({
+					...game,
+					finished: true,
+					isWon: false,
+				}),
+			})
+			.render()
+
+		expect(driver.testkit().lostScreen().element()).toBeInTheDocument()
+	})
 })
