@@ -4,6 +4,7 @@ import { PlayScreen } from '@screens/PlayScreen'
 import { StandbyScreen } from '@screens/StandbyScreen'
 import { useCurrentPlayer } from '@hooks/useCurrentPlayer'
 import { classes, st } from './GameContainer.st.css'
+import { LostScreen } from '@screens/LostScreen'
 
 export interface GameContainerProps {
 	className?: string
@@ -21,11 +22,12 @@ export const GameContainer: React.VFC<GameContainerProps> = (
 		currentUser,
 	},
 ) => {
-	const { 
-		isPlaying, 
+	const {
+		isPlaying,
 		currentPlayer,
 		currentPlayingPlayer,
-	 } = useCurrentPlayer({ currentUser, game })
+	} = useCurrentPlayer({ currentUser, game })
+	const { isWon, finished } = game
 
 	return (
 		<div
@@ -33,7 +35,11 @@ export const GameContainer: React.VFC<GameContainerProps> = (
 			className={st(classes.root, className)}
 		>
 			{
-				isPlaying ? (
+				finished ? isWon ? (
+					<div>TODO add win screen</div>
+				) : (
+					<LostScreen />
+				) : isPlaying ? (
 					<PlayScreen
 						game={game}
 						currentPlayer={currentPlayer}
