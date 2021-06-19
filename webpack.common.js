@@ -23,6 +23,7 @@ module.exports = {
             '@components': require('path').resolve('src', 'components'),
             '@screens': require('path').resolve('src', 'screens'),
             '@utils': require('path').resolve('src', 'utils'),
+            '@pages': require('path').resolve('src', 'pages'),
             '@hooks': require('path').resolve('src', 'hooks'),
             '@types': require('path').resolve('src', 'types'),
             '@constants': require('path').resolve('src', 'constants'),
