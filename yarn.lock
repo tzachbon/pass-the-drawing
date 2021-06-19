@@ -10592,6 +10592,11 @@ tree-kill@^1.2.1:
   resolved "https://registry.npmjs.org/tree-kill/-/tree-kill-1.2.2.tgz#4ca09a9092c88b73a7cdc5e8a01b507b0790a0cc"
   integrity sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==
 
+trier-promise@~1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/trier-promise/-/trier-promise-1.0.1.tgz#a51bc4e819a78142b377106488f4552aa83c0159"
+  integrity sha1-pRvE6BmngUKzdxBkiPRVKqg8AVk=
+
 triple-beam@^1.2.0, triple-beam@^1.3.0:
   version "1.3.0"
   resolved "https://registry.npmjs.org/triple-beam/-/triple-beam-1.3.0.tgz#a595214c7298db8339eeeee083e4d10bd8cb8dd9"
@@ -11312,6 +11317,13 @@ winston@^3.0.0:
     stack-trace "0.0.x"
     triple-beam "^1.3.0"
     winston-transport "^4.4.0"
+
+wix-eventually@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.npmjs.org/wix-eventually/-/wix-eventually-2.3.0.tgz#910323921b7fca2b8d5d18d4cbde01df43c81efd"
+  integrity sha512-bmaLsh/DD+7pcHRKWoOoM6poTai9WKUQVGMoqvbtYpvkujnz1HQbdoXROQTHq5pqY699XtuFuiR+fcj6HIsIlg==
+  dependencies:
+    trier-promise "~1.0.1"
 
 word-wrap@^1.2.3, word-wrap@~1.2.3:
   version "1.2.3"
