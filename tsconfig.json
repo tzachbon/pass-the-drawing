@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "resolveJsonModule": true,
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
     /* Basic Options */
     // "incremental": true,                         /* Enable incremental compilation */
@@ -54,7 +55,7 @@
         "src/api"
       ],
       "@types": [
-        "src/types"
+        "src/types",
       ],
       "@constants": [
         "src/constants"
@@ -76,7 +77,10 @@
     // "typeRoots": [],                             /* List of folders to include type definitions from. */
     "types": [
       "@types/jest",
-      "@types/node"
+      "@types/node",
+      "puppeteer",
+      "jest-environment-puppeteer",
+      "expect-puppeteer"
     ], /* Type declaration files to be included in compilation. */
     "allowSyntheticDefaultImports": true, /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
     "esModuleInterop": true, /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
