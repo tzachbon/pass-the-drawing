@@ -15,6 +15,7 @@ export const LOGGED_IN_MESSAGE_TEST_ID = 'CreateGame_LOGGED_IN_MESSAGE_TEST_ID'
 export const SUBJECT_ERROR_TEST_ID = 'CreateGame_SUBJECT_ERROR_TEST_ID'
 export const SUBMIT_BUTTON_TEST_ID = 'CreateGame_SUBMIT_BUTTON_TEST_ID'
 export const SUBMIT_ERROR_TEST_ID = 'CreateGame_SUBMIT_ERROR_TEST_ID'
+export const FORM_TEST_ID_TEST_ID = 'CreateGame_FORM_TEST_ID_TEST_ID'
 
 export const CreateGame: React.VFC<CreateGameProps> = ({ className }) => {
 	const {

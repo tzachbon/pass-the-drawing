@@ -2,19 +2,19 @@
   "kind": "identitytoolkit#GetAccountInfoResponse",
   "users": [
     {
-      "localId": "NQvqrYkmuGcDWdlkyGn6QrZ3VJD2",
-      "email": "tzachbonfil@gmail.com",
-      "displayName": "Tzach Bonfil",
-      "photoUrl": "https://lh3.googleusercontent.com/a-/AOh14Gh6VHl2Pi5BSDnrc5pvWOBvXVjC9TCZq4zcsLo_kw=s96-c",
+      "localId": "NQvqrYkmuGcDWdlkyGn6QrZ3VJD3",
+      "email": "mockuser@gmail.com",
+      "displayName": "Mock User",
+      "photoUrl": null,
       "emailVerified": true,
       "providerUserInfo": [
         {
           "providerId": "google.com",
-          "displayName": "Tzach Bonfil",
-          "photoUrl": "https://lh3.googleusercontent.com/a-/AOh14Gh6VHl2Pi5BSDnrc5pvWOBvXVjC9TCZq4zcsLo_kw=s96-c",
-          "federatedId": "118146978354650938369",
-          "email": "tzachbonfil@gmail.com",
-          "rawId": "118146978354650938369"
+          "displayName": "Mock User",
+          "photoUrl": null,
+          "federatedId": "118146978354650938360",
+          "email": "mockuser@gmail.com",
+          "rawId": "118146978354650938360"
         }
       ],
       "validSince": "1622286790",
