@@ -7,6 +7,7 @@ import {
 	mockFirebase,
 	Persistence,
 	setPersistence,
+	signInWithEmailAndPassword,
 	signInWithRedirect,
 } from '../__mocks__/firebase'
 
@@ -68,6 +69,35 @@ describe('useAuth', () => {
 
 			expect(signInWithRedirect).toBeCalledWithInstance(
 				GoogleAuthProvider,
+			)
+		})
+	})
+
+	describe('signInWithEmailAndPassword', () => {
+		const [ email, password ] = [ 'fake@email.com', 'fake-password' ]
+
+		it('should set persistence', async () => {
+			const { result, waitFor } = renderHook(() => useAuth())
+
+			await act(async () => {
+				await result.current.signInWithEmailAndPassword(email, password)
+			})
+
+			await waitFor(() => {
+				expect(setPersistence).toBeCalledWith(Persistence.LOCAL)
+			})
+		})
+
+		it('should have been called with email and password', async () => {
+			const { result } = renderHook(() => useAuth())
+
+			await act(async () => {
+				await result.current.signInWithEmailAndPassword(email, password)
+			})
+
+			expect(signInWithEmailAndPassword).toHaveBeenCalledWith(
+				email,
+				password,
 			)
 		})
 	})

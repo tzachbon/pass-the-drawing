@@ -7,16 +7,26 @@ export function useAuth() {
 	const [ currentUser, setCurrentUser ] = useState<User | undefined>()
 	const { run, error, loading } = useAsync()
 
-	const signInWithRedirect = useCallback(async () => {
-		const provider = new firebase.auth.GoogleAuthProvider()
-		await run(async () => {
-			await firebase
-				.auth()
-				.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+	const signInWithRedirect = run(
+		useCallback(async () => {
+			const provider = new firebase.auth.GoogleAuthProvider()
+			await setPersist()
 
 			return await firebase.auth().signInWithRedirect(provider)
-		})()
-	}, [ run ])
+		}, []),
+	)
+
+	const signInWithEmailAndPassword = run(
+		useCallback(
+			async (email: string, password: string) => {
+				await setPersist()
+
+				return await firebase
+					.auth()
+					.signInWithEmailAndPassword(email, password)
+			},
+			[],
+		))
 
 	useEffect(() => {
 		firebase.auth().onAuthStateChanged((user) => {
@@ -27,9 +37,17 @@ export function useAuth() {
 	}, [])
 
 	return {
+		signInWithEmailAndPassword,
 		signInWithRedirect,
 		error,
 		loading,
 		currentUser,
 	}
+}
+
+
+async function setPersist() {
+	await firebase
+		.auth()
+		.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
 }
