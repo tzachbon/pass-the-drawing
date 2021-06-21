@@ -1,25 +1,29 @@
-import { useAuth } from '@hooks/useAuth'
+import { AuthProvider, useAuth } from '@hooks/useAuth'
 import { anUser } from '@test-utils'
 import { act, renderHook } from '@testing-library/react-hooks'
 import {
 	authState,
 	GoogleAuthProvider,
-	mockFirebase,
-	Persistence,
+	 Persistence,
 	setPersistence,
 	signInWithEmailAndPassword,
 	signInWithRedirect,
 } from '../__mocks__/firebase'
 
-mockFirebase()
-
 describe('useAuth', () => {
 	const fakeUser = anUser()
 	const fakeUser2 = anUser()
 
+	const renderAuth = () => renderHook(
+		() => useAuth(),
+		{
+			wrapper: AuthProvider,
+		},
+	)
+
 	describe('onAuthStateChanged', () => {
 		it('should set current user', async () => {
-			const { result, waitFor } = renderHook(() => useAuth())
+			const { result, waitFor } = renderAuth()
 
 			void act(() => {
 				authState.onAuthStateChangedCallback()
@@ -49,7 +53,7 @@ describe('useAuth', () => {
 
 	describe('signInWithRedirect', () => {
 		it('should set persistence', async () => {
-			const { result, waitFor } = renderHook(() => useAuth())
+			const { result, waitFor } = renderAuth()
 
 			await act(async () => {
 				await result.current.signInWithRedirect()
@@ -61,7 +65,7 @@ describe('useAuth', () => {
 		})
 
 		it('should use google provider for sign in', async () => {
-			const { result } = renderHook(() => useAuth())
+			const { result } = renderAuth()
 
 			await act(async () => {
 				await result.current.signInWithRedirect()
@@ -77,7 +81,7 @@ describe('useAuth', () => {
 		const [ email, password ] = [ 'fake@email.com', 'fake-password' ]
 
 		it('should set persistence', async () => {
-			const { result, waitFor } = renderHook(() => useAuth())
+			const { result, waitFor } = renderAuth()
 
 			await act(async () => {
 				await result.current.signInWithEmailAndPassword(email, password)
@@ -89,7 +93,7 @@ describe('useAuth', () => {
 		})
 
 		it('should have been called with email and password', async () => {
-			const { result } = renderHook(() => useAuth())
+			const { result } = renderAuth()
 
 			await act(async () => {
 				await result.current.signInWithEmailAndPassword(email, password)

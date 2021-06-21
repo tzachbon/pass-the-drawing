@@ -8,12 +8,7 @@ import { useSubmitGame } from '@hooks/useSubmitGame'
 import { anUser, anUserToPlayer, createRouterMockProvider, uuidRegexPattern } from '@test-utils'
 import { act, renderHook } from '@testing-library/react-hooks'
 import { v4 as uuid } from 'uuid'
-import {
-	mockFirebase,
-	set,
-} from '../__mocks__/firebase'
-
-mockFirebase()
+import { set } from '../__mocks__/firebase'
 
 describe('useSubmitGame', () => {
 	const { state } = setup().beforeAndAfter()
