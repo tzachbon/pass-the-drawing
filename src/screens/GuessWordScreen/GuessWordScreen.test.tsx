@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { aGame, aPlayer, FAKE_DRAWING_DATA } from '@test-utils'
-import { mockFirebase, update } from '../../../tests/__mocks__/firebase'
+import { update } from '../../../tests/__mocks__/firebase'
 import { guessWordScreenDriver } from './GuessWordScreen.driver'
-
-mockFirebase()
 
 describe('GuessWordScreen', () => {
 	const players = [
