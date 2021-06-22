@@ -5,10 +5,11 @@ export function useAsync() {
 	const [ error, setError ] = useState<Error | undefined>()
 
 	const run = useCallback(
-		<T = unknown, P extends Array<unknown> = unknown[]>(
+		function <T = unknown, P extends Array<unknown> = unknown[]>
+		(
 			callback: (...args: P) => Promise<T> | T,
-		) =>
-			async (...args: P) => {
+		) {
+			 return async (...args: P) => {
 				setLoading(true)
 				try {
 					await callback(...args)
@@ -17,7 +18,8 @@ export function useAsync() {
 				} finally {
 					setLoading(false)
 				}
-			},
+			}
+		},
 		[],
 	)
 
