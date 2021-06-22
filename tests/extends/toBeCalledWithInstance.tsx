@@ -13,6 +13,18 @@ expect.extend({
 		expected: jest.Mock,
 		received: T,
 	): jest.CustomMatcherResult {
+
+		const isCalled = expected?.mock?.calls?.length
+
+		if (!isCalled) {
+			return {
+				pass: false,
+				message: () => `Expected ${this.utils.printExpected(
+					expected,
+				)} to be called but it didn't`,
+			}
+		}
+		
 		const isInstance = expected?.mock?.calls.some(
 			(calls) =>
 				Array.isArray(calls) &&
