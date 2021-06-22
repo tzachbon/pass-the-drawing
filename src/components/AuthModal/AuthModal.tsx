@@ -11,7 +11,9 @@ export interface AuthModalProps {
 	onCloseModal: () => void
 }
 
-Modal.setAppElement(document.body)
+export function setModalRoot() {
+	Modal.setAppElement(document.body)
+}
 
 export const ROOT_TEST_ID = 'AuthModal_ROOT_TEST_ID'
 export const SIGN_IN_WITH_GOOGLE_TEST_ID = 'AuthModal_SIGN_IN_WITH_GOOGLE_TEST_ID'
