@@ -11,9 +11,9 @@ jobs:
       - uses: actions/checkout@v2
       - run: |
           touch .env.test
-          echo ${{ secrets.FIRST_TEST_USER_PASSWORD }} >> fileName
-          echo ${{ secrets.SECOND_TEST_USER_PASSWORD }} >> fileName
-          echo ${{ secrets.THIRD_TEST_USER_PASSWORD }} >> fileName
+          echo "FIRST_TEST_USER_PASSWORD=${{ secrets.FIRST_TEST_USER_PASSWORD }}" >> .env.test
+          echo "SECOND_TEST_USER_PASSWORD=${{ secrets.SECOND_TEST_USER_PASSWORD }}" >> .env.test
+          echo "THIRD_TEST_USER_PASSWORD=${{ secrets.THIRD_TEST_USER_PASSWORD }}" >> .env.test
           yarn && yarn test
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
