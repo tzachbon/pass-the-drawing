@@ -37,6 +37,8 @@ export const GoogleAuthProvider = jest.fn()
 export const setPersistence = jest.fn()
 export const signInWithPopup = jest.fn()
 export const signInWithRedirect = jest.fn()
+export const signInWithEmailAndPassword = jest.fn()
+export const createUserWithEmailAndPassword = jest.fn()
 export const onAuthStateChanged = jest
 	.fn()
 	.mockImplementation((callback: Function) => {
@@ -49,6 +51,8 @@ export function firebaseAuthMock() {
 		signInWithPopup,
 		onAuthStateChanged,
 		signInWithRedirect,
+		signInWithEmailAndPassword,
+		createUserWithEmailAndPassword,
 	})
 
 	auth.GoogleAuthProvider = GoogleAuthProvider
@@ -70,6 +74,8 @@ export function cleanup() {
 		setPersistence,
 		signInWithPopup,
 		signInWithRedirect,
+		signInWithEmailAndPassword,
+		createUserWithEmailAndPassword,
 		onAuthStateChanged,
 		isEqual,
 		on,

@@ -15,9 +15,11 @@
   white-light-strong: rgba(255, 255, 255, 0.5);
   white-light-mid: rgba(255, 255, 255, 0.3);
   white-light-washed: rgba(255, 255, 255, 0.1);
+  dark-washed: rgba(24, 24, 24, 0.5);
   mainDarkColor: value(grey-dark);
   mainLightColor: value(white-strong);
   backgroundColor: value(mainDarkColor);
   fontColor: value(white);
   secondaryFontColor: value(mainLightColor);
+  mobileMaxWidth: 812px
 }

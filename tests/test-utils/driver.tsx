@@ -7,6 +7,7 @@ import type * as stylesheet from './../../src/styles/globals.st.css'
 import { createRouterMockProvider } from './create-router-mock-provider'
 import { renderer, Renderer } from './render'
 import { AuthProvider } from '@hooks/useAuth'
+import { setModalRoot } from '@components/AuthModal/AuthModal'
 
 export interface Options {
 	stylesheet?: typeof stylesheet
@@ -83,6 +84,10 @@ import * as stylesheet from './MyStyles.st.css'`)
 
 	beforeAndAfter() {
 		this.wrapper = this.render().beforeAndAfter()
+
+		beforeEach(() => {
+			setModalRoot()
+		})
 
 		return this
 	}

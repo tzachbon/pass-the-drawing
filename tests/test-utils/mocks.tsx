@@ -3,7 +3,7 @@ import { GameSubjects } from '@constants'
 import { uuid } from '@test-utils'
 import { Game, Player, PlayerRoles, User } from '@types'
 
-export type FirebaseUser = Pick<User, | 'displayName' | 'uid' | 'photoURL'>
+export type FirebaseUser = Pick<User, | 'displayName' | 'uid' | 'photoURL' | 'email'>
 
 export function aPlayer({
 	id = uuid(),
@@ -25,11 +25,13 @@ export function anUser({
 	displayName = uuid(),
 	photoURL = uuid(),
 	uid = uuid(),
+	email = uuid(),
 }: Partial<FirebaseUser> = {}): FirebaseUser {
 	return {
 		displayName,
 		photoURL,
 		uid,
+		email,
 	}
 }
 
