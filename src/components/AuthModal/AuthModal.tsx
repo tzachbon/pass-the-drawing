@@ -8,6 +8,8 @@ export interface AuthModalProps {
 	onCloseModal: () => void
 }
 
+Modal.setAppElement(document.body)
+
 export const ROOT_TEST_ID = 'AuthModal_ROOT_TEST_ID'
 
 export const AuthModal: React.VFC<AuthModalProps> = (
