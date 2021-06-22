@@ -4,11 +4,12 @@ import {
 	CreateGame,
 	CreateGameProps,
 	LOGGED_IN_MESSAGE_TEST_ID,
-	LOGIN_BUTTON_TEST_ID,
+	OPEN_MODAL_BUTTON_TEST_ID,
 	SUBJECT_ERROR_TEST_ID,
 	SUBMIT_BUTTON_TEST_ID,
 	SUBMIT_ERROR_TEST_ID,
 } from './CreateGame'
+import { authModalTestkit } from '@components/AuthModal/AuthModal.driver'
 
 interface Params {
 	props?: CreateGameProps
@@ -38,7 +39,15 @@ export function createGameTestkit(container: RenderResult) {
 		}),
 		login: () => ({
 			message: () => testUtils(LOGGED_IN_MESSAGE_TEST_ID, container, { keys: [] }),
-			button: () => testUtils(LOGIN_BUTTON_TEST_ID, container, { keys: [ 'click' ] }),
+			modal: () => {
+				const { click, ...modalUtils } = testUtils(OPEN_MODAL_BUTTON_TEST_ID, container, { keys: [ 'click' ] })
+
+				return {
+					open: click,
+					...modalUtils,
+					...authModalTestkit(container),
+				}
+			},
 		}),
 	}
 }

@@ -31,13 +31,15 @@ describe('CreateGame', () => {
 		)
 
 		driver.testkit().selectSubject().input().type(subject)
-		driver.testkit().login().button().click()
+		driver.testkit().login().modal().open()
+		driver.testkit().login().modal().signInWithGoogle().click()
 
 		await wait(() => {
 			authState.onAuthStateChangedCallback(fakeUser)
 		})
 
 		await wait(() => {
+			expect(driver.testkit().login().modal().element()).not.toBeInTheDocument()
 			expect(driver.testkit().submit().button().disabled()).toBeFalsy()
 		})
 
@@ -85,7 +87,8 @@ describe('CreateGame', () => {
 		)
 
 		driver.testkit().selectSubject().input().type(subject)
-		driver.testkit().login().button().click()
+		driver.testkit().login().modal().open()
+		driver.testkit().login().modal().signInWithGoogle().click()
 
 		await wait(() => {
 			authState.onAuthStateChangedCallback(fakeUser)
@@ -107,7 +110,8 @@ describe('CreateGame', () => {
 		fetch.mockRejectedValue(new Error())
 
 		driver.testkit().selectSubject().input().type(GameSubjects.Food)
-		driver.testkit().login().button().click()
+		driver.testkit().login().modal().open()
+		driver.testkit().login().modal().signInWithGoogle().click()
 
 		await wait(() => {
 			authState.onAuthStateChangedCallback(fakeUser)
@@ -131,7 +135,8 @@ describe('CreateGame', () => {
 	})
 
 	it('should do login process', async () => {
-		driver.testkit().login().button().click()
+		driver.testkit().login().modal().open()
+		driver.testkit().login().modal().signInWithGoogle().click()
 
 		await wait(() => {
 			expect(signInWithRedirect).toBeCalled()
@@ -141,10 +146,27 @@ describe('CreateGame', () => {
 			authState.onAuthStateChangedCallback(fakeUser)
 		})
 
-		expect(driver.testkit().login().button().element()).toBeNull()
+		expect(driver.testkit().login().modal().element()).toBeNull()
 		expect(driver.testkit().login().message().element()).toHaveTextContent(
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 			'Logged in as ' + String(fakeUser.displayName),
+		)
+	})
+
+	it('should display email incase displayName does not exist', async () => {
+		driver.testkit().login().modal().open()
+		driver.testkit().login().modal().signInWithGoogle().click()
+
+		await wait(() => {
+			expect(signInWithRedirect).toBeCalled()
+		})
+
+		await wait(() => {
+			authState.onAuthStateChangedCallback({ ...fakeUser, displayName: undefined })
+		})
+
+		expect(driver.testkit().login().modal().element()).toBeNull()
+		expect(driver.testkit().login().message().element()).toHaveTextContent(
+			'Logged in as ' + String(fakeUser.email),
 		)
 	})
 })
