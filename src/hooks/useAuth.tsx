@@ -1,3 +1,4 @@
+import { USER_NOT_FOUND_ERROR_CODE } from '@constants'
 import type { User } from '@types'
 import firebase from 'firebase/app'
 import React, { createContext, useCallback, useEffect, useState } from 'react'
@@ -24,11 +25,12 @@ export const AuthProvider: React.ComponentType = (
 
 	const signInWithRedirect = run(
 		useCallback(async () => {
+			const provider = new firebase.auth.GoogleAuthProvider()
 			await setPersist()
 
 			return await firebase
 				.auth()
-				.signInWithRedirect(new firebase.auth.GoogleAuthProvider())
+				.signInWithRedirect(provider)
 		}, []),
 	)
 
@@ -37,9 +39,19 @@ export const AuthProvider: React.ComponentType = (
 			async (email: string, password: string) => {
 				await setPersist()
 
-				return await firebase
-					.auth()
-					.signInWithEmailAndPassword(email, password)
+				const auth = firebase.auth()
+
+				try {
+					await auth.signInWithEmailAndPassword(email, password)
+				} catch (error) {
+					// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+					if (error?.code === USER_NOT_FOUND_ERROR_CODE) {
+						await auth.createUserWithEmailAndPassword(email, password)
+					} else {
+						throw error
+					}
+				}
+
 			},
 			[],
 		))

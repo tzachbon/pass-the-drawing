@@ -1,10 +1,12 @@
+import { USER_NOT_FOUND_ERROR_CODE } from '@constants'
 import { AuthProvider, useAuth } from '@hooks/useAuth'
 import { anUser } from '@test-utils'
 import { act, renderHook } from '@testing-library/react-hooks'
 import {
 	authState,
+	createUserWithEmailAndPassword,
 	GoogleAuthProvider,
-	 Persistence,
+	Persistence,
 	setPersistence,
 	signInWithEmailAndPassword,
 	signInWithRedirect,
@@ -100,6 +102,23 @@ describe('useAuth', () => {
 			})
 
 			expect(signInWithEmailAndPassword).toHaveBeenCalledWith(
+				email,
+				password,
+			)
+		})
+
+		it('should create new user if the user does not found', async () => {
+			const error = { code: USER_NOT_FOUND_ERROR_CODE }
+
+			signInWithEmailAndPassword.mockRejectedValue(error)
+
+			const { result } = renderAuth()
+
+			await act(async () => {
+				await result.current.signInWithEmailAndPassword(email, password)
+			})
+
+			expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(
 				email,
 				password,
 			)
