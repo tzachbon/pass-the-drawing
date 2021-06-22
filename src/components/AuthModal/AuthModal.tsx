@@ -1,7 +1,7 @@
 import type React from 'react'
 import { classes, st } from './AuthModal.st.css'
 import Modal from 'react-modal'
-import { SignInForm, SignInFormProps } from '@components/SignInForm/SignInForm'
+import { SignInForm, SignInFormProps } from '@components/SignInForm'
 import { useCallback } from 'react'
 import { useAuth } from '@hooks/useAuth'
 
