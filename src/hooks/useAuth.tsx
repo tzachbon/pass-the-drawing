@@ -5,7 +5,7 @@ import { useContext } from 'react'
 import { useAsync } from './useAsync'
 
 interface IAuthContext {
-	signInWithEmailAndPassword: () => Promise<void>;
+	signInWithEmailAndPassword: (email: string, password: string) => Promise<void>;
 	signInWithRedirect: () => Promise<void>;
 	error: Error | undefined;
 	loading: boolean;
