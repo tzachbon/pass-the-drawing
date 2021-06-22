@@ -6,11 +6,14 @@ import { v4 as uuid } from 'uuid'
 import { fetch } from '../../../tests/__mocks__/fetch'
 import {
 	authState,
+	mockFirebase,
 	set,
 	signInWithRedirect,
 } from '../../../tests/__mocks__/firebase'
 
 import { createGameDriver } from './CreateGame.driver'
+
+mockFirebase()
 
 describe('CreateGame', () => {
 

@@ -1,6 +1,8 @@
 import { aGame, aPlayer, FAKE_DRAWING_DATA, wait } from '@test-utils'
-import { update } from '../../../tests/__mocks__/firebase'
+import { mockFirebase, update } from '../../../tests/__mocks__/firebase'
 import { drawScreenDriver } from './DrawScreen.driver'
+
+mockFirebase()
 
 describe('DrawScreen', () => {
 	const currentPlayer = aPlayer()

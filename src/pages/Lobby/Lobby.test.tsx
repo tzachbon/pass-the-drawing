@@ -3,12 +3,15 @@ import { aGame, anUser, anUserToPlayer, wait } from '@test-utils'
 import { PlayerRoles, User } from '@types'
 import {
 	authState,
-	databaseState, 
+	databaseState,
+	mockFirebase,
 	ref,
 	update,
 	useObjectValMock,
 } from '../../../tests/__mocks__/firebase'
 import { lobbyDriver } from './Lobby.driver'
+
+mockFirebase()
 
 describe('Lobby', () => {
 

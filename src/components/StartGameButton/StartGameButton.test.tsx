@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { aGame, aPlayer, wait } from '@test-utils'
 import { PlayerRoles } from '@types'
-import { databaseState, update } from '../../../tests/__mocks__/firebase'
+import { databaseState, mockFirebase, update } from '../../../tests/__mocks__/firebase'
 import { startGameButtonDriver } from './StartGameButton.driver'
+
+mockFirebase()
 
 describe('StartGameButton', () => {
 	const players = [

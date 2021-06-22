@@ -6,7 +6,6 @@ import type { ComponentType, ReactElement } from 'react'
 import type * as stylesheet from './../../src/styles/globals.st.css'
 import { createRouterMockProvider } from './create-router-mock-provider'
 import { renderer, Renderer } from './render'
-import { AuthProvider } from '@hooks/useAuth'
 
 export interface Options {
 	stylesheet?: typeof stylesheet
@@ -40,9 +39,7 @@ export abstract class Driver<P extends object> {
 
 			const component = () => (
 				<RouterWrapperMock>
-					<AuthProvider>
-						<this.Component {...newProps} />
-					</AuthProvider>
+					<this.Component {...newProps} />
 				</RouterWrapperMock>
 			)
 
