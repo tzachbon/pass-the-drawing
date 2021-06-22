@@ -1,3 +1,5 @@
+import { wait } from '@test-utils'
+import { GoogleAuthProvider, signInWithRedirect } from '../../../tests/__mocks__/firebase'
 import { authModalDriver } from './AuthModal.driver'
 
 describe('AuthModal', () => {
@@ -20,5 +22,17 @@ describe('AuthModal', () => {
 		driver.testkit().clickOnOverlay()
 
 		expect(onCloseModal).toHaveBeenCalled()
+	})
+
+	it('should render sign in with email form', () => {
+		expect(driver.testkit().signInWithEmail().element()).toBeInTheDocument()
+	})
+
+	it('should do login with google', async () => {
+		driver.testkit().signInWithGoogle().click()
+
+		await wait(() => {
+			expect(signInWithRedirect).toBeCalledWithInstance(GoogleAuthProvider)
+		})
 	})
 })

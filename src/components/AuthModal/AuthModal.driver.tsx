@@ -1,5 +1,6 @@
+import { signInFormTestkit } from '@components/SignInForm/SignInForm.driver'
 import { Driver, fireEvent, RenderResult, testUtils } from '@test-utils'
-import { AuthModal, AuthModalProps, ROOT_TEST_ID } from './AuthModal'
+import { AuthModal, AuthModalProps, ROOT_TEST_ID, SIGN_IN_WITH_GOOGLE_TEST_ID } from './AuthModal'
 
 interface Params {
 	props: AuthModalProps
@@ -20,6 +21,8 @@ export function authModalTestkit(container: RenderResult) {
 
 	const testkit = {
 		element: utils.element,
+		signInWithGoogle: () => testUtils(SIGN_IN_WITH_GOOGLE_TEST_ID, container, { keys: [ 'click' ] }),
+		signInWithEmail: () => signInFormTestkit(container),
 		clickOnOverlay: () => {
 			const modalElement = utils._element()
 			const overlayElement = modalElement.parentElement

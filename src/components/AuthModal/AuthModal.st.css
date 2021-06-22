@@ -1,4 +1,11 @@
-@st-import [ dark-washed, backgroundColor, secondaryFontColor, fontColor, mobileMaxWidth ] from "../../styles/variables.st.css";
+@st-import [ 
+  dark-washed, 
+  backgroundColor, 
+  secondaryFontColor, 
+  fontColor, 
+  mobileMaxWidth, 
+  white-light-mid
+] from "../../styles/variables.st.css";
 
 .overlay {
   position: fixed;
@@ -22,4 +29,15 @@
   .root {
     inset: 1.5rem 1rem;
   }
+}
+
+.button {
+  width: 100%;
+}
+
+.divider {
+  margin: 1rem 0;
+  width: 100%;
+  height: .1rem;
+  background: value(white-light-mid);
 }
