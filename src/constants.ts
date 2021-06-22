@@ -21,6 +21,6 @@ export const firebaseConfig = {
 	measurementId: 'G-81KK9F1ETD',
 }
 
-
+export const USER_NOT_FOUND_ERROR_CODE = 'auth/user-not-found'
 export const MAXIMUM_EXPIRE_TIME = 13
 export const MINIMUM_PLAYERS_LENGTH = 3
