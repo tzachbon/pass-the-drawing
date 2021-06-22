@@ -40,7 +40,7 @@ export const AuthProvider: React.ComponentType = (
 		})
 	}, [])
 
-	const value = {
+	const value: IAuthContext = {
 		signInWithRedirect,
 		error,
 		loading,
