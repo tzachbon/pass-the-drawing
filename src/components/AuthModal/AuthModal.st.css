@@ -1,0 +1,25 @@
+@st-import [ dark-washed, backgroundColor, secondaryFontColor, fontColor, mobileMaxWidth ] from "../../styles/variables.st.css";
+
+.overlay {
+  position: fixed;
+  inset: 0px;
+  background-color: value(dark-washed)
+}
+
+.root {
+  position: absolute;
+  inset: 3rem;
+  border: 1px solid value(secondaryFontColor);
+  background: value(backgroundColor);
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  padding: 1rem;
+  color: value(fontColor);
+}
+
+@media (max-device-width: value(mobileMaxWidth)) {
+  .root {
+    inset: 1.5rem 1rem;
+  }
+}
