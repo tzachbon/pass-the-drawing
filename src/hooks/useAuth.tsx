@@ -24,10 +24,11 @@ export const AuthProvider: React.ComponentType = (
 
 	const signInWithRedirect = run(
 		useCallback(async () => {
-			const provider = new firebase.auth.GoogleAuthProvider()
 			await setPersist()
 
-			return await firebase.auth().signInWithRedirect(provider)
+			return await firebase
+				.auth()
+				.signInWithRedirect(new firebase.auth.GoogleAuthProvider())
 		}, []),
 	)
 
