@@ -1,0 +1,25 @@
+@st-import [flexCol] from "../../styles/common.st.css";
+@st-import [mainLightColor] from "../../styles/variables.st.css";
+
+.root {
+  -st-mixin: flexCol;
+  margin: 1rem 0;
+}
+
+.formField {
+  -st-states: isValid;
+  -st-mixin: flexCol;
+  margin: .5rem 0;
+}
+
+.formField:not(:isValid) .input {
+  border-color: rgb(128, 39, 39)
+}
+
+.input {
+  border: 2px solid value(mainLightColor)
+}
+
+.button {
+  margin-top: 1rem;
+}
