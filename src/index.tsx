@@ -2,7 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { firebaseConfig } from '@constants'
 import { BrowserRouter } from 'react-router-dom'
-import { App } from './pages/App'
+import { AuthProvider } from '@hooks/useAuth'
+import { App } from '@pages/App'
 
 import './styles/reset.st.css'
 import './styles/globals.st.css'
@@ -17,7 +18,9 @@ firebase.initializeApp(firebaseConfig)
 ReactDOM.render(
 	<React.StrictMode>
 		<BrowserRouter>
-			<App />
+			<AuthProvider>
+				<App />
+			</AuthProvider>
 		</BrowserRouter>
 	</React.StrictMode>,
 	document.body.appendChild(document.createElement('main')),

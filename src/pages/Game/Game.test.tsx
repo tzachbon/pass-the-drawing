@@ -1,9 +1,7 @@
 import { aGame, anUser, anUserToPlayer, aPlayer, wait } from '@test-utils'
 import type { User } from '@types'
-import { authState, cleanup, mockFirebase, on, useObjectValMock } from '../../../tests/__mocks__/firebase'
+import { authState, cleanup, on, useObjectValMock } from '../../../tests/__mocks__/firebase'
 import { gameDriver } from './Game.driver'
-
-mockFirebase()
 
 describe('Game', () => {
 	let resolve = (value: unknown) => value
