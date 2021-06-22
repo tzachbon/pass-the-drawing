@@ -23,8 +23,7 @@ const showDevtools = args.includes('-d')
 if (isDebugMode) {
   config.launch.devtools = showDevtools
   config.launch.headless = false; // for debug:  to see what the browser is displaying
-  config.launch.slowMo = 250;  // slow down by 250ms for each step
-  config.launch.devtools = true; // This lets you debug code in the application code browser
+  config.launch.slowMo = 50;  // slow down by 250ms for each step
   config.launch.args = [ '--start-maximized' ]; // full screen
   config.exitOnPageError = !keepOpen
 }
