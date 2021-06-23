@@ -1,7 +1,4 @@
-:import {
-  -st-from: "../../styles/common.st.css";
-  -st-named: flexCenter;
-}
+@st-import [ flexCenter ] from "../../styles/common.st.css";
 
 .root {
   -st-extends: flexCenter;

@@ -1,12 +1,5 @@
-:import {
-  -st-from: "../../styles/common.st.css";
-  -st-named: flexCol;
-}
-
-:import {
-  -st-from: "../../styles/variables.st.css";
-  -st-named: mainLightColor, white-light-mid, white-light-strong;
-}
+@st-import [ flexCol ] from "../../styles/common.st.css";
+@st-import [ mainLightColor, white-light-mid, white-light-strong ] from "../../styles/variables.st.css";
 
 :vars {
   border: 0.1rem solid value(mainLightColor)

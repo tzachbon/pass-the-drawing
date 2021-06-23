@@ -1,12 +1,6 @@
-:import {
-  -st-from: "../../styles/common.st.css";
-  -st-named: flex, flexCenter;
-}
+@st-import [ mainLightColor, mainDarkColor ] from "../../styles/variables.st.css";
+@st-import [ flex, flexCenter ] from "../../styles/common.st.css";
 
-:import {
-  -st-from: "../../styles/variables.st.css";
-  -st-named: mainLightColor, mainDarkColor;
-}
 
 :vars {
   buttonXTransition: -0.5rem
