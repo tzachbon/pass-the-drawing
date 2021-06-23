@@ -31,7 +31,7 @@ describe('Lobby', () => {
 		})
 	})
 
-	it('should show login screen', () => {
+	it('should show loading screen', () => {
 		expect(driver.testkit().loading().message().text()).toEqual('Wait here, we are getting the game...')
 	})
 
