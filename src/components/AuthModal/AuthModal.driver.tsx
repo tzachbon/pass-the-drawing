@@ -17,11 +17,11 @@ export class AuthModalDriver extends Driver<Params['props']> {
 }
 
 export function authModalTestkit(container: RenderResult) {
-	const utils = testUtils(ROOT_TEST_ID, container, { keys: [ '_element' ] })
+	const utils = testUtils(ROOT_TEST_ID, container, { keys: [ '_element' ], rootElement: document.body })
 
 	const testkit = {
 		element: utils.element,
-		signInWithGoogle: () => testUtils(SIGN_IN_WITH_GOOGLE_TEST_ID, container, { keys: [ 'click' ] }),
+		signInWithGoogle: () => testUtils(SIGN_IN_WITH_GOOGLE_TEST_ID, container, { keys: [ 'click' ], rootElement: document.body }),
 		signInWithEmail: () => signInFormTestkit(container),
 		clickOnOverlay: () => {
 			const modalElement = utils._element()

@@ -19,6 +19,7 @@ type UtilsKeys = keyof Utils
 interface TestUtilsOptions<K extends UtilsKeys> {
 	keys?: K[]
 	isSelector?: boolean
+	rootElement?: HTMLElement
 }
 
 export function testUtils<K extends UtilsKeys>(
@@ -26,11 +27,11 @@ export function testUtils<K extends UtilsKeys>(
 	container: RenderResult,
 	options?: TestUtilsOptions<K>,
 ) {
-	const { keys, isSelector } = options || {}
+	const { keys, isSelector, rootElement } = options || {}
 	const selector = isSelector ? testIdOrSelector : testIdToSelector(testIdOrSelector)
 
 	const utils: Utils = {
-		element: () => container.container.querySelector(selector),
+		element: () => (rootElement || container.container).querySelector(selector),
 		notExistsError: () => new Error(`Element does not exist: ${selector}. \nCurrent HTML: \n ${container.container.innerHTML}`),
 		_element: () => {
 			const el = utils.element()

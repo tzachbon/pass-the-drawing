@@ -16,13 +16,13 @@ export class SignInFormDriver extends Driver<Params['props']> {
 }
 
 export function signInFormTestkit(container: RenderResult) {
-	const utils = testUtils(ROOT_TEST_ID, container, { keys: [] })
+	const utils = testUtils(ROOT_TEST_ID, container, { keys: [], rootElement: document.body })
 
 	const testkit = {
 		...utils,
-		email: () => testUtils(INPUT_EMAIL_TEST_ID, container, { keys: [ 'value', 'type' ] }),
-		password: () => testUtils(INPUT_PASSWORD_TEST_ID, container, { keys: [ 'value', 'type' ] }),
-		submit: () => testUtils(SUBMIT_BUTTON_TEST_ID, container, { keys: [ 'disabled', 'text', 'click' ] }),
+		email: () => testUtils(INPUT_EMAIL_TEST_ID, container, { keys: [ 'value', 'type' ], rootElement: document.body }),
+		password: () => testUtils(INPUT_PASSWORD_TEST_ID, container, { keys: [ 'value', 'type' ], rootElement: document.body }),
+		submit: () => testUtils(SUBMIT_BUTTON_TEST_ID, container, { keys: [ 'disabled', 'text', 'click' ], rootElement: document.body }),
 	}
 
 	return testkit

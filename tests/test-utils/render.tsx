@@ -6,7 +6,7 @@ export type Renderer = ReturnType<typeof renderer>
 const customRender = (
 	ui: ReactElement,
 	options?: Omit<RenderOptions, 'queries'>,
-) => render(ui, { ...(options || { container: document.body }) })
+) => render(ui, { ...(options || {}) })
 
 export const renderer = (getUI: () => ReactElement) => {
 	let container = customRender(getUI())
