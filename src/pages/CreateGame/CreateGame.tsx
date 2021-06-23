@@ -1,11 +1,12 @@
-import React, { FormEventHandler, useCallback, useEffect, useState } from 'react'
-import type { GameSubjects } from '@constants'
 import { SelectSubject } from '@components/SelectSubject'
+import { AuthModal } from '@components/AuthModal'
+import type { GameSubjects } from '@constants'
 import { useAuth } from '@hooks/useAuth'
+import { useAuthModalState } from '@hooks/useAuthModalState'
 import { useSubject } from '@hooks/useSubject'
 import { useSubmitGame } from '@hooks/useSubmitGame'
+import React, { FormEventHandler, useCallback } from 'react'
 import { classes, st } from './CreateGame.st.css'
-import { AuthModal } from '@components/AuthModal'
 
 export interface CreateGameProps {
 	className?: string
@@ -29,19 +30,12 @@ export const CreateGame: React.VFC<CreateGameProps> = ({ className }) => {
 		setDirty,
 	} = useSubject()
 	const { currentUser } = useAuth()
-	const [ openModel, setOpenModel ] = useState(false)
+	const { onOpenModal, openModel, onCloseModal } = useAuthModalState()
 	const { onSubmit, loading, error } = useSubmitGame({
 		subject: subject as GameSubjects,
 		currentUser,
 		isValid,
 	})
-
-	const onCloseModal = useCallback(
-		() => {
-			setOpenModel(false)
-		},
-		[],
-	)
 
 	const handleSubmit: FormEventHandler<HTMLFormElement> = useCallback(
 		async (event) => {
@@ -51,16 +45,6 @@ export const CreateGame: React.VFC<CreateGameProps> = ({ className }) => {
 		},
 		[ onSubmit, clearSubjectFromStorage, setDirty ],
 	)
-
-	useEffect(() => {
-		if (currentUser && openModel) {
-			onCloseModal()
-		}
-	}, [
-		currentUser,
-		openModel,
-		onCloseModal,
-	])
 
 	return (
 		<>
@@ -83,7 +67,7 @@ export const CreateGame: React.VFC<CreateGameProps> = ({ className }) => {
 					<button
 						type='button'
 						data-testid={OPEN_MODAL_BUTTON_TEST_ID}
-						onClick={() => setOpenModel(true)}
+						onClick={onOpenModal}
 					>
 						Sign in
 					</button>
