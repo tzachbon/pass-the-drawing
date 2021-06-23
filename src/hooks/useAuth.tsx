@@ -10,7 +10,7 @@ interface IAuthContext {
 	signInWithRedirect: () => Promise<void>;
 	error: Error | undefined;
 	loading: boolean;
-	currentUser: firebase.User | undefined;
+	currentUser: User | undefined;
 }
 
 const AuthContext = createContext<IAuthContext>(null as unknown as IAuthContext)
