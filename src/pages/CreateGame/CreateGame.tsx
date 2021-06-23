@@ -81,6 +81,7 @@ export const CreateGame: React.VFC<CreateGameProps> = ({ className }) => {
 					</span>
 				) : (
 					<button
+						type='button'
 						data-testid={OPEN_MODAL_BUTTON_TEST_ID}
 						onClick={() => setOpenModel(true)}
 					>

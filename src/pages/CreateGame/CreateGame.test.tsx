@@ -66,6 +66,13 @@ describe('CreateGame', () => {
 		expect(driver.testkit().selectSubject().localStorage().get()).toEqual('test')
 	})
 
+	it('should not show subject error when clicking on the sign in button',() => {
+		driver.testkit().login().modal().open()
+
+		expect(driver.testkit().login().modal().element()).toBeInTheDocument()
+		expect(driver.testkit().selectSubject().error().element()).not.toBeInTheDocument()
+	})
+
 	it('should show invalid subject error message when subject is invalid and submit clicked', async () => {
 		driver.testkit().selectSubject().input().type('Invalid')
 
