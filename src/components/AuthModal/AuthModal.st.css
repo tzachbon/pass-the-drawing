@@ -6,6 +6,7 @@
   mobileMaxWidth, 
   white-light-mid
 ] from "../../styles/variables.st.css";
+@st-import [ keyframes(fadeIn) ] from "../../styles/variables.st.css";
 
 .overlay {
   position: fixed;
@@ -23,6 +24,7 @@
   outline: none;
   padding: 1rem;
   color: value(fontColor);
+  animation: fadeIn .3s ease-in;
 }
 
 @media (max-device-width: value(mobileMaxWidth)) {
