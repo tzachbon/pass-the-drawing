@@ -51,7 +51,6 @@ describe('Lobby', () => {
 		useObjectValMock(gameMock)
 
 		driver.render()
-		driver.testkit().login().button().click()
 
 		authState.onAuthStateChangedCallback(fakeUser)
 
@@ -65,7 +64,6 @@ describe('Lobby', () => {
 		update.mockImplementation((newGame) => Promise.resolve(databaseState.setValue(newGame)))
 
 		driver.render()
-		driver.testkit().login().button().click()
 
 		authState.onAuthStateChangedCallback(fakeUser)
 
@@ -74,7 +72,21 @@ describe('Lobby', () => {
 				players: [ ...gameMock.players, anUserToPlayer(fakeUser as unknown as User, PlayerRoles.Regular) ],
 			})
 		})
+	})
 
+	it('should open auth modal and log in', async () => {
+		useObjectValMock(gameMock)
+
+		driver.render()
+		driver.testkit().login().modal().open()
+
+		expect(driver.testkit().login().modal().element()).toBeInTheDocument()
+
+		authState.onAuthStateChangedCallback(fakeUser)
+
+		await wait(() => {
+			expect(driver.testkit().login().modal().element()).not.toBeInTheDocument()
+		})
 	})
 
 	describe('should show loading', () => {
@@ -87,10 +99,6 @@ describe('Lobby', () => {
 			update.mockReturnValue(new Promise(res => { resolve = res }))
 
 			driver.render()
-
-			await wait(() => {
-				driver.testkit().login().button().click()
-			})
 
 			authState.onAuthStateChangedCallback(fakeUser)
 

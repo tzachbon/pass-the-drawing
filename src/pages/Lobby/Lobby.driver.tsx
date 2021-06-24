@@ -1,8 +1,9 @@
+import { authModalTestkit } from '@components/AuthModal/AuthModal.driver'
 import { gameLobbyTestkit } from '@components/GameLobby/GameLobby.driver'
 import { Routes } from '@constants'
 import { Driver, Options, RenderResult, testUtils } from '@test-utils'
 import { Route } from 'react-router'
-import { LOADING_TEST_ID, Lobby, LobbyProps, LOGIN_BUTTON_TEST_ID, LOGIN_MESSAGE_TEST_ID, NO_GAME_LINK_TEST_ID, NO_GAME_MESSAGE_TEST_ID } from './Lobby'
+import { LOADING_TEST_ID, Lobby, LobbyProps, LOGIN_MESSAGE_TEST_ID, NO_GAME_LINK_TEST_ID, NO_GAME_MESSAGE_TEST_ID, OPEN_MODAL_BUTTON_TEST_ID } from './Lobby'
 
 interface Params {
 	props?: LobbyProps
@@ -35,7 +36,15 @@ export function lobbyTestkit(container: RenderResult) {
 		}),
 		login: () => ({
 			message: () => testUtils(LOGIN_MESSAGE_TEST_ID, container, { keys: [ 'text' ] }),
-			button: () => testUtils(LOGIN_BUTTON_TEST_ID, container, { keys: [ 'click' ] }),
+			modal: () => {
+				const { click, ...modalUtils } = testUtils(OPEN_MODAL_BUTTON_TEST_ID, container, { keys: [ 'click' ] })
+
+				return {
+					open: click,
+					...modalUtils,
+					...authModalTestkit(container),
+				}
+			},
 		}),
 		notFound: () => ({
 			message: () => testUtils(NO_GAME_MESSAGE_TEST_ID, container, { keys: [ 'text' ] }),
