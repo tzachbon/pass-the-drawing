@@ -23,7 +23,7 @@ export function useCurrentPlayer(
 
 	const isPlaying = game.currentPlayingIndex === currentPlayerIndex
 	const currentPlayingPlayer = game.players[ game.currentPlayingIndex ?? 0 ]!
-	const role = currentPlayer?.role;
+	const role = currentPlayer?.role
 
 	return {
 		currentPlayerIndex,
