@@ -51,4 +51,17 @@ describe('GameLobby', () => {
 
 		expect(pushMock).not.toHaveBeenCalled()
 	})
+
+	it('shoud show start button if user is admin', () => {
+		expect(player.role).toEqual(PlayerRoles.Admin)
+		expect(driver.testkit().startGameButton().element()).toBeInTheDocument()
+	})
+
+	it('shoud hide start button if user is not admin', () => {
+		const newPlayer = anUserToPlayer(currentUser, PlayerRoles.Regular)
+		
+		driver.withProps({ game: aGame({ players: [ newPlayer ] }) }).render()
+
+		expect(driver.testkit().startGameButton().element()).not.toBeInTheDocument()
+	})
 })
