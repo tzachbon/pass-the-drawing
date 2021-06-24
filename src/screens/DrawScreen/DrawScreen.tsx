@@ -87,9 +87,9 @@ export const DrawScreen: React.VFC<DrawScreenProps> = (
 			className={st(classes.root, className)}
 		>
 			{
-				skipLastDrawPreview && lastPlayer?.draw ? (
+				showLastDrawPreview ? (
 					<LastDrawPreviewScreen
-						lastPlayer={lastPlayer}
+						lastPlayer={lastPlayer!}
 						onFinished={onFinishedLastPlayerDraw}
 					/>
 				) : (
