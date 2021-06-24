@@ -15,6 +15,7 @@ export interface DrawScreenProps {
 	currentPlayer: Player
 	expireTime?: number
 	shouldShowLastPlayerDraw?: boolean
+	previewExpireTime?: number
 }
 
 export const TIMER_TEST_ID = 'DrawScreen_TIMER_TEST_ID'
@@ -27,6 +28,7 @@ export const DrawScreen: React.VFC<DrawScreenProps> = (
 		currentPlayer,
 		expireTime = MAXIMUM_DRAW_EXPIRE_TIME,
 		shouldShowLastPlayerDraw = true,
+		previewExpireTime,
 	},
 ) => {
 	const [ skipLastDrawPreview, setSkipLastDrawPreview ] = useState(shouldShowLastPlayerDraw)
@@ -91,6 +93,7 @@ export const DrawScreen: React.VFC<DrawScreenProps> = (
 					<LastDrawPreviewScreen
 						lastPlayer={lastPlayer!}
 						onFinished={onFinishedLastPlayerDraw}
+						expireTime={previewExpireTime}
 					/>
 				) : (
 					<>
