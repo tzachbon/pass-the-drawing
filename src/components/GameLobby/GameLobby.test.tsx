@@ -1,4 +1,4 @@
-import type { User } from '@types'
+import { PlayerRoles, User } from '@types'
 import { aGame, anUser, anUserToPlayer } from '@test-utils'
 import { gameLobbyDriver } from './GameLobby.driver'
 import { Routes } from '@constants'
@@ -12,12 +12,23 @@ jest.mock('react-router-dom', () => ({
 
 describe('GameLobby', () => {
 	const currentUser = anUser() as User
-	let game = aGame({ players: [ anUserToPlayer(currentUser) ] })
+	const player = anUserToPlayer(currentUser)
+	let game = aGame({ players: [ player ] })
 	const driver = gameLobbyDriver({ props: { game, currentUser } }).beforeAndAfter()
 
-	it('should render word board', () => {
+	it('should render word board if current user is admin', () => {
+		expect(player.role).toEqual(PlayerRoles.Admin)
 		expect(driver.testkit().wordBoard().element()).toBeInTheDocument()
 	})
+
+	it('should not render word board if user is not admin', () => {
+		const newPlayer = anUserToPlayer(currentUser, PlayerRoles.Regular)
+		
+		driver.withProps({ game: aGame({ players: [ newPlayer ] }) }).render()
+
+		expect(driver.testkit().wordBoard().element()).not.toBeInTheDocument()
+	})
+
 
 	it('should render players', () => {
 		expect(driver.testkit().players().element()).toBeInTheDocument()
