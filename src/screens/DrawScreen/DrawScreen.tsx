@@ -3,7 +3,7 @@ import { Canvas } from '@components/Canvas'
 import { LastDrawPreviewScreen } from '@screens/LastDrawPreviewScreen'
 import { MAXIMUM_DRAW_EXPIRE_TIME } from '@constants'
 import type { Game, Player } from '@types'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import type CanvasDraw from 'react-canvas-draw'
 import { useTimer } from 'react-timer-hook'
 import { classes, st } from './DrawScreen.st.css'
@@ -29,7 +29,7 @@ export const DrawScreen: React.VFC<DrawScreenProps> = (
 		shouldShowLastPlayerDraw = true,
 	},
 ) => {
-	const [ showLastDrawPreview, setShowLastDrawPreview ] = useState(shouldShowLastPlayerDraw)
+	const [ skipLastDrawPreview, setSkipLastDrawPreview ] = useState(shouldShowLastPlayerDraw)
 	const lastPlayer = players[ currentPlayingIndex - 1 ]
 	const onExpire = useCallback(async () => {
 		await updateGame(
@@ -63,10 +63,14 @@ export const DrawScreen: React.VFC<DrawScreenProps> = (
 
 	const onFinishedLastPlayerDraw = useCallback(
 		() => {
-			setShowLastDrawPreview(false)
+			setSkipLastDrawPreview(false)
 		},
 		[],
 	)
+
+	const showLastDrawPreview = useMemo(() => (
+		skipLastDrawPreview && lastPlayer?.draw
+	), [ lastPlayer?.draw, skipLastDrawPreview ])
 
 	useEffect(() => {
 		if (!showLastDrawPreview) {
@@ -83,7 +87,7 @@ export const DrawScreen: React.VFC<DrawScreenProps> = (
 			className={st(classes.root, className)}
 		>
 			{
-				showLastDrawPreview && lastPlayer?.draw ? (
+				skipLastDrawPreview && lastPlayer?.draw ? (
 					<LastDrawPreviewScreen
 						lastPlayer={lastPlayer}
 						onFinished={onFinishedLastPlayerDraw}
