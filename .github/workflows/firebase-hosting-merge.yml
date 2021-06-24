@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Set up env
-      - run: |
+        run: |
           touch .env.test
           echo "FIRST_TEST_USER_PASSWORD=${{ secrets.FIRST_TEST_USER_PASSWORD }}" >> .env.test
           echo "SECOND_TEST_USER_PASSWORD=${{ secrets.SECOND_TEST_USER_PASSWORD }}" >> .env.test
@@ -21,7 +21,6 @@ jobs:
         uses: dcodeIO/setup-node-nvm@v4
       - run: yarn
       - run: yarn test
-      - uses: FirebaseExtended/action-hosting-deploy@v0
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
