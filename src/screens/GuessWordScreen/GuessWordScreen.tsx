@@ -2,6 +2,7 @@ import { updateGame } from '@api'
 import { Canvas } from '@components/Canvas'
 import { useAsync } from '@hooks/useAsync'
 import type { Game } from '@types'
+import { isValidJson } from '@utils/isValidDrawJson'
 import { isWordMatch } from '@utils/isWordMatch'
 import { FormEventHandler, useCallback, useState } from 'react'
 import { classes, st } from './GuessWordScreen.st.css'
@@ -81,7 +82,7 @@ export const GuessWordScreen: React.VFC<GuessWordScreenProps> = (
 				{
 					game
 						.players
-						.filter(player => Boolean(player.draw))
+						.filter(player => Boolean(player.draw) && isValidJson(player.draw))
 						.map((player, i) => (
 							<div
 								key={`${player.id!}_${player.draw!}`}
