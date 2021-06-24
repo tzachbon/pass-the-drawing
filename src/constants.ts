@@ -22,5 +22,6 @@ export const firebaseConfig = {
 }
 
 export const USER_NOT_FOUND_ERROR_CODE = 'auth/user-not-found'
-export const MAXIMUM_EXPIRE_TIME = 13
+export const MAXIMUM_DRAW_EXPIRE_TIME = 13
+export const MAXIMUM_DRAW_PREVIEW_EXPIRE_TIME = 5
 export const MINIMUM_PLAYERS_LENGTH = 3
