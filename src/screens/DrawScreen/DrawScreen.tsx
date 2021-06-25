@@ -27,11 +27,10 @@ export const DrawScreen: React.VFC<DrawScreenProps> = (
 		game: { id, players, currentPlayingIndex },
 		currentPlayer,
 		expireTime = MAXIMUM_DRAW_EXPIRE_TIME,
-		shouldShowLastPlayerDraw = true,
 		previewExpireTime,
 	},
 ) => {
-	const [ skipLastDrawPreview, setSkipLastDrawPreview ] = useState(shouldShowLastPlayerDraw)
+	const [ skipLastDrawPreview, setSkipLastDrawPreview ] = useState(true)
 	const lastPlayer = players[ currentPlayingIndex - 1 ]
 	const onExpire = useCallback(async () => {
 		await updateGame(
