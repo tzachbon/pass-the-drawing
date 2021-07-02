@@ -9,5 +9,4 @@ export * from './constants'
 export * from './test-utils'
 export * from './mocks'
 export * from './driver'
-export * from './waitFor'
 export { render, Renderer, renderer, uuid }
