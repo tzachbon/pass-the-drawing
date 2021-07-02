@@ -8,11 +8,11 @@ const eventually = eventuallyWith({ timeout: expireTime * 1000 })
 describe('LastDrawPreviewScreen', () => {
 	const onFinished = jest.fn()
 	const lastPlayer = aPlayer({ draw: FAKE_DRAWING_DATA })
-	const driver = lastDrawPreviewScreenDriver({ props: { onFinished, lastPlayer, expireTime } })
+	const driver = lastDrawPreviewScreenDriver({ props: { onFinished, lastPlayer, expireTime } }).beforeAndAfter()
 
 	it('should call onFinished when timer stops', async () => {
 		expect(onFinished).not.toHaveBeenCalled()
-
+		
 		await eventually(() => {
 			expect(onFinished).toHaveBeenCalled()
 		})
