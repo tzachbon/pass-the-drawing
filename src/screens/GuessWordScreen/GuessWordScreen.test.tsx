@@ -14,7 +14,7 @@ describe('GuessWordScreen', () => {
 	const driver = guessWordScreenDriver({ props: { game } }).beforeAndAfter()
 
 	it('should submit the game and win', () => {
-		const currentWord = game.word
+		const currentWord = game.word.name
 
 		driver.testkit().input().type(currentWord.toUpperCase())
 

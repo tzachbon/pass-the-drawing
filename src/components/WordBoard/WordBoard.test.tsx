@@ -1,10 +1,10 @@
-import { uuid } from '@test-utils'
+import { aWord } from '@test-utils'
 import { wordBoardDriver } from './WordBoard.driver'
 
 describe('WordBoard', () => {
 
 	const updateWordMock = jest.fn()
-	const word = uuid()
+	const word = aWord()
 	const driver = wordBoardDriver({ props: { updateWord: updateWordMock, word } }).beforeAndAfter()
 
 	it('should show word', () => {

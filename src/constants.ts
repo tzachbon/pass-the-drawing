@@ -6,9 +6,10 @@ export const Routes = {
 } as const
 
 export enum GameSubjects {
-	Food = 'Food',
-	Cars = 'Cars',
-	Dessert = 'Dessert',
+	Countries = 'countries',
+	DragonBall = 'dragonBall',
+	Food = 'food',
+	Superheroes = 'superheroes'
 }
 
 export const firebaseConfig = {

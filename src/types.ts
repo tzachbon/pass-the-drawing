@@ -7,7 +7,7 @@ export interface ISubjects {
 }
 
 export interface CreateGameParams {
-    word: string
+    word: RandomWord
     subject: GameSubjects
 }
 
@@ -34,4 +34,15 @@ export interface Player {
 export enum PlayerRoles {
     Admin = 'Admin',
     Regular = 'Regular',
+}
+
+export interface RandomWord {
+    name: string
+    img?: string
+}
+
+export interface RandomWordCategory {
+    color: string
+    name: string
+    entities: RandomWord[]
 }

@@ -40,7 +40,7 @@ describe('SelectSubject', () => {
 		expect(
 			driver.testkit().subject(GameSubjects.Food).element(),
 		).toBeDefined()
-		expect(driver.testkit().subject(GameSubjects.Cars).element()).toBeNull()
+		expect(driver.testkit().subject(GameSubjects.Food).element()).toBeNull()
 	})
 
 	it('should call setSubject when clicking item', () => {

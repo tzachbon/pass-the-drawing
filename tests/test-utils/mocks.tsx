@@ -1,7 +1,7 @@
 import { anUserToPlayer } from '@api'
 import { GameSubjects } from '@constants'
 import { uuid } from '@test-utils'
-import { Game, Player, PlayerRoles, User } from '@types'
+import { Game, Player, PlayerRoles, RandomWord, User } from '@types'
 
 export type FirebaseUser = Pick<User, | 'displayName' | 'uid' | 'photoURL' | 'email'>
 
@@ -35,13 +35,23 @@ export function anUser({
 	}
 }
 
+export function aWord({
+	name = uuid(),
+	img = uuid(),
+}: Partial<RandomWord> = {}):RandomWord {
+	return {
+		name,
+		img,
+	}
+}
+
 export function aGame({
 	currentPlayingIndex = 0,
 	id = uuid(),
 	players = [ aPlayer() ],
 	subject = GameSubjects.Food,
 	createdTime = Date.now(),
-	word = uuid(),
+	word = aWord(),
 	started,
 	startTime,
 	endTime,
