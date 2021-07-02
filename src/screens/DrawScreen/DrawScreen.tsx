@@ -14,7 +14,6 @@ export interface DrawScreenProps {
 	game: Game
 	currentPlayer: Player
 	expireTime?: number
-	shouldShowLastPlayerDraw?: boolean
 	previewExpireTime?: number
 }
 
