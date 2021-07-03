@@ -148,7 +148,7 @@ describe('CreateGame', () => {
 		)
 	})
 
-	it('should display email incase displayName does not exist', async () => {
+	it('should display email in-case displayName does not exist', async () => {
 		driver.testkit().login().modal().open()
 		driver.testkit().login().modal().signInWithGoogle().click()
 

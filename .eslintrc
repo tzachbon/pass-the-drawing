@@ -100,15 +100,35 @@
               "svg",
               "gif",
               "tsx",
+              "jsx",
               "jpg",
-              "jpeg"
+              "jpeg",
+              "matchers",
+              "matcher",
+              "namespace",
+              "goto",
+              "pathname",
+              "dragonball",
+              "appspot",
+              "res",
+              "rej",
+              "href",
+              "unescaped",
+              "nullable",
+              "dom",
+              "jsdom",
+              "snapshot",
+              "argv",
+              "dumpio",
+              "stdout",
+              "stderr"
+            
           ],
           "skipIfMatch": [
               "http://[^s]*",
               "^[-\\w]+\/[-\\w\\.]+$"
           ],
           "skipWordIfMatch": [
-              "appId(.*)",
               "^foobar.*$"
           ],
           "minLength": 3
