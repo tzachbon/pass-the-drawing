@@ -63,7 +63,7 @@ describe('useSubject', () => {
 		expect(result.current.error).toEqual(getSubjectErrorMessage())
 
 		void act(() => {
-			result.current.setSubject(GameSubjects.Cars)
+			result.current.setSubject(GameSubjects.Food)
 		})
 
 		expect(result.current.isValid).toBeTruthy()

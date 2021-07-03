@@ -35,7 +35,7 @@ export function createGameTestkit(container: RenderResult) {
 		},
 		submit: () => ({
 			button: () => testUtils(SUBMIT_BUTTON_TEST_ID, container, { keys: [ 'click', 'disabled' ] }),
-			error: () => testUtils(SUBMIT_ERROR_TEST_ID, container, { keys: [] }),
+			error: () => testUtils(SUBMIT_ERROR_TEST_ID, container, { keys: [ 'text' ] }),
 		}),
 		login: () => ({
 			message: () => testUtils(LOGGED_IN_MESSAGE_TEST_ID, container, { keys: [] }),

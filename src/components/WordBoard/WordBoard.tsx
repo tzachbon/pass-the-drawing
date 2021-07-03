@@ -1,10 +1,11 @@
+import type { RandomWord } from '@types'
 import type React from 'react'
 import { FaSync } from 'react-icons/fa'
 import { classes, st } from './WordBoard.st.css'
 
 export interface WordBoardProps {
 	className?: string
-	word: string
+	word: RandomWord
 	updateWord: Function
 	loading?: boolean
 }
@@ -27,7 +28,12 @@ export const WordBoard: React.VFC<WordBoardProps> = ({
 			data-testid={WORD_TEXT_TEST_ID}
 			className={classes.text}
 		>
-			{loading ? 'Loading...' : word}
+			{loading ? 'Loading...' : (
+				<>
+					<span>{word.name}</span>
+					{word.img && <img src={word.img} />}
+				</>
+			)}
 		</span>
 		<button
 			data-testid={RESET_WORD_BUTTON_TEST_ID}
