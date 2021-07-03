@@ -9,9 +9,9 @@ export function fetchGame(id: string, callback: (game: TGame) => void) {
 	firebase
 		.database()
 		.ref(`games/${id}`)
-		.on('value', (spanshot: firebase.database.DataSnapshot) => {
+		.on('value', (snapshot: firebase.database.DataSnapshot) => {
 			if (status.shouldCall) {
-				callback(spanshot.val() as TGame)
+				callback(snapshot.val() as TGame)
 			}
 		})
 

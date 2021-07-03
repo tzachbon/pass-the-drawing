@@ -13,7 +13,8 @@
   "plugins": [
     "react-hooks",
     "prettier",
-    "jest"
+    "jest",
+    "spellcheck"
   ],
   "settings": {
     "react": {
@@ -73,7 +74,66 @@
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",
     "jest/prefer-to-have-length": "warn",
-    "jest/valid-expect": "error"
+    "jest/valid-expect": "error",
+    "spellcheck/spell-checker": [
+      "error",
+      {
+          "comments": true,
+          "strings": true,
+          "identifiers": true,
+          "templates": true,
+          "lang": "en_US",
+          "skipWords": [
+              "webpack",
+              "utils",
+              "testkit",
+              "stylable",
+              "devtools",
+              "devtool",
+              "firebase",
+              "transpile",
+              "renderer",
+              "testid",
+              "uid",
+              "ptd",
+              "charset",
+              "svg",
+              "gif",
+              "tsx",
+              "jsx",
+              "jpg",
+              "jpeg",
+              "matchers",
+              "matcher",
+              "namespace",
+              "goto",
+              "pathname",
+              "dragonball",
+              "appspot",
+              "res",
+              "rej",
+              "href",
+              "unescaped",
+              "nullable",
+              "dom",
+              "jsdom",
+              "snapshot",
+              "argv",
+              "dumpio",
+              "stdout",
+              "stderr"
+            
+          ],
+          "skipIfMatch": [
+              "http://[^s]*",
+              "^[-\\w]+\/[-\\w\\.]+$"
+          ],
+          "skipWordIfMatch": [
+              "^foobar.*$"
+          ],
+          "minLength": 3
+       }
+   ]
   },
   "overrides": [
     {
