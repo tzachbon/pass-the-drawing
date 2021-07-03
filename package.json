@@ -83,6 +83,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-spellcheck": "^0.0.19",
     "eslint-plugin-stylable": "^4.2.4",
     "firebase-tools": "^9.12.0",
     "html-webpack-plugin": "^5.3.1",

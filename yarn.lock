@@ -4422,6 +4422,15 @@ eslint-plugin-react@^7.23.2:
     resolve "^2.0.0-next.3"
     string.prototype.matchall "^4.0.4"
 
+eslint-plugin-spellcheck@^0.0.19:
+  version "0.0.19"
+  resolved "https://registry.npmjs.org/eslint-plugin-spellcheck/-/eslint-plugin-spellcheck-0.0.19.tgz#73926b94208ae93ea5be00a8844dcdf1d8d2bf6f"
+  integrity sha512-Vau+oCLT3IGx+inJV5rkuKlIwgka9L2is1SkztviIHN3apNnT2OrZoGy9Jt3gbcjjkfkIFMFSZjB+ijHCimbNA==
+  dependencies:
+    globals "^13.0.0"
+    hunspell-spellchecker "^1.0.2"
+    lodash "^4.17.15"
+
 eslint-plugin-stylable@^4.2.4:
   version "4.2.4"
   resolved "https://registry.npmjs.org/eslint-plugin-stylable/-/eslint-plugin-stylable-4.2.4.tgz#4e7792d423ea66c8e8d7fd04d19df22966ce003f"
@@ -5515,7 +5524,7 @@ globals@^12.1.0:
   dependencies:
     type-fest "^0.8.1"
 
-globals@^13.6.0:
+globals@^13.0.0, globals@^13.6.0:
   version "13.9.0"
   resolved "https://registry.npmjs.org/globals/-/globals-13.9.0.tgz#4bf2bf635b334a173fb1daf7c5e6b218ecdc06cb"
   integrity sha512-74/FduwI/JaIrr1H8e71UbDE+5x7pIPs1C2rrwC52SszOo043CsWOZEMW7o2Y58xwm9b+0RBKDxY5n2sUpEFxA==
@@ -5936,6 +5945,11 @@ humanize-ms@^1.2.1:
   integrity sha1-xG4xWaKT9riW2ikxbYtv6Lt5u+0=
   dependencies:
     ms "^2.0.0"
+
+hunspell-spellchecker@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/hunspell-spellchecker/-/hunspell-spellchecker-1.0.2.tgz#a10b0bd2fa00a65ab62a4c6b734ce496d318910e"
+  integrity sha1-oQsL0voAplq2Kkxrc0zkltMYkQ4=
 
 husky@^6.0.0:
   version "6.0.0"
