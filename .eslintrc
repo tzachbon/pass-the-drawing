@@ -76,7 +76,7 @@
     "jest/prefer-to-have-length": "warn",
     "jest/valid-expect": "error",
     "spellcheck/spell-checker": [
-      "warn",
+      "error",
       {
           "comments": true,
           "strings": true,
