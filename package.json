@@ -4,6 +4,9 @@
   "description": "Pass the draw game",
   "main": "index.js",
   "scripts": {
+    "preinstall": "node scripts/forceYarn",
+    "postinstall": "yarn npm-run-all postinstall:*",
+    "postinstall:husky": "yarn husky install",
     "clean": "rimraf dist",
     "prebuild": "yarn clean",
     "build": "webpack --config webpack.prod.js",
@@ -43,6 +46,11 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "yarn lint --fix"
+  },
+  "engines": {
+    "npm": "please-use-yarn",
+    "yarn": ">= 1.22.10",
+    "node": ">= 15.14.0"
   },
   "devDependencies": {
     "@stylable/core": "^4.2.4",

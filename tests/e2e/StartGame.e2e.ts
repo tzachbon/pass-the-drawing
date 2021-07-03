@@ -6,7 +6,7 @@ import { CREATE_GAME_LINK } from '@pages/Home/Home'
 import { getFakeUsers, testIdToSelector, URL } from '@test-utils'
 import eventually from 'wix-eventually'
 
-describe('Game', () => {
+describe('StartGame', () => {
 	const [ user ] = getFakeUsers()
 	beforeAll(async () => {
 		await page.goto(URL)
@@ -29,8 +29,12 @@ describe('Game', () => {
 
 		await expect(page).toMatchElement(testIdToSelector(LOGGED_IN_MESSAGE_TEST_ID), { text: `Logged in as ${user!.email}` })
 
-		await page.type(testIdToSelector(INPUT_TEST_ID), 'Food')
-		await page.click(testIdToSelector(SUBMIT_BUTTON_TEST_ID))
+		const input = await page.waitForSelector(testIdToSelector(INPUT_TEST_ID))
+		await input!.type('Food')
+		await input!.evaluate(el => (el as unknown as HTMLInputElement).blur())
+
+		const submitButton = await page.waitForSelector(testIdToSelector(SUBMIT_BUTTON_TEST_ID))
+		await submitButton!.click()
 
 		await eventually(async () => {
 			await expect(page.url()).toMatch(new RegExp(Routes.LOBBY))
