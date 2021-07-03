@@ -13,7 +13,10 @@
     "start": "webpack serve --config webpack.dev.js",
     "serve": "serve ./dist",
     "lint": "eslint . -f codeframe",
-    "prettier": "prettier --write .  && yarn lint --fix",
+    "lint:fix": "yarn lint --fix",
+    "testCommit:unit": "yarn test:unit --lastCommit",
+    "lintStaged": "yarn testCommit:unit && yarn lint:fix",
+    "prettier": "prettier --write .  && yarn lint:fix",
     "pretest": "yarn lint && yarn build",
     "test": "yarn npm-run-all test:* --parallel",
     "test:typecheck": "tsc --noEmit",
@@ -45,7 +48,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "yarn test:unit --lastCommit && yarn lint --fix"
+    "*.{js,jsx,ts,tsx}": "yarn lintStaged"
   },
   "engines": {
     "npm": "please-use-yarn",
