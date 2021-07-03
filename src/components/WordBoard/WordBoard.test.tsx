@@ -8,7 +8,7 @@ describe('WordBoard', () => {
 	const driver = wordBoardDriver({ props: { updateWord: updateWordMock, word } }).beforeAndAfter()
 
 	it('should show word', () => {
-		expect(driver.testkit().word().text()).toEqual(word)
+		expect(driver.testkit().word().text()).toEqual(word.name)
 	})
 
 	it('should show loading state', () => {
