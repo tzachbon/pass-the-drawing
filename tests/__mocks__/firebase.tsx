@@ -25,13 +25,14 @@ export const on = jest.fn().mockImplementation((_, setValue: Function) => {
 	return {}
 })
 export const off = jest.fn().mockReturnValue(jest.fn())
+export const get = jest.fn().mockReturnValue(jest.fn())
 export const update = jest.fn().mockResolvedValue(jest.fn())
 export const ref = jest
 	.fn()
 	.mockImplementation((refValue: string | undefined) => {
 		databaseState.ref = refValue
 
-		return { set, isEqual, on, off, update }
+		return { set, isEqual, on, off, update, get }
 	})
 export const GoogleAuthProvider = jest.fn()
 export const setPersistence = jest.fn()
@@ -81,6 +82,7 @@ export function cleanup() {
 		on,
 		off,
 		update,
+		get,
 	].forEach(_ => _.mockClear())
 
 	Object.assign(authState, initialAuthState())

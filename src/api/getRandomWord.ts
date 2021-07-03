@@ -1,4 +1,4 @@
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import type { GameSubjects } from '@constants'
 import type { RandomWord, RandomWordCategory } from '@types'
 

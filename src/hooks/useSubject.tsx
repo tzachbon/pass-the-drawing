@@ -1,11 +1,12 @@
 import { GameSubjects } from '@constants'
+import { toTitleCase } from '@utils/toTitleCase'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import useLocalStorage from 'react-use-localstorage/dist'
 
 export function getSubjectErrorMessage() {
 	return (
 		'Game subject must be one of ' +
-		Object.values(GameSubjects).toLocaleString()
+		Object.values(GameSubjects).map(toTitleCase).toLocaleString()
 	)
 }
 

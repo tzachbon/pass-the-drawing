@@ -91,7 +91,6 @@
     "is-ci": "^3.0.0",
     "jest": "^27.0.6",
     "jest-canvas-mock": "^2.3.1",
-    "jest-fetch-mock": "^3.0.3",
     "jest-puppeteer": "^3.0.4",
     "lint-staged": "^11.0.0",
     "merge": "^2.1.1",
