@@ -45,7 +45,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "yarn lint --fix"
+    "*.{js,jsx,ts,tsx}": "yarn test:unit --lastCommit && yarn lint --fix"
   },
   "engines": {
     "npm": "please-use-yarn",
