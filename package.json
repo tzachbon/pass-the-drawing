@@ -52,8 +52,7 @@
   },
   "engines": {
     "npm": "please-use-yarn",
-    "yarn": ">= 1.22.10",
-    "node": ">= 15.14.0"
+    "yarn": ">= 1.22.10"
   },
   "devDependencies": {
     "@stylable/core": "^4.2.4",
