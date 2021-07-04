@@ -5,10 +5,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { GameSubjects } from '@constants'
 import { useSubmitGame } from '@hooks/useSubmitGame'
-import { anUser, anUserToPlayer, createRouterMockProvider, uuidRegexPattern } from '@test-utils'
+import { aCategory, anUser, anUserToPlayer, aWord, createRouterMockProvider, uuidRegexPattern } from '@test-utils'
 import { act, renderHook } from '@testing-library/react-hooks'
-import { v4 as uuid } from 'uuid'
-import { set } from '../__mocks__/firebase'
+import { get, set } from '../__mocks__/firebase'
 
 describe('useSubmitGame', () => {
 	const { state } = setup().beforeAndAfter()
@@ -83,7 +82,7 @@ function setup() {
 			currentUser,
 			isValid: true,
 			subject: GameSubjects.Food as GameSubjects | undefined,
-			word: '',
+			word: aWord(),
 			eventMock,
 			player: anUserToPlayer(currentUser),
 		},
@@ -92,7 +91,7 @@ function setup() {
 
 				const { RouterWrapperMock, history } = createRouterMockProvider()
 
-				payload.state.word = uuid()
+				payload.state.word = aWord()
 				payload.state.subject = GameSubjects.Food
 				payload.state.isValid = true
 				payload.state.currentUser = anUser()
@@ -100,11 +99,8 @@ function setup() {
 				payload.state.RouterWrapperMock = RouterWrapperMock
 				payload.state.history = history
 
-				fetchMock.doMock(() =>
-					Promise.resolve({
-						body: JSON.stringify({ dish: payload.state.word }),
-					} as any),
-				)
+				get.mockResolvedValue({ val: () => aCategory({ entities: [ payload.state.word ] }) })
+
 			})
 
 			return payload

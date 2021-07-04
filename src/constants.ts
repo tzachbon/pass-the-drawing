@@ -1,3 +1,9 @@
+
+export const USER_NOT_FOUND_ERROR_CODE = 'auth/user-not-found'
+export const MAXIMUM_DRAW_EXPIRE_TIME = 13
+export const MAXIMUM_DRAW_PREVIEW_EXPIRE_TIME = 5
+export const MINIMUM_PLAYERS_LENGTH = 3
+
 export const Routes = {
 	HOME: '/',
 	CREATE_GAME: '/create-game',
@@ -6,11 +12,13 @@ export const Routes = {
 } as const
 
 export enum GameSubjects {
-	Food = 'Food',
-	Cars = 'Cars',
-	Dessert = 'Dessert',
+	Countries = 'countries',
+	DragonBall = 'dragonBall',
+	Food = 'food',
+	Superheroes = 'superheroes'
 }
 
+/* eslint-disable spellcheck/spell-checker */
 export const firebaseConfig = {
 	apiKey: 'AIzaSyD8oyMp7ZGVqSrxBRUMJaDRO6VAFmn6TX8',
 	authDomain: 'pass-the-draw.firebaseapp.com',
@@ -20,8 +28,3 @@ export const firebaseConfig = {
 	appId: '1:863758399461:web:c5705972a6c3c945bca10c',
 	measurementId: 'G-81KK9F1ETD',
 }
-
-export const USER_NOT_FOUND_ERROR_CODE = 'auth/user-not-found'
-export const MAXIMUM_DRAW_EXPIRE_TIME = 13
-export const MAXIMUM_DRAW_PREVIEW_EXPIRE_TIME = 5
-export const MINIMUM_PLAYERS_LENGTH = 3

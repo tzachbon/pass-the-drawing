@@ -1,34 +1,33 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { GameSubjects } from '@constants'
-import { anUser, anUserToPlayer, uuidRegexPattern, wait } from '@test-utils'
+import { aCategory, anUser, anUserToPlayer, aWord, uuidRegexPattern, wait } from '@test-utils'
 import type { User } from '@types'
-import { v4 as uuid } from 'uuid'
-import { fetch } from '../../../tests/__mocks__/fetch'
 import {
 	authState,
+	get,
 	set,
 	signInWithRedirect,
 } from '../../../tests/__mocks__/firebase'
-
 import { createGameDriver } from './CreateGame.driver'
+
 
 describe('CreateGame', () => {
 
-	beforeEach(() => {
-		word = uuid()
-	})
-
-	let word = uuid()
+	let word = aWord()
+	let category = aCategory({ entities: [ word ] })
 	const fakeUser = anUser() as unknown as User
 	const fakePlayer = anUserToPlayer(fakeUser)
 	const driver = createGameDriver().beforeAndAfter()
 
+	beforeEach(() => {
+		word = aWord()
+		category = aCategory({ entities: [ word ] })
+		get.mockResolvedValue({ val: () => category })
+	})
+
 
 	it('should create a game', async () => {
 		const subject = GameSubjects.Food
-		fetch.mockResponse(() =>
-			Promise.resolve({ body: JSON.stringify({ dish: word }) }),
-		)
 
 		driver.testkit().selectSubject().input().type(subject)
 		driver.testkit().login().modal().open()
@@ -66,7 +65,7 @@ describe('CreateGame', () => {
 		expect(driver.testkit().selectSubject().localStorage().get()).toEqual('test')
 	})
 
-	it('should not show subject error when clicking on the sign in button',() => {
+	it('should not show subject error when clicking on the sign in button', () => {
 		driver.testkit().login().modal().open()
 
 		expect(driver.testkit().login().modal().element()).toBeInTheDocument()
@@ -83,15 +82,12 @@ describe('CreateGame', () => {
 		driver.testkit().submit().button().click()
 
 		await wait(() => {
-			expect(driver.testkit().selectSubject().error().text()).toEqual('Game subject must be one of Food,Cars,Dessert')
+			expect(driver.testkit().selectSubject().error().text()).toEqual('Game subject must be one of Countries,Dragonball,Food,Superheroes')
 		})
 	})
 
 	it('should clear local storage when submit finished', async () => {
 		const subject = GameSubjects.Food
-		fetch.mockResponse(() =>
-			Promise.resolve({ body: JSON.stringify({ dish: word }) }),
-		)
 
 		driver.testkit().selectSubject().input().type(subject)
 		driver.testkit().login().modal().open()
@@ -114,7 +110,7 @@ describe('CreateGame', () => {
 	})
 
 	it('should throw an error and show it to the user', async () => {
-		fetch.mockRejectedValue(new Error())
+		get.mockRejectedValue(new Error())
 
 		driver.testkit().selectSubject().input().type(GameSubjects.Food)
 		driver.testkit().login().modal().open()
@@ -129,15 +125,8 @@ describe('CreateGame', () => {
 		driver.testkit().submit().button().click()
 
 		await wait(() => {
-			expect(
-				driver.testkit().submit().error().element(),
-			).toHaveTextContent(
-				'We ran into small problem, can you please try again?',
-			)
-			expect(fetch).toHaveBeenCalledWith(
-				'https://random-data-api.com/api/food/random_food',
-				expect.objectContaining({}),
-			)
+			expect(driver.testkit().submit().error().text()).toEqual('We ran into small problem, can you please try again?')
+			expect(get).toHaveBeenCalled()
 		})
 	})
 
@@ -159,7 +148,7 @@ describe('CreateGame', () => {
 		)
 	})
 
-	it('should display email incase displayName does not exist', async () => {
+	it('should display email in-case displayName does not exist', async () => {
 		driver.testkit().login().modal().open()
 		driver.testkit().login().modal().signInWithGoogle().click()
 

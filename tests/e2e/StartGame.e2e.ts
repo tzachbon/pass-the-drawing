@@ -19,7 +19,8 @@ describe('StartGame', () => {
 			await expect(page.url()).toMatch(new RegExp(Routes.CREATE_GAME))
 		})
 
-		await page.click(testIdToSelector(OPEN_MODAL_BUTTON_TEST_ID))
+		const openModalButton = await page.waitForSelector(testIdToSelector(OPEN_MODAL_BUTTON_TEST_ID), { visible: true })
+		await openModalButton!.click()
 		await page.waitForSelector(testIdToSelector(ROOT_TEST_ID))
 
 		await expect(page).toFillForm(testIdToSelector(ROOT_TEST_ID), { ...user })

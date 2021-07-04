@@ -1,55 +1,18 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { GameSubjects } from '@constants'
+import firebase from 'firebase/app'
+import type { GameSubjects } from '@constants'
+import type { RandomWord, RandomWordCategory } from '@types'
 
-const BASE_URL = 'https://random-data-api.com/api'
+export async function getRandomWord(subject: GameSubjects): Promise<RandomWord> {
 
-/**
- *
- * Gets a subject from type GameSubjects and returns a random word
- * Api docs - https://random-data-api.com/documentation
- *
- * @param {GameSubjects} subject
- *
- * @example
- *
- * await getRandomWord({ subject: 'Food' }) // 'Banana'
- */
-export async function getRandomWord(subject: GameSubjects): Promise<string> {
-	const url = `${BASE_URL}/${getPathBySubject(subject)}`
-	const data = await fetch(url, {
-		method: 'GET',
-		headers: {
-			Accept: 'application/json',
-			'Content-Type': 'application/json',
-		},
-	}).then((res) => res.json() as Promise<unknown>)
+	const category = await firebase
+		.database()
+		.ref(`words/categories/${subject}`)
+		.get()
+		.then(_ => _.val() as RandomWordCategory)
 
-	return getWordFromSubjectSchema(subject, data).split(' ').shift() || ''
-}
+	const minimum = 0
+	const maximum = category.entities.length - 1
+	const randomNumber = Math.floor(Math.random() * (maximum - minimum + 1)) + minimum
 
-function getPathBySubject(subject: GameSubjects): string {
-	switch (subject) {
-	case GameSubjects.Food:
-		return 'food/random_food'
-	case GameSubjects.Cars:
-		return 'vehicle/random_vehicle'
-	case GameSubjects.Dessert:
-		return 'dessert/random_dessert'
-	default:
-		throw new Error(`Invalid subject ${String(subject)}`)
-	}
-}
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function getWordFromSubjectSchema(subject: GameSubjects, data: any): string {
-	switch (subject) {
-	case GameSubjects.Food:
-		return data.dish as string
-	case GameSubjects.Cars:
-		return data.make_and_model as string
-	case GameSubjects.Dessert:
-		return data.variety as string
-	default:
-		throw new Error(`Invalid subject ${String(subject)}`)
-	}
+	return category.entities[ randomNumber ]!
 }

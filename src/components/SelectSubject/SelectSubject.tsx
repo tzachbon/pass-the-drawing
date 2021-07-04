@@ -4,6 +4,7 @@ import { GameSubjects } from '@constants'
 import type { UseSubject } from '@hooks/useSubject'
 import type { ISubjects } from '@types'
 import { classes, st } from './SelectSubject.st.css'
+import { toTitleCase } from '@utils/toTitleCase'
 
 export interface SelectSubjectProps {
 	subject: ReturnType<UseSubject>['subject']
@@ -53,7 +54,7 @@ export const SelectSubject: React.FC<SelectSubjectProps> = ({
 					data-testid={getSubjectTestId(item.value)}
 					className={st(classes.item, { highlight })}
 				>
-					{item.value}
+					{toTitleCase(item.value)}
 				</div>
 			)}
 		/>

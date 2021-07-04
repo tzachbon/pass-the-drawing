@@ -18,7 +18,7 @@ let config = {
 
 const isDebugMode = args.includes('--debug')
 const keepOpen = args.includes('-k')
-const showDevtools = args.includes('-d')
+const showDevtools = true
 
 if (isDebugMode) {
   config.launch.devtools = showDevtools

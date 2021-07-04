@@ -59,7 +59,7 @@ export const GameLobby: React.VFC<GameLobbyProps> = ({
 				currentPlayerId={currentUser.uid}
 				players={game.players}
 			/>
-			<StartGameButton game={game} />
+			{role === PlayerRoles.Admin && <StartGameButton game={game} />}
 		</div>
 	)
 }
