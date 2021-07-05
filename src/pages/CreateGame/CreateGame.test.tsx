@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { GameSubjects } from '@constants'
-import { aCategory, anUser, anUserToPlayer, aWord, uuidRegexPattern, wait } from '@test-utils'
+import { aCategory, anUser, anUserToPlayer, aWord, uuidRegexPattern, waitFor } from '@test-utils'
 import type { User } from '@types'
 import {
 	authState,
@@ -33,18 +33,18 @@ describe('CreateGame', () => {
 		driver.testkit().login().modal().open()
 		driver.testkit().login().modal().signInWithGoogle().click()
 
-		await wait(() => {
+		await waitFor(() => {
 			authState.onAuthStateChangedCallback(fakeUser)
 		})
 
-		await wait(() => {
+		await waitFor(() => {
 			expect(driver.testkit().login().modal().element()).not.toBeInTheDocument()
 			expect(driver.testkit().submit().button().disabled()).toBeFalsy()
 		})
 
 		driver.testkit().submit().button().click()
 
-		await wait(() => {
+		await waitFor(() => {
 			expect(driver.testkit().submit().error().element()).toBeNull()
 			expect(set).toBeCalledWith(
 				expect.objectContaining({
@@ -75,13 +75,13 @@ describe('CreateGame', () => {
 	it('should show invalid subject error message when subject is invalid and submit clicked', async () => {
 		driver.testkit().selectSubject().input().type('Invalid')
 
-		await wait(() => {
+		await waitFor(() => {
 			authState.onAuthStateChangedCallback(fakeUser)
 		})
 
 		driver.testkit().submit().button().click()
 
-		await wait(() => {
+		await waitFor(() => {
 			expect(driver.testkit().selectSubject().error().text()).toEqual('Game subject must be one of Countries,Dragonball,Food,Superheroes')
 		})
 	})
@@ -93,7 +93,7 @@ describe('CreateGame', () => {
 		driver.testkit().login().modal().open()
 		driver.testkit().login().modal().signInWithGoogle().click()
 
-		await wait(() => {
+		await waitFor(() => {
 			authState.onAuthStateChangedCallback(fakeUser)
 		})
 
@@ -103,7 +103,7 @@ describe('CreateGame', () => {
 
 		driver.testkit().submit().button().click()
 
-		await wait(() => {
+		await waitFor(() => {
 			expect(driver.history?.location.pathname).toEqual('/')
 			expect(driver.testkit().selectSubject().localStorage().get()).toEqual('')
 		})
@@ -116,7 +116,7 @@ describe('CreateGame', () => {
 		driver.testkit().login().modal().open()
 		driver.testkit().login().modal().signInWithGoogle().click()
 
-		await wait(() => {
+		await waitFor(() => {
 			authState.onAuthStateChangedCallback(fakeUser)
 		})
 
@@ -124,7 +124,7 @@ describe('CreateGame', () => {
 
 		driver.testkit().submit().button().click()
 
-		await wait(() => {
+		await waitFor(() => {
 			expect(driver.testkit().submit().error().text()).toEqual('We ran into small problem, can you please try again?')
 			expect(get).toHaveBeenCalled()
 		})
@@ -134,11 +134,11 @@ describe('CreateGame', () => {
 		driver.testkit().login().modal().open()
 		driver.testkit().login().modal().signInWithGoogle().click()
 
-		await wait(() => {
+		await waitFor(() => {
 			expect(signInWithRedirect).toBeCalled()
 		})
 
-		await wait(() => {
+		await waitFor(() => {
 			authState.onAuthStateChangedCallback(fakeUser)
 		})
 
@@ -152,11 +152,11 @@ describe('CreateGame', () => {
 		driver.testkit().login().modal().open()
 		driver.testkit().login().modal().signInWithGoogle().click()
 
-		await wait(() => {
+		await waitFor(() => {
 			expect(signInWithRedirect).toBeCalled()
 		})
 
-		await wait(() => {
+		await waitFor(() => {
 			authState.onAuthStateChangedCallback({ ...fakeUser, displayName: undefined })
 		})
 

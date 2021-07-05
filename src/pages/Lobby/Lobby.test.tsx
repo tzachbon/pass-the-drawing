@@ -1,5 +1,5 @@
 import { Routes } from '@constants'
-import { aGame, anUser, anUserToPlayer, wait } from '@test-utils'
+import { aGame, anUser, anUserToPlayer, waitFor } from '@test-utils'
 import { PlayerRoles, User } from '@types'
 import {
 	authState,
@@ -25,7 +25,7 @@ describe('Lobby', () => {
 
 	it('should call game route', async () => {
 
-		await wait(() => {
+		await waitFor(() => {
 
 			expect(ref).toBeCalledWith('games/' + gameMock.id)
 		})
@@ -40,7 +40,7 @@ describe('Lobby', () => {
 
 		driver.render()
 
-		await wait(() => {
+		await waitFor(() => {
 			expect(driver.testkit().notFound().message().text()).toEqual('We could not find this game :(')
 			expect(driver.testkit().notFound().link().text()).toEqual('Create a new game')
 			expect(driver.testkit().notFound().link().element()).toHaveAttribute('href', '/')
@@ -67,7 +67,7 @@ describe('Lobby', () => {
 
 		authState.onAuthStateChangedCallback(fakeUser)
 
-		await wait(() => {
+		await waitFor(() => {
 			expect(update).toHaveBeenCalledWith({
 				players: [ ...gameMock.players, anUserToPlayer(fakeUser as unknown as User, PlayerRoles.Regular) ],
 			})
@@ -84,7 +84,7 @@ describe('Lobby', () => {
 
 		authState.onAuthStateChangedCallback(fakeUser)
 
-		await wait(() => {
+		await waitFor(() => {
 			expect(driver.testkit().login().modal().element()).not.toBeInTheDocument()
 		})
 	})
@@ -102,7 +102,7 @@ describe('Lobby', () => {
 
 			authState.onAuthStateChangedCallback(fakeUser)
 
-			await wait(() => {
+			await waitFor(() => {
 				expect(driver.testkit().loading().message().text()).toEqual('Wait here, we are getting the game...')
 			})
 

@@ -22,7 +22,7 @@ export const StandbyScreen: React.VFC<StandbyScreenProps> = (
 			data-testid={ROOT_TEST_ID}
 			className={st(classes.root, className)}
 		>
-			{currentPlayingPlayer.name} is playing, please wait to your turn.
+			{currentPlayingPlayer.name} is playing, please waitFor to your turn.
 		</div>
 	)
 }

@@ -1,4 +1,4 @@
-import { aGame, aPlayer, FAKE_DRAWING_DATA, wait } from '@test-utils'
+import { aGame, aPlayer, FAKE_DRAWING_DATA, waitFor } from '@test-utils'
 import { update } from '../../../tests/__mocks__/firebase'
 import { drawScreenDriver } from './DrawScreen.driver'
 
@@ -13,7 +13,7 @@ describe('DrawScreen', () => {
 		driver.testkit().canvas().draw(5, 5)
 		const expectedDraw = FAKE_DRAWING_DATA
 
-		await wait(() => {
+		await waitFor(() => {
 			expect(update).toBeCalledWith({
 				players: [
 					{
@@ -31,7 +31,7 @@ describe('DrawScreen', () => {
 		async () => {
 			expect(driver.testkit().timer().text()).toEqual(String(fakeExpireTime))
 
-			await wait(() => {
+			await waitFor(() => {
 				expect(driver.testkit().timer().text()).toEqual('0')
 				expect(update).toBeCalledWith({
 					currentPlayingIndex: game.currentPlayingIndex + 1,
