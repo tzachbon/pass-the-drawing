@@ -39,7 +39,7 @@ describe('DrawScreen', () => {
 			expect(driver.testkit().timer().text()).toEqual(String(fakeExpireTime))
 
 			await waitFor(() => {
-				expect(driver.testkit().timer().text()).toEqual('0')
+				expect(driver.testkit().timer().text()).toEqual('1')
 				expect(update).toBeCalledWith({
 					currentPlayingIndex: game.currentPlayingIndex + 1,
 				})
