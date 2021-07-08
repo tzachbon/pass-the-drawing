@@ -43,7 +43,9 @@ describe('DrawScreen', () => {
 				expect(update).toBeCalledWith({
 					currentPlayingIndex: game.currentPlayingIndex + 1,
 				})
-			}, { timeout: fakeExpireTime * 2 * 1000 })
+			},
+			{ timeout: fakeExpireTime * 2 * 1000 },
+			)
 
 		},
 		20000,
@@ -82,6 +84,8 @@ describe('DrawScreen', () => {
 		await waitFor(() => {
 			expect(driver.testkit().lastDrawPreview().element()).not.toBeInTheDocument()
 			expect(driver.testkit().canvas().element()).toBeInTheDocument()
-		})
+		},
+		{ timeout: fakeExpireTime * 2 * 1000 },
+		)
 	})
 })
