@@ -1,9 +1,9 @@
 import { lostScreenDriver } from './LostScreen.driver'
 
 describe('LostScreen', () => {
-    const driver = lostScreenDriver().beforeAndAfter()
+	const driver = lostScreenDriver().beforeAndAfter()
 
-    it('should show lost screen', () => {
-        expect(driver.testkit().element()).toBeInTheDocument()
-    })
+	it('should show lost screen', () => {
+		expect(driver.testkit().element()).toBeInTheDocument()
+	})
 })

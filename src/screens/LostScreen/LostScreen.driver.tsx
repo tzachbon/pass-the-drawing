@@ -1,24 +1,28 @@
 import { Driver, RenderResult, testUtils } from '@test-utils'
-import { LostScreen, ROOT_TEST_ID, LostScreenProps } from './LostScreen'
+import {
+	LostScreen, 
+	ROOT_TEST_ID,
+	LostScreenProps,
+} from './LostScreen'
 
 interface Params {
-    props?: LostScreenProps
+	props?: LostScreenProps
 }
 
 export function lostScreenDriver({ props }: Params = {}) {
-    return new LostScreenDriver(props || {}, LostScreen)
+	return new LostScreenDriver(props || {}, LostScreen)
 }
 
 export class LostScreenDriver extends Driver<LostScreenProps> {
-    testkit() {
-        return lostScreenTestkit(this.wrapper.container)
-    }
+	testkit() {
+		return lostScreenTestkit(this.wrapper.container)
+	}
 }
 
 export function lostScreenTestkit(container: RenderResult) {
-    const testkit = {
-        ...testUtils(ROOT_TEST_ID, container, { keys: [ 'text' ] }),
-    }
+	const testkit = {
+		...testUtils(ROOT_TEST_ID, container, { keys: [ 'text' ] }),
+	}
 
-    return testkit
+	return testkit
 }

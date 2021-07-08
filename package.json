@@ -15,7 +15,7 @@
     "lint": "eslint . -f codeframe",
     "lint:fix": "yarn lint --fix",
     "testCommit:unit": "yarn test:unit --lastCommit",
-    "lintStaged": "yarn testCommit:unit && yarn prettier",
+    "lintStaged": "yarn testCommit:unit && yarn lint:fix",
     "prettier": "prettier --write .  && yarn lint:fix",
     "pretest": "yarn lint && yarn build",
     "test": "yarn npm-run-all test:* --parallel",

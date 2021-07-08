@@ -3,17 +3,17 @@ import { useObjectVal } from 'react-firebase-hooks/database'
 import type { Game } from '@types'
 
 interface Params {
-    id: string
+	id: string
 }
 
 export function useGame({ id }: Params) {
-    const [ game, loading, error ] = useObjectVal<Game>(
-        firebase.database().ref(`games/${id}`),
-    )
+	const [ game, loading, error ] = useObjectVal<Game>(
+		firebase.database().ref(`games/${id}`),
+	)
 
-    return {
-        game,
-        loading,
-        error,
-    }
+	return {
+		game,
+		loading,
+		error,
+	}
 }
