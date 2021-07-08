@@ -2,31 +2,32 @@ import { aWord } from '@test-utils'
 import { wordBoardDriver } from './WordBoard.driver'
 
 describe('WordBoard', () => {
+    const updateWordMock = jest.fn()
+    const word = aWord()
+    const driver = wordBoardDriver({
+        props: { updateWord: updateWordMock, word },
+    }).beforeAndAfter()
 
-	const updateWordMock = jest.fn()
-	const word = aWord()
-	const driver = wordBoardDriver({ props: { updateWord: updateWordMock, word } }).beforeAndAfter()
+    it('should show word', () => {
+        expect(driver.testkit().word().text()).toEqual(word.name)
+    })
 
-	it('should show word', () => {
-		expect(driver.testkit().word().text()).toEqual(word.name)
-	})
+    it('should show loading state', () => {
+        driver.withProps({ loading: true }).render()
 
-	it('should show loading state', () => {
-		driver.withProps({ loading: true }).render()
+        expect(driver.testkit().word().text()).toEqual('Loading...')
+    })
 
-		expect(driver.testkit().word().text()).toEqual('Loading...')
-	})
+    it('should call updateWord on click', () => {
+        driver.testkit().button().click()
 
-	it('should call updateWord on click', () => {
-		driver.testkit().button().click()
+        expect(updateWordMock).toHaveBeenCalled()
+    })
 
-		expect(updateWordMock).toHaveBeenCalled()
-	})
+    it('should not call updateWord when it disabled', () => {
+        driver.withProps({ loading: true }).render()
 
-	it('should not call updateWord when it disabled', () => {
-		driver.withProps({ loading: true }).render()
-
-		expect(driver.testkit().button().disabled()).toBeTruthy()
-		expect(updateWordMock).not.toHaveBeenCalled()
-	})
+        expect(driver.testkit().button().disabled()).toBeTruthy()
+        expect(updateWordMock).not.toHaveBeenCalled()
+    })
 })

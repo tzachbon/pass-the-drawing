@@ -8,47 +8,42 @@ import { LostScreen } from '@screens/LostScreen'
 import { WonScreen } from '@screens/WonScreen'
 
 export interface GameContainerProps {
-	className?: string
-	game: Game
-	currentUser: User
+    className?: string
+    game: Game
+    currentUser: User
 }
-
 
 export const ROOT_TEST_ID = 'GameContainer_ROOT_TEST_ID'
 
-export const GameContainer: React.VFC<GameContainerProps> = (
-	{
-		className,
-		game,
-		currentUser,
-	},
-) => {
-	const {
-		isPlaying,
-		currentPlayer,
-		currentPlayingPlayer,
-	} = useCurrentPlayer({ currentUser, game })
-	const { isWon, finished } = game
+export const GameContainer: React.VFC<GameContainerProps> = ({
+    className,
+    game,
+    currentUser,
+}) => {
+    const { isPlaying, currentPlayer, currentPlayingPlayer } = useCurrentPlayer(
+        { currentUser, game },
+    )
+    const { isWon, finished } = game
 
-	return (
-		<div
-			data-testid={ROOT_TEST_ID}
-			className={st(classes.root, className)}
-		>
-			{
-				finished ? isWon ? (
-					<WonScreen />
-				) : (
-					<LostScreen />
-				) : isPlaying ? (
-					<PlayScreen
-						game={game}
-						currentPlayer={currentPlayer}
-					/>
-				) : (
-					<StandbyScreen currentPlayingPlayer={currentPlayingPlayer} />
-				)
-			}
-		</div>
-	)
+    return (
+        <div
+            data-testid={ROOT_TEST_ID}
+            className={st(classes.root, className)}
+        >
+            {finished ? (
+                isWon ? (
+                    <WonScreen />
+                ) : (
+                    <LostScreen />
+                )
+            ) : isPlaying ? (
+                <PlayScreen
+                    game={game}
+                    currentPlayer={currentPlayer}
+                />
+            ) : (
+                <StandbyScreen currentPlayingPlayer={currentPlayingPlayer} />
+            )}
+        </div>
+    )
 }

@@ -6,40 +6,40 @@ import { useHistory } from 'react-router-dom'
 import { useAsync } from './useAsync'
 
 interface Params {
-	subject: GameSubjects | undefined
-	currentUser: User | undefined
-	isValid: boolean
+    subject: GameSubjects | undefined
+    currentUser: User | undefined
+    isValid: boolean
 }
 
 export function useSubmitGame({ subject, isValid, currentUser }: Params) {
-	const { push } = useHistory()
+    const { push } = useHistory()
 
-	const _onSubmit: FormEventHandler<HTMLFormElement> = useCallback(
-		async (event) => {
-			event.preventDefault()
+    const _onSubmit: FormEventHandler<HTMLFormElement> = useCallback(
+        async (event) => {
+            event.preventDefault()
 
-			if (subject && currentUser && isValid) {
-				const word = await getRandomWord(subject)
-				const game = await createGame(
-					{
-						subject,
-						word,
-					},
-					currentUser,
-				)
-				const path = `${Routes.LOBBY}/${game.id}`
+            if (subject && currentUser && isValid) {
+                const word = await getRandomWord(subject)
+                const game = await createGame(
+                    {
+                        subject,
+                        word,
+                    },
+                    currentUser,
+                )
+                const path = `${Routes.LOBBY}/${game.id}`
 
-				push(path)
-			}
-		},
-		[ subject, currentUser, push, isValid ],
-	)
+                push(path)
+            }
+        },
+        [ subject, currentUser, push, isValid ],
+    )
 
-	const { run, error, loading } = useAsync()
+    const { run, error, loading } = useAsync()
 
-	return {
-		onSubmit: run(_onSubmit),
-		loading,
-		error,
-	}
+    return {
+        onSubmit: run(_onSubmit),
+        loading,
+        error,
+    }
 }

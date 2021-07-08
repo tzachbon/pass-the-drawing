@@ -5,37 +5,40 @@ import { databaseState, update } from '../../../tests/__mocks__/firebase'
 import { startGameButtonDriver } from './StartGameButton.driver'
 
 describe('StartGameButton', () => {
-	const players = [
-		aPlayer(),
-		aPlayer({ role: PlayerRoles.Regular }),
-		aPlayer({ role: PlayerRoles.Regular }),
-	]
+    const players = [
+        aPlayer(),
+        aPlayer({ role: PlayerRoles.Regular }),
+        aPlayer({ role: PlayerRoles.Regular }),
+    ]
 
-	const game = aGame({ players })
-	const driver = startGameButtonDriver({ props: { game } }).beforeAndAfter()
-	
-	beforeEach(() => {
-		update.mockResolvedValue({})
-	})
+    const game = aGame({ players })
+    const driver = startGameButtonDriver({ props: { game } }).beforeAndAfter()
 
-	it('should start a game', async () => {
-		expect(driver.testkit().button().disabled()).toBeFalsy()
+    beforeEach(() => {
+        update.mockResolvedValue({})
+    })
 
-		driver.testkit().button().click()
+    it('should start a game', async () => {
+        expect(driver.testkit().button().disabled()).toBeFalsy()
 
-		await waitFor(() => {
-			
-			expect(databaseState.ref).toEqual(`games/${game.id}`)
-			expect(update).toBeCalledWith(expect.objectContaining({
-				startTime: expect.any(Number),
-				started: true,
-			}))
-		})
-	})
+        driver.testkit().button().click()
 
-	it('should not start game when not enough players', () => {
-		driver.withProps({ game: aGame({ players: [ aPlayer(), aPlayer() ] }) }).render()
+        await waitFor(() => {
+            expect(databaseState.ref).toEqual(`games/${game.id}`)
+            expect(update).toBeCalledWith(
+                expect.objectContaining({
+                    startTime: expect.any(Number),
+                    started: true,
+                }),
+            )
+        })
+    })
 
-		expect(driver.testkit().button().disabled()).toBeTruthy()
-	})
+    it('should not start game when not enough players', () => {
+        driver
+            .withProps({ game: aGame({ players: [ aPlayer(), aPlayer() ] }) })
+            .render()
+
+        expect(driver.testkit().button().disabled()).toBeTruthy()
+    })
 })

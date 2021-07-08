@@ -8,46 +8,46 @@ declare global {
 }
 
 expect.extend({
-	toBeCalledWithInstance<T extends Function>(
-		this: jest.MatcherContext,
-		expected: jest.Mock,
-		received: T,
-	): jest.CustomMatcherResult {
+    toBeCalledWithInstance<T extends Function>(
+        this: jest.MatcherContext,
+        expected: jest.Mock,
+        received: T,
+    ): jest.CustomMatcherResult {
+        const isCalled = expected?.mock?.calls?.length
 
-		const isCalled = expected?.mock?.calls?.length
+        if (!isCalled) {
+            return {
+                pass: false,
+                message: () =>
+                    `Expected ${this.utils.printExpected(
+                        expected,
+                    )} to be called but it didn't`,
+            }
+        }
 
-		if (!isCalled) {
-			return {
-				pass: false,
-				message: () => `Expected ${this.utils.printExpected(
-					expected,
-				)} to be called but it didn't`,
-			}
-		}
-		
-		const isInstance = expected?.mock?.calls.some(
-			(calls) =>
-				Array.isArray(calls) &&
+        const isInstance = expected?.mock?.calls.some(
+            (calls) =>
+                Array.isArray(calls) &&
                 calls.some((call) => call instanceof received),
-		)
+        )
 
-		if (isInstance) {
-			return {
-				pass: true,
-				message: () => '',
-			}
-		} else {
-			return {
-				pass: false,
-				message: () =>
-					`Expected ${this.utils.printExpected(
-						expected.name,
-					)} to be called with instance of ${this.utils.printReceived(
-						received,
-					)}`,
-			}
-		}
-	},
+        if (isInstance) {
+            return {
+                pass: true,
+                message: () => '',
+            }
+        } else {
+            return {
+                pass: false,
+                message: () =>
+                    `Expected ${this.utils.printExpected(
+                        expected.name,
+                    )} to be called with instance of ${this.utils.printReceived(
+                        received,
+                    )}`,
+            }
+        }
+    },
 })
 
 export {}
