@@ -43,23 +43,15 @@ export const DrawScreen: React.VFC<DrawScreenProps> = (
 		onExpire,
 	})
 
-	const onCanvasChange = useCallback(
-		async (event: CanvasDraw) => {
-			const draw = event.getSaveData()
-			const updatedPlayers = players.map(
-				(player) => player.id === currentPlayer.id ? ({
-					...player,
-					draw,
-				}) : player,
-			)
+            await updateGame(id, { players: updatedPlayers })
+        },
+        [ id, players, currentPlayer.id ],
+    )
 
-			await updateGame(
-				id,
-				{ players: updatedPlayers },
-			)
-		},
-		[ id, players, currentPlayer.id ],
-	)
+    useEffect(() => {
+        start()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
 	const onFinishedLastPlayerDraw = useCallback(
 		() => {

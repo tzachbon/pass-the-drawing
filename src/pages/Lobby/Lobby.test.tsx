@@ -2,111 +2,136 @@ import { Routes } from '@constants'
 import { aGame, anUser, anUserToPlayer, waitFor } from '@test-utils'
 import { PlayerRoles, User } from '@types'
 import {
-	authState,
-	databaseState, 
-	ref,
-	update,
-	useObjectValMock,
+    authState,
+    databaseState,
+    ref,
+    update,
+    useObjectValMock,
 } from '../../../tests/__mocks__/firebase'
 import { lobbyDriver } from './Lobby.driver'
 
 describe('Lobby', () => {
+    let resolve = (_: unknown) => {
+        return _
+    }
+    const gameMock = aGame()
+    const initialRoute = `${Routes.LOBBY}/${gameMock.id}`
 
-	let resolve = (_: unknown) => { return _ }
-	const gameMock = aGame()
-	const initialRoute = `${Routes.LOBBY}/${gameMock.id}`
+    beforeEach(() => {
+        useObjectValMock()
+    })
 
-	beforeEach(() => {
-		useObjectValMock()
-	})
+    const fakeUser = anUser()
+    const driver = lobbyDriver({ initialRoute }).beforeAndAfter()
 
-	const fakeUser = anUser()
-	const driver = lobbyDriver({ initialRoute }).beforeAndAfter()
+    it('should call game route', async () => {
+        await waitFor(() => {
+            expect(ref).toBeCalledWith('games/' + gameMock.id)
+        })
+    })
 
-	it('should call game route', async () => {
+    it('should show loading screen', () => {
+        expect(driver.testkit().loading().message().text()).toEqual(
+            'Wait here, we are getting the game...',
+        )
+    })
 
-		await waitFor(() => {
+    it('should show game not found layout', async () => {
+        useObjectValMock(null)
 
-			expect(ref).toBeCalledWith('games/' + gameMock.id)
-		})
-	})
+        driver.render()
 
-	it('should show loading screen', () => {
-		expect(driver.testkit().loading().message().text()).toEqual('Wait here, we are getting the game...')
-	})
+        await waitFor(() => {
+            expect(driver.testkit().notFound().message().text()).toEqual(
+                'We could not find this game :(',
+            )
+            expect(driver.testkit().notFound().link().text()).toEqual(
+                'Create a new game',
+            )
+            expect(
+                driver.testkit().notFound().link().element(),
+            ).toHaveAttribute('href', '/')
+        })
+    })
 
-	it('should show game not found layout', async () => {
-		useObjectValMock(null)
+    it('should show the game lobby', () => {
+        useObjectValMock(gameMock)
 
-		driver.render()
+        driver.render()
 
-		await waitFor(() => {
-			expect(driver.testkit().notFound().message().text()).toEqual('We could not find this game :(')
-			expect(driver.testkit().notFound().link().text()).toEqual('Create a new game')
-			expect(driver.testkit().notFound().link().element()).toHaveAttribute('href', '/')
-		})
-	})
+        authState.onAuthStateChangedCallback(fakeUser)
 
-	it('should show the game lobby', () => {
-		useObjectValMock(gameMock)
+        expect(driver.testkit().gameLobby().element()).not.toBeNull()
+        expect(driver.testkit().gameLobby().element()).toBeInTheDocument()
+    })
 
-		driver.render()
+    it('should add player', async () => {
+        useObjectValMock(gameMock)
 
-		authState.onAuthStateChangedCallback(fakeUser)
+        update.mockImplementation((newGame) =>
+            Promise.resolve(databaseState.setValue(newGame)),
+        )
 
-		expect(driver.testkit().gameLobby().element()).not.toBeNull()
-		expect(driver.testkit().gameLobby().element()).toBeInTheDocument()
-	})
+        driver.render()
 
-	it('should add player', async () => {
-		useObjectValMock(gameMock)
+        authState.onAuthStateChangedCallback(fakeUser)
 
-		update.mockImplementation((newGame) => Promise.resolve(databaseState.setValue(newGame)))
+        await waitFor(() => {
+            expect(update).toHaveBeenCalledWith({
+                players: [
+                    ...gameMock.players,
+                    anUserToPlayer(
+                        fakeUser as unknown as User,
+                        PlayerRoles.Regular,
+                    ),
+                ],
+            })
+        })
+    })
 
-		driver.render()
+    it('should open auth modal and log in', async () => {
+        useObjectValMock(gameMock)
 
-		authState.onAuthStateChangedCallback(fakeUser)
+        driver.render()
+        driver.testkit().login().modal().open()
 
-		await waitFor(() => {
-			expect(update).toHaveBeenCalledWith({
-				players: [ ...gameMock.players, anUserToPlayer(fakeUser as unknown as User, PlayerRoles.Regular) ],
-			})
-		})
-	})
+        expect(driver.testkit().login().modal().element()).toBeInTheDocument()
 
-	it('should open auth modal and log in', async () => {
-		useObjectValMock(gameMock)
+        authState.onAuthStateChangedCallback(fakeUser)
 
-		driver.render()
-		driver.testkit().login().modal().open()
+        await waitFor(() => {
+            expect(
+                driver.testkit().login().modal().element(),
+            ).not.toBeInTheDocument()
+        })
+    })
 
-		expect(driver.testkit().login().modal().element()).toBeInTheDocument()
+    describe('should show loading', () => {
+        it('when game is loading', () => {
+            expect(driver.testkit().loading().message().text()).toEqual(
+                'Wait here, we are getting the game...',
+            )
+        })
 
-		authState.onAuthStateChangedCallback(fakeUser)
+        it('when adding a player', async () => {
+            useObjectValMock(gameMock)
+            update.mockReturnValue(
+                new Promise((res) => {
+                    resolve = res
+                }),
+            )
 
-		await waitFor(() => {
-			expect(driver.testkit().login().modal().element()).not.toBeInTheDocument()
-		})
-	})
+            driver.render()
 
-	describe('should show loading', () => {
-		it('when game is loading', () => {
-			expect(driver.testkit().loading().message().text()).toEqual('Wait here, we are getting the game...')
-		})
+            authState.onAuthStateChangedCallback(fakeUser)
 
-		it('when adding a player', async () => {
-			useObjectValMock(gameMock)
-			update.mockReturnValue(new Promise(res => { resolve = res }))
+            await waitFor(() => {
+                expect(driver.testkit().loading().message().text()).toEqual(
+                    'Wait here, we are getting the game...',
+                )
+            })
 
-			driver.render()
-
-			authState.onAuthStateChangedCallback(fakeUser)
-
-			await waitFor(() => {
-				expect(driver.testkit().loading().message().text()).toEqual('Wait here, we are getting the game...')
-			})
-
-			resolve({})
-		})
-	})
+            resolve({})
+        })
+    })
 })

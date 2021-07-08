@@ -10,12 +10,7 @@
     "plugin:stylable/recommended",
     "prettier"
   ],
-  "plugins": [
-    "react-hooks",
-    "prettier",
-    "jest",
-    "spellcheck"
-  ],
+  "plugins": ["react-hooks", "prettier", "jest", "spellcheck"],
   "settings": {
     "react": {
       "version": "detect"
@@ -31,44 +26,20 @@
     "newline-before-return": "error",
     "no-return-await": "off",
     "no-whitespace-before-property": "error",
-    "react/jsx-first-prop-new-line": [
-      1,
-      "multiline"
-    ],
-    "react/jsx-closing-bracket-location": [
-      1,
-      "line-aligned"
-    ],
+    "react/jsx-first-prop-new-line": [1, "multiline"],
+    "react/jsx-closing-bracket-location": [1, "line-aligned"],
     "react/jsx-max-props-per-line": [
       1,
       {
         "maximum": 1
       }
     ],
-    "comma-dangle": [
-      "error",
-      "always-multiline"
-    ],
-    "function-call-argument-newline": [
-      "error",
-      "consistent"
-    ],
-    "object-curly-spacing": [
-      "error",
-      "always"
-    ],
-    "array-bracket-spacing": [
-      "error",
-      "always"
-    ],
-    "computed-property-spacing": [
-      "error",
-      "always"
-    ],
-    "quote-props": [
-      "error",
-      "as-needed"
-    ],
+    "comma-dangle": ["error", "always-multiline"],
+    "function-call-argument-newline": ["error", "consistent"],
+    "object-curly-spacing": ["error", "always"],
+    "array-bracket-spacing": ["error", "always"],
+    "computed-property-spacing": ["error", "always"],
+    "quote-props": ["error", "as-needed"],
     "object-curly-newline": "off",
     "jest/no-disabled-tests": "warn",
     "jest/no-focused-tests": "error",
@@ -78,69 +49,60 @@
     "spellcheck/spell-checker": [
       "error",
       {
-          "comments": true,
-          "strings": true,
-          "identifiers": true,
-          "templates": true,
-          "lang": "en_US",
-          "skipWords": [
-              "webpack",
-              "utils",
-              "testkit",
-              "stylable",
-              "devtools",
-              "devtool",
-              "firebase",
-              "transpile",
-              "renderer",
-              "testid",
-              "uid",
-              "ptd",
-              "charset",
-              "svg",
-              "gif",
-              "tsx",
-              "jsx",
-              "jpg",
-              "jpeg",
-              "matchers",
-              "matcher",
-              "namespace",
-              "goto",
-              "pathname",
-              "dragonball",
-              "appspot",
-              "res",
-              "rej",
-              "href",
-              "unescaped",
-              "nullable",
-              "dom",
-              "jsdom",
-              "snapshot",
-              "argv",
-              "dumpio",
-              "stdout",
-              "stderr"
-            
-          ],
-          "skipIfMatch": [
-              "http://[^s]*",
-              "^[-\\w]+\/[-\\w\\.]+$"
-          ],
-          "skipWordIfMatch": [
-              "^foobar.*$"
-          ],
-          "minLength": 3
-       }
-   ]
+        "comments": true,
+        "strings": true,
+        "identifiers": true,
+        "templates": true,
+        "lang": "en_US",
+        "skipWords": [
+          "webpack",
+          "utils",
+          "testkit",
+          "stylable",
+          "devtools",
+          "devtool",
+          "firebase",
+          "transpile",
+          "renderer",
+          "testid",
+          "uid",
+          "ptd",
+          "charset",
+          "svg",
+          "gif",
+          "tsx",
+          "jsx",
+          "jpg",
+          "jpeg",
+          "matchers",
+          "matcher",
+          "namespace",
+          "goto",
+          "pathname",
+          "dragonball",
+          "appspot",
+          "res",
+          "rej",
+          "href",
+          "unescaped",
+          "nullable",
+          "dom",
+          "jsdom",
+          "snapshot",
+          "argv",
+          "dumpio",
+          "stdout",
+          "stderr"
+        ],
+        "skipIfMatch": ["http://[^s]*", "^[-\\w]+/[-\\w\\.]+$"],
+        "skipWordIfMatch": ["^foobar.*$"],
+        "minLength": 3
+      }
+    ]
   },
   "overrides": [
     {
-      "files": [
-        "*.ts",
-        "*.tsx"
-      ],
+      "files": ["*.ts", "*.tsx"],
       "parserOptions": {
         "project": "./tsconfig.json"
       },
@@ -158,22 +120,10 @@
         "explicit-module-boundary-types": "off",
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
-        "indent": [
-          "error",
-          "tab"
-        ],
-        "linebreak-style": [
-          "error",
-          "unix"
-        ],
-        "quotes": [
-          "error",
-          "single"
-        ],
-        "semi": [
-          "error",
-          "never"
-        ],
+        "indent": ["error", 4],
+        "linebreak-style": ["error", "unix"],
+        "quotes": ["error", "single"],
+        "semi": ["error", "never"],
         "@typescript-eslint/unbound-method": "off"
       }
     }
