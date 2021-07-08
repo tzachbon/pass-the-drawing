@@ -8,13 +8,13 @@ import { cleanup as hooksCleanup } from '@testing-library/react-hooks'
 mockFirebase()
 
 afterEach(() => {
-    void firebaseCleanup()
-    void cleanup()
-    void hooksCleanup()
+	void firebaseCleanup()
+	void cleanup()
+	void hooksCleanup()
 
-    jest.clearAllMocks()
+	jest.clearAllMocks()
 })
 
 afterAll(() => {
-    jest.restoreAllMocks()
+	jest.restoreAllMocks()
 })
