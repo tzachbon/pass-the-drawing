@@ -20,11 +20,12 @@ export enum GameSubjects {
 
 /* eslint-disable spellcheck/spell-checker */
 export const firebaseConfig = {
-	apiKey: 'AIzaSyD8oyMp7ZGVqSrxBRUMJaDRO6VAFmn6TX8',
-	authDomain: 'pass-the-draw.firebaseapp.com',
-	projectId: 'pass-the-draw',
-	storageBucket: 'pass-the-draw.appspot.com',
-	messagingSenderId: '863758399461',
-	appId: '1:863758399461:web:c5705972a6c3c945bca10c',
-	measurementId: 'G-81KK9F1ETD',
+	apiKey: 'AIzaSyDKaEWr0bf2H0M0C4RKzAMznIy7JbR8OhU',
+	authDomain: 'pass-the-drawing.firebaseapp.com',
+	databaseURL: 'https://pass-the-drawing.firebaseio.com',
+	projectId: 'pass-the-drawing',
+	storageBucket: 'pass-the-drawing.appspot.com',
+	messagingSenderId: '927540438920',
+	appId: '1:927540438920:web:fc125c54286eb7d2727c3d',
+	measurementId: 'G-29E7KM74XJ',
 }

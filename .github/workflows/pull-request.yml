@@ -26,5 +26,5 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PASS_THE_DRAW }}'
-          projectId: pass-the-draw
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PASS_THE_DRAWING }}'
+          projectId: pass-the-drawing
