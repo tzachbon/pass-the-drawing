@@ -6,8 +6,7 @@ import { CREATE_GAME_LINK } from '@pages/Home/Home'
 import { getFakeUsers, testIdToSelector, URL } from '@test-utils'
 import eventually from 'wix-eventually'
 
-// eslint-disable-next-line jest/no-disabled-tests
-describe.skip('StartGame', () => {
+describe('StartGame', () => {
 	const [ user ] = getFakeUsers()
 	beforeAll(async () => {
 		await page.goto(URL)
