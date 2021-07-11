@@ -1,0 +1,13 @@
+:vars {
+    base-font-size: 16px;
+}
+
+
+
+.px-to-rem {
+    color: green;
+    background: yellow;
+}
+.someClass {
+    -st-mixin: px-to-rem;     
+}  

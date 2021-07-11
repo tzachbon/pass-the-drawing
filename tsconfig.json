@@ -72,6 +72,9 @@
       "@utils/*":[
         "src/utils/*"
       ],
+      "@assets/*":[
+        "src/assets/*"
+      ],
       "@pages/*":[
         "src/pages/*"
       ]
