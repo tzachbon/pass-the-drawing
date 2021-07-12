@@ -1,7 +1,7 @@
 :root {
     --primary-color: #FDA75F;
     --primary-font-color: value(mainDarkColor);
-    --primary-width: value(mobileMaxWidth)
+    --primary-width: value(mobileMaxWidth);
     --secondary-color: #ED718B;
     --secondary-font-color: white;
 }
