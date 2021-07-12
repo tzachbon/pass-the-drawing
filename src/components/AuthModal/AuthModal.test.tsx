@@ -1,4 +1,4 @@
-import { wait } from '@test-utils'
+import { waitFor } from '@test-utils'
 import { GoogleAuthProvider, signInWithRedirect } from '../../../tests/__mocks__/firebase'
 import { authModalDriver } from './AuthModal.driver'
 
@@ -31,7 +31,7 @@ describe('AuthModal', () => {
 	it('should do login with google', async () => {
 		driver.testkit().signInWithGoogle().click()
 
-		await wait(() => {
+		await waitFor(() => {
 			expect(signInWithRedirect).toBeCalledWithInstance(GoogleAuthProvider)
 		})
 	})

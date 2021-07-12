@@ -6,6 +6,6 @@ describe('StandbyScreen', () => {
 	const driver = standbyScreenDriver({ props: { currentPlayingPlayer } }).beforeAndAfter()
 
 	it('should show user standby', () => {
-		expect(driver.testkit().text()).toEqual(`${currentPlayingPlayer.name} is playing, please wait to your turn.`)
+		expect(driver.testkit().text()).toEqual(`${currentPlayingPlayer.name} is playing, please waitFor to your turn.`)
 	})
 })

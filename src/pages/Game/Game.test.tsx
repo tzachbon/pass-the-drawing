@@ -1,4 +1,4 @@
-import { aGame, anUser, anUserToPlayer, aPlayer, wait } from '@test-utils'
+import { aGame, anUser, anUserToPlayer, aPlayer, waitFor } from '@test-utils'
 import type { User } from '@types'
 import { authState, cleanup, on, useObjectValMock } from '../../../tests/__mocks__/firebase'
 import { gameDriver } from './Game.driver'
@@ -31,7 +31,7 @@ describe('Game', () => {
 		})
 
 		it('should not show game not found when playing user is logged in', async () => {
-			await wait(() => {
+			await waitFor(() => {
 				authState.onAuthStateChangedCallback(playingUser)
 			})
 
@@ -41,7 +41,7 @@ describe('Game', () => {
 		})
 
 		it('should show game not found', async () => {
-			await wait(() => {
+			await waitFor(() => {
 				authState.onAuthStateChangedCallback(notPlayingUser)
 			})
 

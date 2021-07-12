@@ -1,4 +1,5 @@
 import { canvasTestkit } from '@components/Canvas/Canvas.driver'
+import { lastDrawPreviewScreenTestkit } from '@screens/LastDrawPreviewScreen/LastDrawPreviewScreen.driver'
 import { Driver, RenderResult, testUtils } from '@test-utils'
 import {
 	DrawScreen,
@@ -27,6 +28,7 @@ export function drawScreenTestkit(container: RenderResult) {
 		element: utils.element,
 		timer: () => testUtils(TIMER_TEST_ID, container, { keys: [ 'text' ] }),
 		canvas: () => canvasTestkit(container),
+		lastDrawPreview: () => lastDrawPreviewScreenTestkit(container),
 	}
 
 	return testkit

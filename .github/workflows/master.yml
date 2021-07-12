@@ -29,6 +29,6 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PASS_THE_DRAW }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PASS_THE_DRAWING }}'
           channelId: live
-          projectId: pass-the-draw
+          projectId: pass-the-drawing
