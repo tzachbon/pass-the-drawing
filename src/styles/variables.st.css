@@ -1,3 +1,11 @@
+:root {
+    --primary-color: #FDA75F;
+    --primary-font-color: value(mainDarkColor);
+    --primary-width: value(mobileMaxWidth)
+    --secondary-color: #ED718B;
+    --secondary-font-color: white;
+}
+
 :vars {
   /* main-gardient: linear-gradient(95.52deg, #FDA75F -10.13%, #ED718B 142.67%); */
   grey-light: #58595B;
