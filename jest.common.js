@@ -27,6 +27,7 @@ module.exports = {
     '^@pages(.*)$': '<rootDir>/src/pages$1',
     '@types': '<rootDir>/src/types',
     '@constants': '<rootDir>/src/constants',
+    '@styles': '<rootDir>/src/styles',
   },
   testPathIgnorePatterns: [ '<rootDir>/dist/', '<rootDir>/node_modules/' ],
 }

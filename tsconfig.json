@@ -72,8 +72,8 @@
       "@utils/*":[
         "src/utils/*"
       ],
-      "@assets/*":[
-        "src/assets/*"
+      "@styles/*":[
+        "src/styles/*"
       ],
       "@pages/*":[
         "src/pages/*"
