@@ -2,16 +2,9 @@
 :global(body),
 :global(main) {
   min-height: -webkit-fill-available;
-  font-family: main;
 }
-
 
 
 :global(main) {
   min-height: 100vh;
-}
-
-@font-face {
-  font-family: main;
-  src: url(./fonts/main.ttf)
 }
