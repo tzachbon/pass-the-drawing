@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { Routes } from '@constants'
 import { st, classes } from './Home.st.css'
 
-import MainImage from '../../styles/assets/png/pencil.png'
-import InfoImage from '../../styles/assets/png/info.png'
+import MainImage from '@styles/assets/png/pencil.png'
+import InfoImage from '@styles/assets/png/info.png'
 
 
 
@@ -28,24 +28,24 @@ export const Home: React.VFC<HomeProps> = ({ className }) => {
 		>
 			<div 
 			 data-testid={HEADER_CONTAINER_TEST_ID}
-			 className={st(classes.headerContainer, className)}
+			 className={classes.headerContainer}
 			>
 				<h1
 				 data-testid={HEADER_TEST_ID}
-				 className={st(classes.mainHeader, className)}
+				 className={classes.mainHeader}
 				>
-					 <span>Pass</span> <br/> The Darw
+					 <span>Pass</span> <br/> The Drawing
 				</h1>
 				<h3
 					data-testid={VERSION_TEST_ID}
-					className={st(classes.version, className)}
+					className={classes.version}
 				>
 				ALPHA v0.1
 				</h3>
 			</div>
 			<div
 				data-testid={IMAGE_CONTAINER}
-				className={st(classes.imageContainer, className)}
+				className={classes.imageContainer}
 			>
 				{/* <MainImage /> */}
 				<img 
@@ -57,18 +57,18 @@ export const Home: React.VFC<HomeProps> = ({ className }) => {
 				data-testid={CREATE_GAME_LINK}
 				to={Routes.CREATE_GAME}
 				// eslint-disable-next-line stylable/unknown-locals
-				className={st(classes.createGameButton, className)}
+				className={classes.createGameButton}
 			>
 				Create New Game
 			</Link>
 			<h2 
 				data-testid={OR}
-				className={st(classes.or, className)}
+				className={classes.or}
 			>
 				or
 			</h2>
 			<button
-				className={st(classes.moreInfoButton, className)}
+				className={classes.moreInfoButton}
 			>
 				<img 
 					src={InfoImage}
