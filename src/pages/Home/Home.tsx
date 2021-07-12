@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { Routes } from '@constants'
 import { st, classes } from './Home.st.css'
 
-import MainImage from '../../assets/png/pencil.png'
-import InfoImage from '../../assets/png/info.png'
+import MainImage from '../../styles/assets/png/pencil.png'
+import InfoImage from '../../styles/assets/png/info.png'
 
 
 
