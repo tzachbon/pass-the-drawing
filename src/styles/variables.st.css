@@ -1,37 +1,21 @@
 :root {
     --primary-color: #FDA75F;
-    --primary-font-color: value(mainDarkColor);
+    --primary-font-color: primaryFontColor;
     --primary-background-color: white;
     --primary-width: value(mobileMaxWidth);
     --secondary-color: #ED718B;
-    --secondary-font-color: white;
+    --secondary-font-color: value(secondaryFontColor);
+    --primary-gardient: mainGardient;
 }
 
 :vars {
-  /* main-gardient: linear-gradient(95.52deg, #FDA75F -10.13%, #ED718B 142.67%); */
-  grey-light: #58595B;
-  grey-dark: #181818;
   main-dark: #000000;
-  green: #59DCA8;
-  turquoise: #14A8C0;
-  turquoise-reg: #3B6477;
-  turquoise-dark: #345A71;
-  blue: #12A8C0;
-  purple: #ECA8FF;
-  yellow: #FFFFA7;
-  red: #fa2200;
-  white: #fff;
-  white-strong: rgb(202, 202, 202);
-  white-light: rgba(255, 255, 255, 0.904);
-  white-light-strong: rgba(255, 255, 255, 0.5);
-  white-light-mid: rgba(255, 255, 255, 0.3);
-  white-light-washed: rgba(255, 255, 255, 0.1);
-  dark-washed: rgba(24, 24, 24, 0.5);
+  main-light: #ffffff;
   mainDarkColor: value(main-dark);
-  mainLightColor: value(white-strong);
+  mainLightColor: value(main-light);
   backgroundColor: value(mainDarkColor);
-  fontColor: value(white);
-  secondaryFontColor: value(mainLightColor);
-  /* mainGardient: value(main-gardient); */
-  mobileMaxWidth: 812px
+  primaryFontColor: value(main-dark);
+  secondaryFontColor: #ffffff;
+  mobileMaxWidth: 812px;
+  mainGardient: linear-gradient(95.52deg, #FDA75F -10.13%, #ED718B 142.67%);
 }

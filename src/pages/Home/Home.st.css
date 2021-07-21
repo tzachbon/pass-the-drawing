@@ -1,4 +1,5 @@
 @st-import [ mainLightColor, mainDarkColor, mainGardient, mobileMaxWidth ] from "../../styles/variables.st.css";
+@st-import [ _mainGardientBg ] from "../../styles/mixins.st.css";
 
 .root {}
 
@@ -46,7 +47,8 @@
     text-decoration: none;
     margin: 0 auto;
     max-width: 270px;
-    background-image: linear-gradient(95.52deg, #FDA75F -10.13%, #ED718B 142.67%);
+    /* background-image: linear-gradient(95.52deg, #FDA75F -10.13%, #ED718B 142.67%); */
+    -st-mixin: _mainGardientBg;
     ;
 }
 

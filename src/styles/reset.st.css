@@ -43,6 +43,6 @@
 
 :global(a),
 :global(a:visited) {
-  color: inherit;
+  /* color: inherit; */
   cursor: pointer;
 }

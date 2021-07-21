@@ -1,14 +1,14 @@
 @st-import [ flexCol ] from "../../styles/common.st.css";
-@st-import [ mainLightColor, white-light-mid, white-light-strong ] from "../../styles/variables.st.css";
+/* @st-import [ mainLightColor, white-light-mid, whit e-light-strong ] from "../../styles/variables.st.css"; */
 
 :vars {
-  border: 0.1rem solid value(mainLightColor)
+  /* border: 0.1rem solid value(mainLightColor) */
 }
 
 .root {
   -st-extends: flexCol;
   margin: 1rem;
-  border: value(border);
+  /* border: value(border); */
   border-radius: 1rem;
   overflow: scroll;
   max-height: 60vh;
@@ -41,7 +41,7 @@
 }
 
 .player:currentPlayer .image {
-  border: .2rem solid value(mainLightColor)
+  /* border: .2rem solid value(mainLightColor) */
 }
 
 .playerName {}

@@ -1,4 +1,4 @@
-@st-import [ 
+/* @st-import [ 
   dark-washed, 
   backgroundColor, 
   secondaryFontColor, 
@@ -6,32 +6,32 @@
   mobileMaxWidth, 
   white-light-mid
 ] from "../../styles/variables.st.css";
-@st-import [ keyframes(fadeIn) ] from "../../styles/variables.st.css";
+@st-import [ keyframes(fadeIn) ] from "../../styles/variables.st.css"; */
 
 .overlay {
   position: fixed;
   inset: 0px;
-  background-color: value(dark-washed)
+  /* background-color: value(dark-washed) */
 }
 
 .root {
   position: absolute;
   inset: 3rem;
-  border: 1px solid value(secondaryFontColor);
-  background: value(backgroundColor);
+  /* border: 1px solid value(secondaryFontColor); */
+  /* background: value(backgroundColor); */
   overflow: auto;
   border-radius: 4px;
   outline: none;
   padding: 1rem;
-  color: value(fontColor);
+  /* color: value(fontColor); */
   animation: fadeIn .3s ease-in;
 }
-
+/* 
 @media (max-device-width: value(mobileMaxWidth)) {
   .root {
     inset: 1.5rem 1rem;
   }
-}
+} */
 
 .button {
   width: 100%;
@@ -41,5 +41,5 @@
   margin: 1rem 0;
   width: 100%;
   height: .1rem;
-  background: value(white-light-mid);
+  /* background: value(white-light-mid); */
 }
