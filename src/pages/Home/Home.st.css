@@ -1,75 +1,67 @@
-@st-import [ mainLightColor, mainDarkColor, mainGardient, mobileMaxWidth ] from "../../styles/variables.st.css";
-@st-import [ _mainGardientBg ] from "../../styles/mixins.st.css";
+@st-import [ mobileMaxWidth ] from "../../styles/variables.st.css";
+@st-import [ mainGardientBg ] from "../../styles/mixins.st.css";
+@st-import [ rem ] from "polished";
+@st-import [ flexCenter ] from "../../styles/common.st.css";
 
 .root {}
 
 .headerContainer {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    -st-mixin: flexCenter;
     flex-direction: column;
-    margin-top: 32px;
+    margin-top: rem(var(--size-32));
 }
 
 .mainHeader {
-    color: value(mainDarkColor);
+    color: var(--primary-font-color);
     font-family: main;
-    font-size: 64px;
+    font-size: rem(var(--size-64));
     margin: 0;
     line-height: 1;
 }
 
 .mainHeader span {
-    font-size: 128px;
+    font-size: rem(var(--size-128));
 }
 
 .version {
-    font-size: 12px;
-    color: #000000;
+    font-size: rem(var(--font-size-small));
+    color: var(--primary-font-color);
 }
 
 .imageContainer {
-    margin: 12px auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin: rem(var(--size-12)) auto;
+    -st-mixin: flexCenter;
 }
 
 .createGameButton {
     width: 100%;
-    padding: 24px 64px;
-    font-size: 21px;
-    border-radius: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: rem(var(--size-24)) rem(var(--size-64));
+    font-size: rem(var(--font-size-medium));
+    border-radius: var(--size-25);
+    -st-mixin: flexCenter;
     text-decoration: none;
     margin: 0 auto;
-    max-width: 270px;
-    /* background-image: linear-gradient(95.52deg, #FDA75F -10.13%, #ED718B 142.67%); */
-    -st-mixin: _mainGardientBg;
-    ;
+    max-width: rem(var(--main-button-width));
+    -st-mixin: mainGardientBg;
 }
 
 .or {
-    color: #000000;
+    color: var(--primary-font-color);
     text-align: center;
-    font-size: 18px;
+    font-size: rem(var(--size-18));
 }
 
 .moreInfoButton {
-    color: #AFAFAF;
+    color: var(--grey-color);
     background: none;
     border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 21px;
+    -st-mixin: flexCenter;
+    font-size: rem(var(--font-size-medium));
     width: 100%;
     font-family: main;
 }
 
 .moreInfoButton img {
-    margin-right: 10px;
+    margin-right: rem(var(--size-10));
 }

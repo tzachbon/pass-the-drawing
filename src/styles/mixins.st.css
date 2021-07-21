@@ -1,9 +1,8 @@
 @st-import [ mainGardient, --secondary-font-color ] from "./variables.st.css";
 
 
-._mainGardientBg {
+.mainGardientBg {
     background-image: linear-gradient(95.52deg, #FDA75F -10.13%, #ED718B 142.67%);
-    /* color: --secondary-font-color; */
-    color: #ffffff;
+    color: var(--secondary-font-color);
 }
  

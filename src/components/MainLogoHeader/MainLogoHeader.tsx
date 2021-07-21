@@ -14,7 +14,7 @@ export const MainLogoHeader: React.FC<MainLogoHeaderProps> = ({
 }) => {
 	return (
 		<div
-			data-testid={HEADER_CONTAINER_TEST_ID}
+			data-testid={HEADER_CONTAINER_TEST_ID} 
 			className={st(classes.root, className)}
 		>
 			<h1

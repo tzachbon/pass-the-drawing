@@ -1,11 +1,27 @@
 :root {
     --primary-color: #FDA75F;
+    --secondary-color: #ED718B;
+    --grey-color: mainGreyColor;
     --primary-font-color: primaryFontColor;
+    --secondary-font-color: secondaryFontColor;
     --primary-background-color: white;
     --primary-width: value(mobileMaxWidth);
-    --secondary-color: #ED718B;
-    --secondary-font-color: value(secondaryFontColor);
-    --primary-gardient: mainGardient;
+    --font-size-small: 12px;
+    --font-size-base: 14px;
+    --font-size-medium: 21px;
+    --size-10: 10px;
+    --size-12: 12px;
+    --size-14: 14px;
+    --size-16: 16px;
+    --size-18: 18px;
+    --size-24: 24px;
+    --size-25: 25px;
+    --size-36: 36px;
+    --size-48: 48px;
+    --size-68: 68px;
+    --size-128: 128px;
+    --main-button-width: 270px; 
+     
 }
 
 :vars {
@@ -13,9 +29,9 @@
   main-light: #ffffff;
   mainDarkColor: value(main-dark);
   mainLightColor: value(main-light);
+  mainGreyColor: value(#AFAFAF);
   backgroundColor: value(mainDarkColor);
   primaryFontColor: value(main-dark);
-  secondaryFontColor: #ffffff;
+  secondaryFontColor: value(#ffffff);
   mobileMaxWidth: 812px;
-  mainGardient: linear-gradient(95.52deg, #FDA75F -10.13%, #ED718B 142.67%);
 }
