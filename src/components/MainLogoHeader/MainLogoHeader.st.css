@@ -1,0 +1,28 @@
+@st-import [ mainLightColor, mainDarkColor, mainGardient, mobileMaxWidth ] from "../../styles/variables.st.css";
+
+.root {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 32px;
+}
+
+
+.mainHeader {
+    color: value(mainDarkColor);
+    font-family: main;
+    font-size: 64px;
+    margin: 0;
+    line-height: 1;
+}
+
+.mainHeader span {
+    font-size: 128px;
+}
+
+.version {
+    font-size: 12px;
+    color: #000000;
+}
