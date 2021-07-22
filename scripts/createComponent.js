@@ -2,24 +2,27 @@
 const path = require('path')
 const fs = require('fs/promises')
 
-const [ templateName, initialTargetPath = 'src/components' ] = process.argv.slice(2)
+let [ initialTemplateName ] = process.argv.slice(2)
 
 run().catch(e => { throw e })
 
 async function run() {
-	if (!templateName) {
+	if (!initialTemplateName) {
 		throw new Error('Create Component: Component must have a name (and please use camelCase or titleCase).')
 	}
 
 	const templateDir = path.resolve('templates', 'component')
 	const templateFilesNames = await fs.readdir(templateDir)
 	const templateFilesPaths = templateFilesNames.map(fileName => path.resolve(templateDir, fileName))
+	const templateNameArray = initialTemplateName.split(path.sep)
+	const templateName = templateNameArray.pop()
 	const templateData = {
 		name: upperCaseFirstLetter(templateName),
 		nameLowerCase: lowerCaseFirstLetter(templateName),
 	}
 
-	const targetPathDir = path.resolve(initialTargetPath.startsWith('src' + path.sep) ? initialTargetPath : `src${path.sep}${initialTargetPath}`)
+	const initialTargetPath = templateNameArray.join(path.spec) || `components`
+	const targetPathDir = path.resolve('src', initialTargetPath)
 	const targetPath = [ targetPathDir, templateData.name ].join(path.sep)
 
 	console.log(`Create Component: Create a component named: ${templateName} in ${targetPathDir}\n`)

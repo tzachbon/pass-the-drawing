@@ -3,7 +3,7 @@
 
 ## Development
 
-We would love your contribution, here's a quick recap of our setup and how to start the environment
+We would love your contribution, here's a quick recap of our setup , how to start the environment and some helper scripts
 
 ### Setup
 
@@ -27,4 +27,29 @@ yarn
 
 ```shell
 yarn start
+```
+
+### Creating new component
+
+Since our structure is very unique and consist you will need to create your component via the command: (`MyComponent` is the example component name)
+
+```shell
+yarn create:component MyComponent
+```
+
+You will get this structure by default under `src/component`
+
+```
+MyComponent
+|─── index.tsx
+|─── MyComponent.tsx
+|─── MyComponent.driver.tsx
+|─── MyComponent.test.tsx
+└─── MyComponent.st.tsx
+```
+
+If you need to change the output directory just specify it before the component name: (For example if you need it under `pages` and not under `components`)
+
+```shell
+yarn create:component pages/MyComponent
 ```
