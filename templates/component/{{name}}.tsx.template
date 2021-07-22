@@ -1,0 +1,23 @@
+import { st, classes } from "./{{name}}.st.css";
+
+export interface {{name}}Props {
+  className?: string
+}
+
+export const ROOT_TEST_ID = '{{name}}_ROOT_TEST_ID'
+
+export const {{name}}: React.VFC<{{name}}Props> = (
+  {
+    className
+  }
+) => {
+
+  return (
+    <div 
+      data-testid={ROOT_TEST_ID}
+      className={st(classes.root, className)}
+    >
+      {{name}} Works!
+    </div>
+  )
+}
