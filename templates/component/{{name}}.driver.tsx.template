@@ -1,0 +1,26 @@
+import { Driver, RenderResult, testUtils } from '@test-utils'
+import { {{name}}, {{name}}Props, ROOT_TEST_ID } from './{{name}}'
+
+interface Params {
+	props: {{name}}Props
+}
+
+export function {{nameLowerCase}}Driver({ props }: Params) {
+	return new {{name}}Driver(props, {{name}})
+}
+
+export class {{name}}Driver extends Driver<Params['props']> {
+	testkit() {
+		return {{nameLowerCase}}Testkit(this.wrapper.container)
+	}
+}
+
+export function {{nameLowerCase}}Testkit(container: RenderResult) {
+	const utils = testUtils(ROOT_TEST_ID, container)
+
+	const testkit = {
+		...utils,
+	}
+
+	return testkit
+}

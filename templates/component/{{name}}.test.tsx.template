@@ -1,0 +1,9 @@
+import { {{nameLowerCase}}Driver } from './{{name}}.driver'
+
+describe('{{name}}', () => {
+  const driver = {{nameLowerCase}}Driver({ props: {} }).beforeAndAfter()
+
+  it('should render {{name}}', () => {
+    expect(driver.testkit().text()).toEqual('{{name}} Works!')
+  })
+})

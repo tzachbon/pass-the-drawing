@@ -21,7 +21,8 @@
     "test": "yarn npm-run-all test:* --parallel",
     "test:typecheck": "tsc --noEmit",
     "test:unit": "(yarn is-ci && yarn jest --runInBand) || yarn jest",
-    "test:e2e": "yarn jest --config ./jest.config-e2e.js"
+    "test:e2e": "yarn jest --config ./jest.config-e2e.js",
+    "create:component": "node scripts/createComponent"
   },
   "keywords": [],
   "author": "",
