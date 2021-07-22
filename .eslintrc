@@ -21,9 +21,6 @@
       "version": "detect"
     }
   },
-  "parserOptions": {
-    "sourceType": "module"
-  },
   "rules": {
     "no-console": "error",
     "react-hooks/rules-of-hooks": "error",
