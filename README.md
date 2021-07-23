@@ -1,6 +1,10 @@
 # Pass the drawing
 ![Test and deploy workflow](https://github.com/tzachbon/pass-the-drawing/workflows/Test%20and%20deploy/badge.svg)
 
+## UI Design
+
+The design is provided in [Figma](https://www.figma.com/file/1cSSHb5pTF014ktUnbPxqa/Pass-The-Draw), if you think something should be / look different or something is wrong in our design system, open an issue and let's discuses it there.
+
 ## Development
 
 We would love your contribution, here's a quick recap of our setup , how to start the environment and some helper scripts
