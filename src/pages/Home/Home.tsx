@@ -8,14 +8,13 @@ import { MainLogoHeader } from '@components/MainLogoHeader'
 // import InfoImage from '@styles/assets/png/info.png'
 import MainImage from '../../styles/assets/png/pencil.png'
 import InfoImage from '../../styles/assets/png/info.png'
+import { useAuth } from '@hooks/useAuth'
 
 
 
 export const ROOT_TEST_ID = 'Home_ROOT_TEST_ID'
-export const HEADER_CONTAINER_TEST_ID = 'Home_HEADER_CONTAINER_TEST_ID'
-export const HEADER_TEST_ID = 'Home_HEADER_TEST_ID'
-export const VERSION_TEST_ID = 'Home_VERSION_TEST_ID'
 export const CREATE_GAME_LINK_TEST_ID = 'Home_CREATE_GAME_LINK_TEST_ID'
+export const SIGN_IN_LINK_TEST_ID = 'Home_SIGN_IN_LINK_TEST_ID'
 export const IMAGE_CONTAINER_TEST_ID = 'Home_IMAGE_CONTAINER_TEST_ID'
 export const IMAGE_TEST_ID = 'IMAGE_TEST_ID'
 export const OR_TEST_ID = 'Home_OR_TEST_ID'
@@ -26,6 +25,8 @@ export interface HomeProps {
 }
 
 export const Home: React.VFC<HomeProps> = ({ className }) => {
+	const { currentUser } = useAuth()
+
 	return (
 		<div
 			data-testid={ROOT_TEST_ID}
@@ -42,14 +43,24 @@ export const Home: React.VFC<HomeProps> = ({ className }) => {
 					alt="Pencil" 
 				/>
 			</div>
-			<Link
+			{ currentUser ? <Link
 				data-testid={CREATE_GAME_LINK_TEST_ID}
 				to={Routes.CREATE_GAME}
-				// eslint-disable-next-line stylable/unknown-locals
 				className={classes.createGameButton}
 			>
 				Create New Game
 			</Link>
+				:
+				<Link
+					to={Routes.SIGN_IN}
+					data-testid={SIGN_IN_LINK_TEST_ID}
+					// eslint-disable-next-line spellcheck/spell-checker
+					className={classes.signinButton}
+
+				>
+				Signin To Start
+				</Link>
+			}
 			<h2 
 				data-testid={OR_TEST_ID}
 				className={classes.or}

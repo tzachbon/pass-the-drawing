@@ -1,50 +1,20 @@
 @st-import [ --main-button-width, --size-32, --primary-font-color, --size-64, --size-128, --font-size-small, --size-12, --size-18, --size-24, --font-size-medium, --size-25, --grey-color, --size-10 ] from "../../styles/variables.st.css";
-@st-import [ mainGardientBg ] from "../../styles/mixins.st.css";
+@st-import [ mainButton ] from "../../styles/mixins.st.css";
 @st-import [ rem ] from "polished";
 @st-import [ flexCenter ] from "../../styles/common.st.css";
 
 .root {}
 
-.headerContainer {
-    width: 100%;
-    -st-mixin: flexCenter;
-    flex-direction: column;
-    margin-top: var(--size-32);
-}
-
-.mainHeader {
-    color: var(--primary-font-color);
-    font-family: main;
-    font-size: var(--size-64);
-    margin: 0;
-    line-height: 1;
-}
-
-.mainHeader span {
-    font-size: var(--size-128);
-}
-
-.version {
-    font-size: var(--font-size-small);
-    color: var(--primary-font-color);
-}
 
 .imageContainer {
     margin: var(--size-12) auto;
     -st-mixin: flexCenter;
 }
 
-.createGameButton {
-    width: 100%;
-    padding: var(--size-24) var(--size-64);
-    font-size: var(--font-size-medium);
-    border-radius: var(--size-25);
-    -st-mixin: flexCenter, mainGardientBg;
-    text-decoration: none;
-    margin: 0 auto;
-    max-width: var(--main-button-width);
-    
+.createGameButton, .signinButton {
+    -st-mixin: mainButton;   
 }
+
 
 .or {
     color: var(--primary-font-color);

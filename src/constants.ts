@@ -9,6 +9,7 @@ export const Routes = {
 	CREATE_GAME: '/create-game',
 	LOBBY: '/lobby',
 	GAME: '/game',
+	SIGN_IN: '/sign-in',
 } as const
 
 export enum GameSubjects {

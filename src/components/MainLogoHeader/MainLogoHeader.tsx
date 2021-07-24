@@ -5,7 +5,7 @@ export const HEADER_CONTAINER_TEST_ID = 'MainLogoHeader_HEADER_CONTAINER_TEST_ID
 export const HEADER_TEST_ID = 'MainLogoHeader_HEADER_TEST_ID'
 export const VERSION_TEST_ID = 'MainLogoHeader_VERSION_TEST_ID'
 
-interface MainLogoHeaderProps {
+export interface MainLogoHeaderProps {
     className?: string
 }
 

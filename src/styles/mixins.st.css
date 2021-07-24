@@ -1,4 +1,5 @@
-@st-import [ mainGardient, --secondary-font-color ] from "./variables.st.css";
+@st-import [ mainGardient, --secondary-font-color, --size-24, --size-64, --size-25, --font-size-medium, --main-button-width ] from "./variables.st.css";
+@st-import [ flexCenter ] from "./common.st.css";
 
 
 .mainGardientBg {
@@ -6,3 +7,14 @@
     color: var(--secondary-font-color);
 }
  
+
+.mainButton {
+    width: 100%;
+    padding: var(--size-24) var(--size-64);
+    font-size: var(--font-size-medium);
+    border-radius: var(--size-25);
+    -st-mixin: flexCenter, mainGardientBg;
+    text-decoration: none;
+    margin: 0 auto;
+    max-width: var(--main-button-width);
+}

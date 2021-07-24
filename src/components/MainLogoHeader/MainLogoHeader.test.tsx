@@ -1,9 +1,14 @@
+import { mainLogoHeaderDriver } from './MainLogoHeader.driver'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
 describe('MainLogoHeader', () => {
+	const driver = mainLogoHeaderDriver().beforeAndAfter()
 
-	it('initial', () => {
-		expect(1 + 1).toEqual(2)
+	// eslint-disable-next-line spellcheck/spell-checker
+	it('all elememts should render', () => {
+
+		expect(driver.testkit().element()).toBeInTheDocument()
+
 	})
+
 	
 })

@@ -7,8 +7,7 @@ describe('Home', () => {
 	it('all elememts should render', () => {
 
 		expect(driver.testkit().element()).toBeInTheDocument()
-		expect(driver.testkit().headerContainer()).toBeInTheDocument()
-		expect(driver.testkit().createGameButton()).toBeInTheDocument()
+		// expect(driver.testkit().createGameButton()).toBeInTheDocument()
 		expect(driver.testkit().image()).toBeInTheDocument()
 		expect(driver.testkit().moreInfoButton()).toBeInTheDocument()
 
