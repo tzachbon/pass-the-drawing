@@ -2,6 +2,7 @@ import type React from 'react'
 import { Link } from 'react-router-dom'
 import { Routes } from '@constants'
 import { st, classes } from './Home.st.css'
+import { MainLogoHeader } from '@components/MainLogoHeader'
 
 // import MainImage from '@styles/assets/png/pencil.png'
 // import InfoImage from '@styles/assets/png/info.png'
@@ -30,23 +31,7 @@ export const Home: React.VFC<HomeProps> = ({ className }) => {
 			data-testid={ROOT_TEST_ID}
 			className={st(classes.root, className)}
 		>
-			<div 
-			 data-testid={HEADER_CONTAINER_TEST_ID}
-			 className={classes.headerContainer}
-			>
-				<h1
-				 data-testid={HEADER_TEST_ID}
-				 className={classes.mainHeader}
-				>
-					 <span>Pass</span> <br/> The Drawing
-				</h1>
-				<h3
-					data-testid={VERSION_TEST_ID}
-					className={classes.version}
-				>
-				ALPHA v0.1
-				</h3>
-			</div>
+			<MainLogoHeader />
 			<div
 				data-testid={IMAGE_CONTAINER_TEST_ID}
 				className={classes.imageContainer}

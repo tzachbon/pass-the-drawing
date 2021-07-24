@@ -1,26 +1,30 @@
+@st-import [ rem ] from "polished";
+
 :root {
     --primary-color: #FDA75F;
     --secondary-color: #ED718B;
-    --grey-color: mainGreyColor;
-    --primary-font-color: primaryFontColor;
-    --secondary-font-color: secondaryFontColor;
+    --grey-color: #AFAFAF;
+    --primary-font-color: #000000;
+    --secondary-font-color: #ffffff;
     --primary-background-color: white;
-    --primary-width: value(mobileMaxWidth);
-    --font-size-small: 12px;
-    --font-size-base: 14px;
-    --font-size-medium: 21px;
-    --size-10: 10px;
-    --size-12: 12px;
-    --size-14: 14px;
-    --size-16: 16px;
-    --size-18: 18px;
-    --size-24: 24px;
-    --size-25: 25px;
-    --size-36: 36px;
-    --size-48: 48px;
-    --size-68: 68px;
-    --size-128: 128px;
-    --main-button-width: 270px; 
+    --primary-width: rem(812px);
+    --font-size-small: rem(12px);
+    --font-size-base: rem(14px);
+    --font-size-medium: rem(21px);
+    --size-10: rem(10px);
+    --size-12: rem(12px);
+    --size-14: rem(14px);
+    --size-16: rem(16px);
+    --size-18: rem(18px);
+    --size-24: rem(24px);
+    --size-25: rem(25px);
+    --size-32: rem(32px);
+    --size-36: rem(36px);
+    --size-48: rem(48px);
+    --size-64: rem(64px);
+    --size-68: rem(68px);
+    --size-128: rem(128px);
+    --main-button-width: rem(270px); 
      
 }
 
@@ -33,5 +37,5 @@
   backgroundColor: value(mainDarkColor);
   primaryFontColor: value(main-dark);
   secondaryFontColor: value(#ffffff);
-  mobileMaxWidth: 812px;
+  mobileMaxWidth: rem(812px);
 }

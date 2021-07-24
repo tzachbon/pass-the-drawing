@@ -1,4 +1,4 @@
-@st-import [ mobileMaxWidth ] from "../../styles/variables.st.css";
+@st-import [ --main-button-width, --size-32, --primary-font-color, --size-64, --size-128, --font-size-small, --size-12, --size-18, --size-24, --font-size-medium, --size-25, --grey-color, --size-10 ] from "../../styles/variables.st.css";
 @st-import [ mainGardientBg ] from "../../styles/mixins.st.css";
 @st-import [ rem ] from "polished";
 @st-import [ flexCenter ] from "../../styles/common.st.css";
@@ -9,47 +9,47 @@
     width: 100%;
     -st-mixin: flexCenter;
     flex-direction: column;
-    margin-top: rem(var(--size-32));
+    margin-top: var(--size-32);
 }
 
 .mainHeader {
     color: var(--primary-font-color);
     font-family: main;
-    font-size: rem(var(--size-64));
+    font-size: var(--size-64);
     margin: 0;
     line-height: 1;
 }
 
 .mainHeader span {
-    font-size: rem(var(--size-128));
+    font-size: var(--size-128);
 }
 
 .version {
-    font-size: rem(var(--font-size-small));
+    font-size: var(--font-size-small);
     color: var(--primary-font-color);
 }
 
 .imageContainer {
-    margin: rem(var(--size-12)) auto;
+    margin: var(--size-12) auto;
     -st-mixin: flexCenter;
 }
 
 .createGameButton {
     width: 100%;
-    padding: rem(var(--size-24)) rem(var(--size-64));
-    font-size: rem(var(--font-size-medium));
+    padding: var(--size-24) var(--size-64);
+    font-size: var(--font-size-medium);
     border-radius: var(--size-25);
-    -st-mixin: flexCenter;
+    -st-mixin: flexCenter, mainGardientBg;
     text-decoration: none;
     margin: 0 auto;
-    max-width: rem(var(--main-button-width));
-    -st-mixin: mainGardientBg;
+    max-width: var(--main-button-width);
+    
 }
 
 .or {
     color: var(--primary-font-color);
     text-align: center;
-    font-size: rem(var(--size-18));
+    font-size: var(--size-18);
 }
 
 .moreInfoButton {
@@ -57,11 +57,11 @@
     background: none;
     border: none;
     -st-mixin: flexCenter;
-    font-size: rem(var(--font-size-medium));
+    font-size: var(--font-size-medium);
     width: 100%;
     font-family: main;
 }
 
 .moreInfoButton img {
-    margin-right: rem(var(--size-10));
+    margin-right: var(--size-10);
 }

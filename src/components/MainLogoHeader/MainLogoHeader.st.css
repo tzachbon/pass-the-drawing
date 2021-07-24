@@ -1,28 +1,25 @@
-@st-import [ mainLightColor, mainDarkColor, mainGardient, mobileMaxWidth ] from "../../styles/variables.st.css";
-
+@st-import [ --size-32, --primary-font-color, --size-64, --size-128, --font-size-small, --size-12 ] from "../../styles/variables.st.css";
+@st-import [ flexCenter ] from "../../styles/common.st.css";
 .root {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    -st-mixin: flexCenter;
     flex-direction: column;
-    margin-top: 32px;
+    margin-top: var(--size-32);
 }
 
-
 .mainHeader {
-    color: value(mainDarkColor);
+    color: var(--primary-font-color);
     font-family: main;
-    font-size: 64px;
+    font-size: var(--size-64);
     margin: 0;
     line-height: 1;
 }
 
 .mainHeader span {
-    font-size: 128px;
+    font-size: var(--size-128);
 }
 
 .version {
-    font-size: 12px;
-    color: #000000;
+    font-size: var(--font-size-small);
+    color: var(--primary-font-color);
 }

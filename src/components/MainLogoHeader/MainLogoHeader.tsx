@@ -21,7 +21,7 @@ export const MainLogoHeader: React.FC<MainLogoHeaderProps> = ({
 				data-testid={HEADER_TEST_ID}
 				className={classes.mainHeader}
 			>
-				<span>Pass</span> <br /> The Drawing
+				<span>Pass</span> <br /> The Draw
 			</h1>
 			<h3
 				data-testid={VERSION_TEST_ID}
