@@ -1,3 +1,4 @@
+/* eslint-disable spellcheck/spell-checker */
 import React, { Suspense } from 'react'
 import { Route, Switch } from 'react-router'
 import { st, classes } from './App.st.css'
@@ -5,6 +6,7 @@ import { Routes } from '@constants'
 
 const Home = React.lazy(() => import('../Home'))
 const CreateGame = React.lazy(() => import('../CreateGame'))
+const Signin = React.lazy(() => import('../Signin'))
 const Lobby = React.lazy(() => import('../Lobby'))
 const Game = React.lazy(() => import('../Game'))
 
@@ -30,6 +32,12 @@ export const App: React.VFC = () => {
 						exact
 					>
 						<CreateGame />
+					</Route>
+					<Route
+						path={Routes.SIGN_IN}
+						exact
+					>
+						<Signin />
 					</Route>
 					<Route
 						path={Routes.HOME}

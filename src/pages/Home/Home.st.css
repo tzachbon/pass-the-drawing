@@ -1,1 +1,37 @@
+@st-import [ --main-button-width, --size-32, --primary-font-color, --size-64, --size-128, --font-size-small, --size-12, --size-18, --size-24, --font-size-medium, --size-25, --grey-color, --size-10 ] from "../../styles/variables.st.css";
+@st-import [ mainButton ] from "../../styles/mixins.st.css";
+@st-import [ rem ] from "polished";
+@st-import [ flexCenter ] from "../../styles/common.st.css";
+
 .root {}
+
+
+.imageContainer {
+    margin: var(--size-12) auto;
+    -st-mixin: flexCenter;
+}
+
+.createGameButton, .signinButton {
+    -st-mixin: mainButton;   
+}
+
+
+.or {
+    color: var(--primary-font-color);
+    text-align: center;
+    font-size: var(--size-18);
+}
+
+.moreInfoButton {
+    color: var(--grey-color);
+    background: none;
+    border: none;
+    -st-mixin: flexCenter;
+    font-size: var(--font-size-medium);
+    width: 100%;
+    font-family: main;
+}
+
+.moreInfoButton img {
+    margin-right: var(--size-10);
+}

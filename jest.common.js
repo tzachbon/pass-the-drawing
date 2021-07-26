@@ -18,6 +18,7 @@ module.exports = {
   // Module file extensions for importing
   moduleFileExtensions: [ 'ts', 'tsx', 'js', 'jsx', 'json', 'node' ],
   moduleNameMapper: {
+    ".+\\.(png|jpg)$": '<rootDir>/tests/__mocks__/asset.ts',
     '@test-utils': '<rootDir>/tests/test-utils',
     '@api': '<rootDir>/src/api',
     '^@screens(.*)$': '<rootDir>/src/screens$1',
@@ -27,6 +28,7 @@ module.exports = {
     '^@pages(.*)$': '<rootDir>/src/pages$1',
     '@types': '<rootDir>/src/types',
     '@constants': '<rootDir>/src/constants',
+    '@styles': '<rootDir>/src/styles',
   },
   testPathIgnorePatterns: [ '<rootDir>/dist/', '<rootDir>/node_modules/' ],
 }

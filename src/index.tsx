@@ -8,6 +8,7 @@ import { App } from '@pages/App'
 
 import './styles/reset.st.css'
 import './styles/globals.st.css'
+import './styles/variables.st.css'
 
 import firebase from 'firebase/app'
 import 'firebase/analytics'

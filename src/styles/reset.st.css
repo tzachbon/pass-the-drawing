@@ -37,11 +37,12 @@
     "Segoe UI Symbol",
     /* Linux emoji */
     "Noto Color Emoji";
+   
   ;
 }
 
 :global(a),
 :global(a:visited) {
-  color: inherit;
+  /* color: inherit; */
   cursor: pointer;
 }

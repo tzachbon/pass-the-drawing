@@ -1,0 +1,25 @@
+@st-import [ --size-32, --primary-font-color, --size-64, --size-128, --font-size-small, --size-12 ] from "../../styles/variables.st.css";
+@st-import [ flexCenter ] from "../../styles/common.st.css";
+.root {
+    width: 100%;
+    -st-mixin: flexCenter;
+    flex-direction: column;
+    margin-top: var(--size-32);
+}
+
+.mainHeader {
+    color: var(--primary-font-color);
+    font-family: main;
+    font-size: var(--size-64);
+    margin: 0;
+    line-height: 1;
+}
+
+.mainHeader span {
+    font-size: var(--size-128);
+}
+
+.version {
+    font-size: var(--font-size-small);
+    color: var(--primary-font-color);
+}

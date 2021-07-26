@@ -1,25 +1,41 @@
+@st-import [ rem ] from "polished";
+
+:root {
+    --primary-color: #FDA75F;
+    --secondary-color: #ED718B;
+    --grey-color: #AFAFAF;
+    --primary-font-color: #000000;
+    --secondary-font-color: #ffffff;
+    --primary-background-color: white;
+    --primary-width: rem(812px);
+    --font-size-small: rem(12px);
+    --font-size-base: rem(14px);
+    --font-size-medium: rem(21px);
+    --size-10: rem(10px);
+    --size-12: rem(12px);
+    --size-14: rem(14px);
+    --size-16: rem(16px);
+    --size-18: rem(18px);
+    --size-24: rem(24px);
+    --size-25: rem(25px);
+    --size-32: rem(32px);
+    --size-36: rem(36px);
+    --size-48: rem(48px);
+    --size-64: rem(64px);
+    --size-68: rem(68px);
+    --size-128: rem(128px);
+    --main-button-width: rem(270px); 
+     
+}
+
 :vars {
-  grey-light: #58595B;
-  grey-dark: #181818;
-  green: #59DCA8;
-  turquoise: #14A8C0;
-  turquoise-reg: #3B6477;
-  turquoise-dark: #345A71;
-  blue: #12A8C0;
-  purple: #ECA8FF;
-  yellow: #FFFFA7;
-  red: #fa2200;
-  white: #fff;
-  white-strong: rgb(202, 202, 202);
-  white-light: rgba(255, 255, 255, 0.904);
-  white-light-strong: rgba(255, 255, 255, 0.5);
-  white-light-mid: rgba(255, 255, 255, 0.3);
-  white-light-washed: rgba(255, 255, 255, 0.1);
-  dark-washed: rgba(24, 24, 24, 0.5);
-  mainDarkColor: value(grey-dark);
-  mainLightColor: value(white-strong);
+  main-dark: #000000;
+  main-light: #ffffff;
+  mainDarkColor: value(main-dark);
+  mainLightColor: value(main-light);
+  mainGreyColor: value(#AFAFAF);
   backgroundColor: value(mainDarkColor);
-  fontColor: value(white);
-  secondaryFontColor: value(mainLightColor);
-  mobileMaxWidth: 812px
+  primaryFontColor: value(main-dark);
+  secondaryFontColor: value(#ffffff);
+  mobileMaxWidth: rem(812px);
 }
